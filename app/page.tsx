@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react"
 import Image from "next/image"
-import Link from "next/link"
 import CareerItem from "../components/CareerItem"
 import EducationItem from "../components/EducationItem"
 import ProjectItem from "../components/ProjectItem"
@@ -47,7 +46,7 @@ export default function ProfilePage() {
 
   return (
     <div className="min-h-screen bg-gray-200 relative">
-      <div className="stars-container fixed w-screen h-screen z-[10]">
+      <div className="stars-container fixed w-screen h-screen">
         {stars.map( (star :Star)=> (
           <div
             key={star.id}
@@ -233,7 +232,7 @@ AI 기술과 로봇 자동화의 융합에 대한 깊은 관심을 가지고 있
         </div>
         <button
           onClick={()=>{window.scrollTo({top: 0, behavior: 'smooth'})}}
-          className="fixed top-8 right-12 text-4xl text-blue-300 rounded-full shadow-lg hover:bg-blue-400 transition-colors"
+          className="fixed top-8 right-12 z-50 text-4xl text-blue-300 rounded-full shadow-lg hover:bg-blue-400 transition-colors"
         >
           <i className="fab fa-grav"></i>
         </button>
@@ -242,7 +241,7 @@ AI 기술과 로봇 자동화의 융합에 대한 깊은 관심을 가지고 있
       {showScrollTop && (
         <button
           onClick={scrollToTop}
-          className="fixed bottom-8 right-1/2 translate-x-1/2 bg-blue-500 text-white p-2 rounded-full shadow-lg hover:bg-blue-600 transition-colors"
+          className="fixed bottom-8 right-1/2 z-50 translate-x-1/2 bg-blue-500 text-white p-2 rounded-full shadow-lg hover:bg-blue-600 transition-colors"
           aria-label="Scroll to top"
         >
           <svg
@@ -264,8 +263,8 @@ AI 기술과 로봇 자동화의 융합에 대한 깊은 관심을 가지고 있
           position: absolute;
           width: 13px;
           height: 4px;
-          background: yellow;
-          border-radius: 40%;
+          background: green;
+          border-radius: 80%;
           animation: fall linear;
         }
         @keyframes fall {
