@@ -9,6 +9,13 @@ import ProjectItem from "../components/ProjectItem"
 
 export default function ProfilePage() {
   const [showScrollTop, setShowScrollTop] = useState(false)
+  interface Star {
+    id: number;
+    left: string;
+    animationDuration: string;
+    opacity: number;
+  }
+  const [stars, setStars] = useState<Star[]>([]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,15 +26,43 @@ export default function ProfilePage() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
+  useEffect(() => {
+    const createStar = () => {
+      const newStar: Star = {
+        id: Math.random(),
+        left: `${Math.random() * 100}%`,
+        animationDuration: `${Math.random() * 3 + 2}s`,
+        opacity: Math.random(),
+      };
+      setStars(prevStars => [...prevStars, newStar]);
+    };
+
+    const interval = setInterval(createStar, 300);
+    return () => clearInterval(interval);
+  }, []);
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" })
   }
 
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="min-h-screen bg-gray-200 relative">
+      <div className="stars-container fixed w-screen h-screen z-[10]">
+        {stars.map( (star :Star)=> (
+          <div
+            key={star.id}
+            className="star"
+            style={{
+              left: star.left,
+              animationDuration: star.animationDuration,
+              opacity: star.opacity,
+            }}
+          />
+        ))}
+      </div>
       <header className="bg-white shadow">
         <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-          <h1 className="text-3xl font-bold text-gray-900">
+          <h1 className="text-3xl font-bold b text-gray-900">
             이광열 <span className="text-xl text-gray-600">/ Lee Gwang Yeol</span>
           </h1>
         </div>
@@ -46,9 +81,9 @@ export default function ProfilePage() {
               />
             </div>
             <div className="flex-grow">
-              <div className="bg-gradient-to-r from-lightBlue to-darkBlue bg-opacity-30 backdrop-blur-md rounded-lg shadow-md p-6">
-                <h2 className="text-2xl font-semibold mb-4">Introduction</h2>
-                <p className="text-gray-600 mb-4 text-balance whitespace-break-spaces">
+              <div className="bg-gradient-to-r from-blue-400 to-blue-700 bg-opacity-30 backdrop-blur-md rounded-lg shadow-md p-6">
+                <h2 className="text-2xl font-semibold mb-4 text-white">Introduction</h2>
+                <p className="text-white mb-4 text-balance whitespace-break-spaces">
                 💻 프론트엔드 웹 개발자이자 🤖 자동화 로봇 엔지니어로서,
 Next.js와 C#을 활용한 웹 개발 및 공장 자동화 시스템 개발 경험을 보유하고 있습니다.
 
@@ -221,6 +256,24 @@ AI 기술과 로봇 자동화의 융합에 대한 깊은 관심을 가지고 있
           </svg>
         </button>
       )}
+      <style jsx>{`  
+        .stars-container {
+          z-index: 1;
+        }
+        .star {
+          position: absolute;
+          width: 13px;
+          height: 4px;
+          background: yellow;
+          border-radius: 40%;
+          animation: fall linear;
+        }
+        @keyframes fall {
+          to {
+            transform: translateY(200vh) rotate(960deg);
+          }
+        }
+      `}</style>
     </div>
     
   )
