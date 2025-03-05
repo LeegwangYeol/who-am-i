@@ -39,9 +39,9 @@ export default function ProfilePage() {
               <Image
                 src="/sparring.webp"
                 alt="Profile Picture"
-                width={250}
-                height={250}
-                className="rounded-full"
+                width={300}
+                height={300}
+                className="rounded-3xl"
               />
             </div>
             <div className="flex-grow">
@@ -134,7 +134,7 @@ export default function ProfilePage() {
             <div className="flex flex-wrap gap-2 ">
               {[
                 ".NET", "C#", "Oracle", "Node.js", "TypeScript", "Next.js", "Supabase", "React",
-                "Sass", "PostgreSQL", "JavaScript", "HTML5", "CSS3", "MySQL", "MSSQL", "GitHub",
+                "Sass", "PostgreSQL", "JavaScript", "HTML5", "CSS3", "MySQL", "Tailwind", "GitHub",
                 "Jira", "LLM", "openAI API", "Anthropic API"
               ].map(
                 (tech, index) => (
