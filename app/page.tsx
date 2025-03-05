@@ -46,7 +46,7 @@ export default function ProfilePage() {
               />
             </div>
             <div className="flex-grow">
-              <div className="bg-white p-6 rounded-lg shadow-md">
+              <div className="bg-gradient-to-r from-lightBlue to-darkBlue bg-opacity-30 backdrop-blur-md rounded-lg shadow-md p-6">
                 <h2 className="text-2xl font-semibold mb-4">Introduction</h2>
                 <p className="text-gray-600 mb-4 text-balance whitespace-break-spaces">
                 💻 프론트엔드 웹 개발자이자 🤖 자동화 로봇 엔지니어로서,
@@ -59,8 +59,8 @@ AI 기술과 로봇 자동화의 융합에 대한 깊은 관심을 가지고 있
             </div>
           </div>
 
-          <section className="mt-12 bg-white p-6 rounded-lg shadow-md">
-            <h2 className="text-2xl font-semibold mb-4">Career</h2>
+          <section className="mt-12 bg-gradient-to-r from-orange-600 to-orange-200 bg-opacity-30 backdrop-blur-md rounded-lg shadow-md p-6">
+            <h2 className="text-2xl text-white font-semibold mb-4">Career</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <CareerItem
                 company="피오유엘"
@@ -83,7 +83,7 @@ AI 기술과 로봇 자동화의 융합에 대한 깊은 관심을 가지고 있
             </div>
           </section>
 
-          <section className="mt-12 bg-white p-6 rounded-lg shadow-md">
+          <section className="mt-12 bg-gradient-to-r from-teal-200 to-teal-500 bg-opacity-30 backdrop-blur-md rounded-lg shadow-md p-6">
             <h2 className="text-2xl font-semibold mb-4">Technology Stack</h2>
             <div className="flex flex-wrap gap-2 ">
               {[
@@ -100,8 +100,8 @@ AI 기술과 로봇 자동화의 융합에 대한 깊은 관심을 가지고 있
             </div>
           </section>
 
-          <section className="mt-12 bg-white p-6 rounded-lg shadow-md">
-            <h2 className="text-2xl font-semibold mb-4">Education</h2>
+          <section className="mt-12 bg-gradient-to-r from-fuchsia-500 to-fuchsia-200 bg-opacity-30 backdrop-blur-md rounded-lg shadow-md p-6">
+            <h2 className="text-2xl text-white font-semibold mb-4">Education</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 ">
               <EducationItem
                 institution="한국외국어대학교(용인)"
@@ -118,7 +118,7 @@ AI 기술과 로봇 자동화의 융합에 대한 깊은 관심을 가지고 있
             </div>
           </section>
 
-          <section className="mt-12 p-6 bg-white rounded-lg shadow-md">
+          <section className="mt-12 bg-gradient-to-r from-red-200 to-red-500 bg-opacity-30 backdrop-blur-md rounded-lg shadow-md p-6">
             <h2 className="text-2xl font-semibold mb-4">Projects</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <ProjectItem
@@ -137,7 +137,7 @@ AI 기술과 로봇 자동화의 융합에 대한 깊은 관심을 가지고 있
             </div>
           </section>
 
-          <footer className="mt-6 p-6 bg-white rounded-lg shadow-md">
+          <footer className="mt-6 bg-gradient-to-r from-pink-500 to-pink-100 bg-opacity-30 backdrop-blur-md rounded-lg shadow-md p-6">
   <div className="container mx-auto flex flex-col md:flex-row justify-between items-center">
     {/* Left Section */}
     <div className="mb-6 md:mb-0">
@@ -147,13 +147,13 @@ AI 기술과 로봇 자동화의 융합에 대한 깊은 관심을 가지고 있
                       xmlns="http://www.w3.org/2000/svg"
                       className="h-5 w-5 text-gray-500"
                       viewBox="0 0 20 20"
-                      fill="currentColor"
+                      fill="white"
                     >
                       <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
                       <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
                     </svg>
                     <a href="mailto:bpscokr003@naver.com" className="text-blue-500 hover:underline">
-                      <span className="text-gray-600 overflow-hidden whitespace-nowrap hover:overflow-visible hover:whitespace-normal">
+                      <span className="text-white overflow-hidden whitespace-nowrap hover:overflow-visible hover:whitespace-normal">
                         bpscokr003@naver.com
                       </span>
                     </a>
@@ -161,13 +161,13 @@ AI 기술과 로봇 자동화의 융합에 대한 깊은 관심을 가지고 있
                   <div className="flex items-center space-x-2">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      className="h-5 w-5 text-gray-500"
+                      className="h-5 w-5 text-white"
                       viewBox="0 0 20 20"
                       fill="currentColor"
                     >
                       <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
                     </svg>
-                    <span className="text-gray-600 overflow-hidden whitespace-nowrap hover:overflow-visible hover:whitespace-normal">
+                    <span className="text-white overflow-hidden whitespace-nowrap hover:overflow-visible hover:whitespace-normal">
                       경기 수원시
                     </span>
                   </div>
