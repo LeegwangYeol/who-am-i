@@ -48,61 +48,14 @@ export default function ProfilePage() {
               <div className="bg-white p-6 rounded-lg shadow-md">
                 <h2 className="text-2xl font-semibold mb-4">Introduction</h2>
                 <p className="text-gray-600 mb-4">
-                  풀스택 웹 개발자이자 자동화 로봇 엔지니어로서, Next.js와 C#을 활용한 웹 개발 및 공장 자동화 시스템 개발 경험을 보유하고 있습니다.
-                  AI 기술과 로봇 자동화의 융합에 대한 깊은 관심을 가지고 있으며, 지속적인 학습과 도전을 통해 기술 혁신을 추구합니다.
+                💻 풀스택 웹 개발자이자 🤖 자동화 로봇 엔지니어로서,
+Next.js와 C#을 활용한 웹 개발 및 공장 자동화 시스템 개발 경험을 보유하고 있습니다.
+
+🧠 AI 기술과 🤝 로봇 자동화의 융합에 대한 깊은 관심을 가지고 있으며,
+📚 지속적인 학습과 🚀 도전을 통해 기술 혁신을 추구합니다😊
                 </p>
-                <div className="flex flex-col space-y-2">
-                  <div className="flex items-center space-x-2">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-5 w-5 text-gray-500"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                    >
-                      <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
-                      <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
-                    </svg>
-                    <a href="mailto:bpscokr003@naver.com" className="text-blue-500 hover:underline">
-                      bpscokr003@naver.com
-                    </a>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-5 w-5 text-gray-500"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                    >
-                      <path fillRule="evenodd" d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z" clipRule="evenodd" />
-                    </svg>
-                    <span className="text-gray-600">010-6491-4081</span>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-5 w-5 text-gray-500"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                    >
-                      <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
-                    </svg>
-                    <span className="text-gray-600">경기 광주시 경충대로</span>
-                  </div>
-                </div>
               </div>
             </div>
-          </div>
-
-          <div className="mt-8 flex justify-center space-x-4">
-            <Link href="https://github.com/LeegwangYeol" className="text-blue-500 hover:underline">
-              GitHub
-            </Link>
-            <Link href="https://velog.io/@kelog123" className="text-blue-500 hover:underline">
-              Blog
-            </Link>
-            {/* <Link href="/resume.pdf" className="text-blue-500 hover:underline">
-              Resume
-            </Link> */}
           </div>
 
           <section className="mt-12 bg-white p-6 rounded-lg shadow-md">
@@ -182,13 +135,85 @@ export default function ProfilePage() {
               />
             </div>
           </section>
+
+          <footer className="mt-6 p-6 bg-white rounded-lg shadow-md">
+  <div className="container mx-auto flex flex-col md:flex-row justify-between items-center">
+    {/* Left Section */}
+    <div className="mb-6 md:mb-0">
+    <div className="flex flex-col space-y-2">
+                  <div className="flex items-center space-x-2">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-5 w-5 text-gray-500"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                    >
+                      <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                      <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+                    </svg>
+                    <a href="mailto:bpscokr003@naver.com" className="text-blue-500 hover:underline">
+                      <span className="text-gray-600 overflow-hidden whitespace-nowrap hover:overflow-visible hover:whitespace-normal">
+                        bpscokr003@naver.com
+                      </span>
+                    </a>
+                  </div>
+                  {/* <div className="flex items-center space-x-2">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-5 w-5 text-gray-500"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                    >
+                      <path fillRule="evenodd" d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z" clipRule="evenodd" />
+                    </svg>
+                    <span className="text-gray-600 overflow-hidden whitespace-nowrap hover:overflow-visible hover:whitespace-normal">
+                      010-6491-4081
+                    </span>
+                  </div> */}
+                  <div className="flex items-center space-x-2">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-5 w-5 text-gray-500"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                    >
+                      <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
+                    </svg>
+                    <span className="text-gray-600 overflow-hidden whitespace-nowrap hover:overflow-visible hover:whitespace-normal">
+                      경기 수원시
+                    </span>
+                  </div>
+                </div>
+    </div>
+
+    {/* Right Section */}
+    <div className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6">
+
+      <div className="space-x-4 grid  grid-cols-2 md:grid-cols-4 gap-3">
+        <a href="https://github.com/LeegwangYeol" className="text-pink-500 hover:underline flex items-center">
+          <i className="fab fa-github mr-2"></i> GitHub
+        </a>
+        <a href="https://velog.io/@kelog123" className="text-pink-500 hover:underline flex items-center">
+          <i aria-hidden="true" className="fab fa-grav mr-2"></i> Velog
+        </a>
+        <a href="https://instagram.com" className="text-pink-500 hover:underline flex items-center">
+          <i className="fab fa-instagram mr-2"></i> Instagram
+        </a>
+        <a href="https://www.youtube.com/@lolollol2379" className="text-pink-500 hover:underline flex items-center">
+          <i className="fab fa-youtube mr-2"></i> YouTube
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
         </div>
       </main>
 
       {showScrollTop && (
         <button
           onClick={scrollToTop}
-          className="fixed bottom-8 right-8 bg-blue-500 text-white p-2 rounded-full shadow-lg hover:bg-blue-600 transition-colors"
+          className="fixed bottom-8 right-1/2 translate-x-1/2 bg-blue-500 text-white p-2 rounded-full shadow-lg hover:bg-blue-600 transition-colors"
           aria-label="Scroll to top"
         >
           <svg
