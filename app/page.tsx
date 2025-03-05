@@ -270,7 +270,7 @@ AI 기술과 로봇 자동화의 융합에 대한 깊은 관심을 가지고 있
         }
         @keyframes fall {
           to {
-            transform: translateY(200vh) rotate(960deg);
+            transform: translateY(100vh) rotate(960deg);
           }
         }
       `}</style>
