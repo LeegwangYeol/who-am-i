@@ -35,7 +35,7 @@ export default function ProjectItem({
         <p className="text-gray-700 mb-4">{description}</p>
         <div className="flex flex-wrap gap-2 mb-4">
           {technologies.map((tech, index) => (
-            <span key={index} className="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">
+            <span key={index} className="bg-gray-100 text-gray-800 text-xs px-2 py-1 text-pretty rounded">
               {tech}
             </span>
           ))}

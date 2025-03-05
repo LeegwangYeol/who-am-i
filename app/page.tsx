@@ -42,17 +42,18 @@ export default function ProfilePage() {
                 width={300}
                 height={300}
                 className="rounded-3xl"
+                priority={true}
               />
             </div>
             <div className="flex-grow">
               <div className="bg-white p-6 rounded-lg shadow-md">
                 <h2 className="text-2xl font-semibold mb-4">Introduction</h2>
-                <p className="text-gray-600 mb-4">
-                💻 풀스택 웹 개발자이자 🤖 자동화 로봇 엔지니어로서,
+                <p className="text-gray-600 mb-4 text-balance whitespace-break-spaces">
+                💻 프론트엔드 웹 개발자이자 🤖 자동화 로봇 엔지니어로서,
 Next.js와 C#을 활용한 웹 개발 및 공장 자동화 시스템 개발 경험을 보유하고 있습니다.
 
-🧠 AI 기술과 🤝 로봇 자동화의 융합에 대한 깊은 관심을 가지고 있으며,
-📚 지속적인 학습과 🚀 도전을 통해 기술 혁신을 추구합니다😊
+AI 기술과 로봇 자동화의 융합에 대한 깊은 관심을 가지고 있으며,
+📚 지속적인 학습과 🚀 도전을 통해 기술 혁신을 추구합니다!
                 </p>
               </div>
             </div>
@@ -69,13 +70,13 @@ Next.js와 C#을 활용한 웹 개발 및 공장 자동화 시스템 개발 경�
               />
               <CareerItem
                 company="윈텍오토메이션"
-                position="FA(공장자동화) · 소프트웨어팀 주임연구원"
+                position="FA(공장자동화) · 주임"
                 period="2021.10 ~ 2024.06"
                 description="생산 자동화 장비 프로젝트 진행. C# .NET 기반 PC 자동화 장비 개발, 프레스 핸들러 통합 프로젝트 진행, MES 시스템 적용 및 하드웨어 통신 유닛 개발."
               />
               <CareerItem
-                company="Enitec株式会社"
-                position="SI개발 · 개발 보수팀 사원"
+                company="Enitec(주)"
+                position="SI개발 · 개발팀 사원"
                 period="2019.11 ~ 2021.04"
                 description="반도체 기기 로그 분석 및 테스트, 임베디드 시스템 분석 및 설계, WinActor 라이브러리 개발 (엑셀 정리, AI-OCR)."
               />
@@ -157,19 +158,6 @@ Next.js와 C#을 활용한 웹 개발 및 공장 자동화 시스템 개발 경�
                       </span>
                     </a>
                   </div>
-                  {/* <div className="flex items-center space-x-2">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-5 w-5 text-gray-500"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                    >
-                      <path fillRule="evenodd" d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z" clipRule="evenodd" />
-                    </svg>
-                    <span className="text-gray-600 overflow-hidden whitespace-nowrap hover:overflow-visible hover:whitespace-normal">
-                      010-6491-4081
-                    </span>
-                  </div> */}
                   <div className="flex items-center space-x-2">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -208,6 +196,12 @@ Next.js와 C#을 활용한 웹 개발 및 공장 자동화 시스템 개발 경�
 </footer>
 
         </div>
+        <button
+          onClick={()=>{window.scrollTo({top: 0, behavior: 'smooth'})}}
+          className="fixed top-8 right-12 text-4xl text-blue-300 rounded-full shadow-lg hover:bg-blue-400 transition-colors"
+        >
+          <i className="fab fa-grav"></i>
+        </button>
       </main>
 
       {showScrollTop && (
@@ -228,5 +222,6 @@ Next.js와 C#을 활용한 웹 개발 및 공장 자동화 시스템 개발 경�
         </button>
       )}
     </div>
+    
   )
 }
