@@ -172,7 +172,7 @@ AI 기술과 로봇 자동화의 융합에 대한 깊은 관심을 가지고 있
           </section>
 
           <footer className="mt-6 bg-gradient-to-r from-pink-500 to-pink-100 bg-opacity-30 backdrop-blur-md rounded-lg shadow-md p-6">
-  <div className="container mx-auto flex flex-col md:flex-row justify-between items-center">
+  <div className="container mx-auto flex flex-col md:flex-row justify-between z-[99999] items-center">
     {/* Left Section */}
     <div className="mb-6 md:mb-0">
     <div className="flex flex-col space-y-2">
@@ -257,7 +257,7 @@ AI 기술과 로봇 자동화의 융합에 대한 깊은 관심을 가지고 있
       )}
       <style jsx>{`  
         .stars-container {
-          z-index: 1;
+          z-index: 0;
         }
         .star {
           position: absolute;
