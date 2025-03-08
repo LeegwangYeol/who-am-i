@@ -35,7 +35,7 @@ export default function RootLayout({
       <Script type="module" id="llami-chat-widget" strategy="lazyOnload">
           {`
             import { initialize, run } from "https://static.llami.net/widget-v1.js";
-            run("9afddf76-2d21-422c-a4fc-a369fcf21d09");
+            run("92243ae5-2350-4975-b422-59143f089eed");
           `}
         </Script>
       </head>
