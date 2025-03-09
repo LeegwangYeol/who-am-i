@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+// import { useState } from "react"
 import Image from "next/image"
 import { Heart, MessageCircle, Bookmark, Share2 } from "lucide-react"
 
