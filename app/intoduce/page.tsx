@@ -3,7 +3,8 @@
 import { useState, useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { Heart, MessageCircle, Bookmark, Share2, ArrowLeft } from "lucide-react"
+import { ArrowLeft } from "lucide-react"
+import PostCard from "../components/post-card"
 
 export default function IntroducePage() {
   const [likes, setLikes] = useState({
@@ -47,6 +48,89 @@ export default function IntroducePage() {
     return () => clearInterval(interval);
   }, []);
 
+  // 포스트 데이터
+  const posts = [
+    {
+      id: 1,
+      profileImage: "/placeholder.svg?height=40&width=40&text=Profile",
+      userName: "홍길동 / Hong Gildong",
+      category: "가치관",
+      categoryValue: "도전정신",
+      postImage: "/placeholder.svg?height=600&width=600&text=Challenge+Spirit",
+      postImageAlt: "도전정신",
+      likeKey: "reason" as keyof typeof likes,
+      content: "저의 인생에서 가장 중요한 가치 중 하나는 \"세상에 하지 못할 일은 없다\"는 도전정신입니다. 대학 시절, 남들보다 늦게 러시아어에 도전했지만, 결심한 순간부터 끝까지 해내겠다는 다짐으로 유튜브를 활용한 집중적 학습과 러시아 유학 중 현지 학생들과의 언어 교환을 통해 능력을 향상시켜 관련 자격증을 취득했습니다. 또한, 해외에서 엔지니어로 일하고 싶다는 목표로 개발자 교육에 도전하여 약 1년간의 준비 끝에 일본 개발자로서 경험을 쌓았습니다. 이후 로봇 자동화 분야에서 일하며 일본과 중국의 현장을 경험했고, 최근에는 웹 개발과 AI 기술 분야로 영역을 확장하고 있습니다. 💪 🎯 ⚔️",
+      highlights: ["\"세상에 하지 못할 일은 없다\"", "도전정신", "엔지니어", "개발자", "경험", "로봇 자동화", "개발", "AI"],
+      postedTime: "POSTED 2 WEEKS AGO"
+    },
+    {
+      id: 2,
+      profileImage: "/placeholder.svg?height=40&width=40&text=Profile",
+      userName: "홍길동 / Hong Gildong",
+      category: "가치관",
+      categoryValue: "미래 기술에 대한 확신",
+      postImage: "/placeholder.svg?height=600&width=600&text=Future+Technology",
+      postImageAlt: "미래 기술",
+      likeKey: "code" as keyof typeof likes,
+      content: "2010년대 초 가상화폐가 무존재성으로 인해 가치가 없을 것이라는 일반적 판단이 현재의 미중 가상화폐 주도권 쟁탈전을 보며 완전히 빗나갔듯이, AI 역시 상용화가 먼 미래라는 예상과 달리 LLM, RAG 기법으로 무장한 AI는 이미 다양한 분야에서 활용되고 있습니다. OpenAI와 중국 유니트리의 인간형 로봇 개발이 보여주듯, 현재의 기술 지표는 미래가 인공지능 로봇 중심으로 재편될 것임을 명확히 나타내고 있습니다. 저는 이러한 기술 혁신의 흐름에 확신을 가지고, 인공지능 로봇 상용화 시대에 준비된 전문가가 되기 위해 끊임없이 학습하고 도전하고 있습니다. 이미 알고 있었던 미래에 대해서 대비를 하지 못했던 경험이 있습니다. 다시 이를 반복하지 않겠습니다. 🤖 💻 🧑‍💻",
+      highlights: ["AI", "로봇", "개발", "경험"],
+      postedTime: "POSTED 10 DAYS AGO"
+    },
+    {
+      id: 3,
+      profileImage: "/placeholder.svg?height=40&width=40&text=Profile",
+      userName: "홍길동 / Hong Gildong",
+      category: "핵심역량",
+      categoryValue: "부족을 극복하는 사람",
+      postImage: "/placeholder.svg?height=600&width=600&text=Overcoming+Weaknesses",
+      postImageAlt: "부족을 극복하는 사람",
+      likeKey: "motive" as keyof typeof likes,
+      content: "저는 제 자신의 부족함을 인정하고 이를 극복하기 위해 끊임없이 노력하는 사람입니다. 특히 프로그래밍 분야에서는 CS 전공자가 아닌 비전공자로서의 한계를 느꼈지만, 이를 극복하기 위해 기초 알고리즘과 자료구조부터 차근차근 학습하며 실력을 쌓았습니다. 또한 영어 회화에 어려움을 느꼈을 때는 매일 아침 영어 스터디에 참여하고, 외국인 친구들과 적극적으로 교류하며 실력을 향상시켰습니다. 저는 이러한 경험을 통해 부족함은 노력으로 극복할 수 있다는 믿음을 갖게 되었고, 이는 제 인생의 중요한 동기부여가 되었습니다. 앞으로도 저는 제 약점을 숨기지 않고 이를 개선하기 위해 적극적으로 행동하는 사람이 되겠습니다. 🧗🏻 🛠️ 🚀",
+      highlights: ["부족함", "노력", "극복", "비전공자", "경험", "동기부여"],
+      postedTime: "POSTED 1 WEEK AGO"
+    },
+    {
+      id: 4,
+      profileImage: "/placeholder.svg?height=40&width=40&text=Profile",
+      userName: "홍길동 / Hong Gildong",
+      category: "핵심역량",
+      categoryValue: "하드웨어와 소프트웨어 이해",
+      postImage: "/placeholder.svg?height=600&width=600&text=Hardware+Software",
+      postImageAlt: "하드웨어와 소프트웨어",
+      likeKey: "hardware" as keyof typeof likes,
+      content: "로봇 자동화 엔지니어로서의 경험을 통해 저는 하드웨어와 소프트웨어 양쪽을 모두 이해하는 역량을 갖추게 되었습니다. 로봇 제어 시스템을 설계하고 구현하는 과정에서 센서, 모터, 컨트롤러 등의 하드웨어 지식과 함께 제어 알고리즘, 통신 프로토콜, 사용자 인터페이스 등의 소프트웨어 지식을 동시에 활용했습니다. 이러한 경험은 AI와 로봇 기술이 융합되는 현재 시장에서 큰 강점으로 작용하고 있습니다. 특히 웹 개발 분야에서도 서버 인프라와 네트워크에 대한 이해를 바탕으로 더 효율적인 시스템을 설계할 수 있게 되었습니다. 저는 이러한 융합적 사고를 바탕으로 하드웨어와 소프트웨어의 경계를 넘나들며 혁신적인 솔루션을 제공할 수 있는 개발자로 성장하고 있습니다. 🖥️ 🖨️ ⌨️",
+      highlights: ["로봇 자동화", "엔지니어", "하드웨어", "소프트웨어", "경험", "AI", "로봇", "웹 개발", "개발자"],
+      postedTime: "POSTED 5 DAYS AGO"
+    },
+    {
+      id: 5,
+      profileImage: "/placeholder.svg?height=40&width=40&text=Profile",
+      userName: "홍길동 / Hong Gildong",
+      category: "핵심역량",
+      categoryValue: "목표 지향적 사고",
+      postImage: "/placeholder.svg?height=600&width=600&text=Goal+Oriented",
+      postImageAlt: "목표 지향적 사고",
+      likeKey: "goal" as keyof typeof likes,
+      content: "저는 명확한 목표를 설정하고 이를 달성하기 위해 체계적으로 계획하고 실행하는 목표 지향적 사고를 가지고 있습니다. 일본에서 개발자로 일하겠다는 목표를 세웠을 때, 저는 먼저 필요한 기술 스택을 분석하고, 학습 계획을 수립한 후, 매일 진행 상황을 체크하며 꾸준히 실행했습니다. 이러한 접근 방식은 프로젝트 관리에서도 큰 강점으로 작용하여, 복잡한 로봇 자동화 프로젝트에서도 명확한 마일스톤을 설정하고 팀원들과 효과적으로 협업하여 성공적으로 프로젝트를 완수할 수 있었습니다. 현재는 AI와 웹 개발 분야에서의 전문성을 높이는 것을 목표로 삼고, 매일 새로운 기술을 학습하고 실제 프로젝트에 적용하며 꾸준히 성장하고 있습니다. 🎯 🏆 ⚙️",
+      highlights: ["목표", "계획", "개발자", "로봇 자동화", "프로젝트", "AI", "웹 개발"],
+      postedTime: "POSTED 3 DAYS AGO"
+    },
+    {
+      id: 6,
+      profileImage: "/placeholder.svg?height=40&width=40&text=Profile",
+      userName: "홍길동 / Hong Gildong",
+      category: "핵심역량",
+      categoryValue: "꿈을 현실로 만드는 능력",
+      postImage: "/placeholder.svg?height=600&width=600&text=Dreams+To+Reality",
+      postImageAlt: "꿈을 현실로",
+      likeKey: "dream" as keyof typeof likes,
+      content: "저는 꿈을 단순한 상상으로 남기지 않고 이를 현실로 만들어내는 능력을 가지고 있습니다. 대학 시절 러시아어를 배우고 싶다는 꿈은 실제 러시아 유학과 자격증 취득으로 이어졌고, 해외에서 일하고 싶다는 꿈은 일본과 중국에서의 실제 근무 경험으로 실현되었습니다. 이러한 과정에서 저는 꿈을 이루기 위해 필요한 구체적인 단계를 설정하고, 각 단계마다 실질적인 행동을 취하는 것의 중요성을 깨달았습니다. 현재 저의 꿈은 AI와 로봇 기술을 활용하여 사회적 가치를 창출하는 혁신적인 서비스를 개발하는 것입니다. 이를 위해 저는 관련 기술을 꾸준히 학습하고, 다양한 프로젝트에 참여하며, 실제 서비스를 구현하기 위한 준비를 차근차근 진행하고 있습니다. ✨ 🌛 💫",
+      highlights: ["꿈", "현실", "경험", "AI", "로봇", "개발"],
+      postedTime: "POSTED 1 DAY AGO"
+    }
+  ];
+
+
   return (
     <div className="min-h-screen bg-gray-50 relative overflow-hidden">
       {/* 떨어지는 별 배경 효과 */}
@@ -74,361 +158,24 @@ export default function IntroducePage() {
       </header>
 
       <main className="max-w-xl mx-auto py-4 relative z-1">
-        {/* 도전정신 Post */}
-        <div className="bg-white border border-gray-200 rounded-md mb-6">
-          <div className="p-4 flex items-center">
-            <Image
-              src="/placeholder.svg?height=40&width=40&text=Profile"
-              alt="Profile"
-              width={40}
-              height={40}
-              className="rounded-full"
-            />
-            <div className="ml-3">
-              <p className="font-semibold">홍길동 / Hong Gildong</p>
-              <p className="text-xs text-gray-500">가치관: 도전정신</p>
-            </div>
-          </div>
-
-          <Image
-            src="/placeholder.svg?height=600&width=600&text=Challenge+Spirit"
-            alt="도전정신"
-            width={600}
-            height={600}
-            className="w-full h-auto"
+        {posts.map(post => (
+          <PostCard
+            key={post.id}
+            profileImage={post.profileImage}
+            userName={post.userName}
+            category={post.category}
+            categoryValue={post.categoryValue}
+            postImage={post.postImage}
+            postImageAlt={post.postImageAlt}
+            likeKey={post.likeKey}
+            content={post.content}
+            highlights={post.highlights}
+            postedTime={post.postedTime}
+            onLike={handleLike}
+            likes={likes}
           />
-
-          <div className="p-4">
-            <div className="flex justify-between mb-2">
-              <div className="flex space-x-4">
-                <button onClick={() => handleLike("reason")} className="flex items-center">
-                  <Heart className={`h-6 w-6 ${likes.reason > 124 ? "fill-red-500 text-red-500" : ""}`} />
-                </button>
-                <button className="flex items-center">
-                  <MessageCircle className="h-6 w-6" />
-                </button>
-                <button className="flex items-center">
-                  <Share2 className="h-6 w-6" />
-                </button>
-              </div>
-              <button className="flex items-center">
-                <Bookmark className="h-6 w-6" />
-              </button>
-            </div>
-
-            <p className="font-semibold mb-1">{likes.reason} likes</p>
-
-            <div className="mb-2">
-              <span className="font-semibold">hongGD</span>{" "}
-              <span>
-                저의 인생에서 가장 중요한 가치 중 하나는 <strong className="text-blue-600">"세상에 하지 못할 일은 없다"</strong>는 <strong className="text-blue-600">도전정신</strong>입니다. 대학 시절, 남들보다 늦게 러시아어에 도전했지만, 결심한 순간부터 끝까지 해내겠다는 다짐으로 유튜브를 활용한 집중적 학습과 러시아 유학 중 현지 학생들과의 언어 교환을 통해 능력을 향상시켜 관련 자격증을 취득했습니다.
-                또한, 해외에서 <strong className="text-blue-600">엔지니어</strong>로 일하고 싶다는 목표로 <strong className="text-blue-600">개발자</strong> 교육에 도전하여 약 1년간의 준비 끝에 일본 <strong className="text-blue-600">개발자</strong>로서 <strong className="text-blue-600">경험</strong>을 쌓았습니다. 이후 <strong className="text-blue-600">로봇 자동화</strong> 분야에서 일하며 일본과 중국의 현장을 <strong className="text-blue-600">경험</strong>했고, 최근에는 웹 <strong className="text-blue-600">개발</strong>과 <strong className="text-blue-600">AI</strong> 기술 분야로 영역을 확장하고 있습니다.
-              </span>
-            </div>
-
-            <p className="text-gray-500 text-xs">POSTED 2 WEEKS AGO</p>
-          </div>
-        </div>
-
-        {/* 미래 기술에 대한 확신 Post */}
-        <div className="bg-white border border-gray-200 rounded-md mb-6">
-          <div className="p-4 flex items-center">
-            <Image
-              src="/placeholder.svg?height=40&width=40&text=Profile"
-              alt="Profile"
-              width={40}
-              height={40}
-              className="rounded-full"
-            />
-            <div className="ml-3">
-              <p className="font-semibold">홍길동 / Hong Gildong</p>
-              <p className="text-xs text-gray-500">가치관: 미래 기술에 대한 확신</p>
-            </div>
-          </div>
-
-          <Image
-            src="/placeholder.svg?height=600&width=600&text=Future+Technology"
-            alt="미래 기술"
-            width={600}
-            height={600}
-            className="w-full h-auto"
-          />
-
-          <div className="p-4">
-            <div className="flex justify-between mb-2">
-              <div className="flex space-x-4">
-                <button onClick={() => handleLike("code")} className="flex items-center">
-                  <Heart className={`h-6 w-6 ${likes.code > 89 ? "fill-red-500 text-red-500" : ""}`} />
-                </button>
-                <button className="flex items-center">
-                  <MessageCircle className="h-6 w-6" />
-                </button>
-                <button className="flex items-center">
-                  <Share2 className="h-6 w-6" />
-                </button>
-              </div>
-              <button className="flex items-center">
-                <Bookmark className="h-6 w-6" />
-              </button>
-            </div>
-
-            <p className="font-semibold mb-1">{likes.code} likes</p>
-
-            <div className="mb-2">
-              <span className="font-semibold">hongGD</span>{" "}
-              <span>
-                2010년대 초 가상화폐가 무존재성으로 인해 가치가 없을 것이라는 일반적 판단이 현재의 미중 가상화폐 주도권 쟁탈전을 보며 완전히 빗나갔듯이, <strong className="text-blue-600">AI</strong> 역시 상용화가 먼 미래라는 예상과 달리 LLM, RAG 기법으로 무장한 <strong className="text-blue-600">AI</strong>는 이미 다양한 분야에서 활용되고 있습니다.
-                OpenAI와 중국 유니트리의 인간형 <strong className="text-blue-600">로봇</strong> <strong className="text-blue-600">개발</strong>이 보여주듯, 현재의 기술 지표는 미래가 인공지능 <strong className="text-blue-600">로봇</strong> 중심으로 재편될 것임을 명확히 나타내고 있습니다. 저는 이러한 기술 혁신의 흐름에 확신을 가지고, 인공지능 <strong className="text-blue-600">로봇</strong> 상용화 시대에 준비된 전문가가 되기 위해 끊임없이 학습하고 도전하고 있습니다. 이미 알고 있었던 미래에 대해서 대비를 하지 못했던 <strong className="text-blue-600">경험</strong>이 있습니다. 다시 이를 반복하지 않겠습니다.
-              </span>
-            </div>
-
-            <p className="text-gray-500 text-xs">POSTED 10 DAYS AGO</p>
-          </div>
-        </div>
-
-        {/* 부족을 극복하는 사람 Post */}
-        <div className="bg-white border border-gray-200 rounded-md mb-6">
-          <div className="p-4 flex items-center">
-            <Image
-              src="/placeholder.svg?height=40&width=40&text=Profile"
-              alt="Profile"
-              width={40}
-              height={40}
-              className="rounded-full"
-            />
-            <div className="ml-3">
-              <p className="font-semibold">홍길동 / Hong Gildong</p>
-              <p className="text-xs text-gray-500">핵심역량: 부족을 극복하는 사람</p>
-            </div>
-          </div>
-
-          <Image
-            src="/placeholder.svg?height=600&width=600&text=Overcoming+Challenges"
-            alt="부족 극복"
-            width={600}
-            height={600}
-            className="w-full h-auto"
-          />
-
-          <div className="p-4">
-            <div className="flex justify-between mb-2">
-              <div className="flex space-x-4">
-                <button onClick={() => handleLike("dream")} className="flex items-center">
-                  <Heart className={`h-6 w-6 ${likes.dream > 156 ? "fill-red-500 text-red-500" : ""}`} />
-                </button>
-                <button className="flex items-center">
-                  <MessageCircle className="h-6 w-6" />
-                </button>
-                <button className="flex items-center">
-                  <Share2 className="h-6 w-6" />
-                </button>
-              </div>
-              <button className="flex items-center">
-                <Bookmark className="h-6 w-6" />
-              </button>
-            </div>
-
-            <p className="font-semibold mb-1">{likes.goal} likes</p>
-
-            <div className="mb-2">
-              <span className="font-semibold">hongGD</span>{" "}
-              <span>
-                <strong className="text-blue-600">자동화</strong> 장비 <strong className="text-blue-600">개발 경험</strong>을 통해 현장의 실질적 니즈를 직접 파악하고 적용하는 과정에서 큰 보람을 느꼈습니다. 일본과 중국의 엔지니어 및 클라이언트와 직접 소통하며 제 언어 능력을 활용할 수 있었고, 지방 및 해외 현장을 방문하는 과정도 즐거웠습니다. 특히 "생산이 원활해졌다", "에러가 해결됐다", "이전 장비보다 훨씬 좋다"는 현장의 피드백은 큰 자신감을 심어주었습니다.
-                그러나 디자인적 측면과 사용자 <strong className="text-blue-600">경험</strong> 부분에서 부족함을 느꼈습니다. API 활용과 서버에 대한 이해 부족, C#에서의 제한된 UI 디자인 등 UX와 사용자 니즈 측면에서 개선이 필요함을 인식했습니다. 이를 보완하기 위해 개인적인 학습을 진행하다가 지인의 제안을 통해서 챗봇 <strong className="text-blue-600">개발</strong> 웹 스타트업에서 관련 <strong className="text-blue-600">경험</strong>을 쌓게 되었습니다.
-              </span>
-            </div>
-
-            <p className="text-gray-500 text-xs">POSTED 1 WEEK AGO</p>
-          </div>
-        </div>
-
-        {/* 로봇 하드웨어에 대한 이해와 경험 Post */}
-<div className="bg-white border border-gray-200 rounded-md mb-6">
-  <div className="p-4 flex items-center">
-    <Image
-      src="/placeholder.svg?height=40&width=40&text=Profile"
-      alt="Profile"
-      width={40}
-      height={40}
-      className="rounded-full"
-    />
-    <div className="ml-3">
-      <p className="font-semibold">홍길동 / Hong Gildong</p>
-      <p className="text-xs text-gray-500">핵심역량: 로봇 하드웨어에 대한 이해와 경험</p>
-    </div>
-  </div>
-
-  <Image
-    src="/placeholder.svg?height=600&width=600&text=Robot+Hardware+Experience"
-    alt="로봇 하드웨어 경험"
-    width={600}
-    height={600}
-    className="w-full h-auto"
-  />
-
-  <div className="p-4">
-    <div className="flex justify-between mb-2">
-      <div className="flex space-x-4">
-        <button onClick={() => handleLike("hardware")} className="flex items-center">
-          <Heart className={`h-6 w-6 ${likes.hardware > 130 ? "fill-red-500 text-red-500" : ""}`} />
-        </button>
-        <button className="flex items-center">
-          <MessageCircle className="h-6 w-6" />
-        </button>
-        <button className="flex items-center">
-          <Share2 className="h-6 w-6" />
-        </button>
-      </div>
-      <button className="flex items-center">
-        <Bookmark className="h-6 w-6" />
-      </button>
-    </div>
-
-    <p className="font-semibold mb-1">{likes.hardware} likes</p>
-
-    <div className="mb-2">
-      <span className="font-semibold">hongGD</span>{" "}
-      <span>
-        코로나라는 특수 상황에서 일본과 중국 현장을 직접 <strong className="text-blue-600">경험</strong>하며 인력 부족으로 하드웨어적 수정을 직접 진행했습니다. 장비 셋업 과정에서 작업 패스라인 조정, 다축 움직임에 따른 진동 및 불협화음 측정, 개선 방안 도출 등을 통해 프로그램이 <strong className="text-blue-600">로봇</strong>에 미치는 영향을 실제로 <strong className="text-blue-600">경험</strong>했습니다. 
-        사내 셋업 환경에서의 조명 차이, 장비의 운송시의 렌즈 파손 등 이러한 <strong className="text-blue-600">경험</strong>은 <strong className="text-blue-600">코드</strong>만으로는 볼 수 없는 하드웨어의 현실 및 <strong className="text-blue-600">로봇 개발자</strong>로서의 염두해둬야할 디테일을 파악하게 해주었고, 생산 시퀀스의 효율화(진동 제거) 및 사용자 경험 설계에 적용할 수 있었습니다.
-      </span>
-    </div>
-
-    <p className="text-gray-500 text-xs">POSTED 5 DAYS AGO</p>
-  </div>
-</div>
-
-{/* 코드 품질에 대한 중시 Post */}
-<div className="bg-white border border-gray-200 rounded-md mb-6">
-  <div className="p-4 flex items-center">
-    <Image
-      src="/placeholder.svg?height=40&width=40&text=Profile"
-      alt="Profile"
-      width={40}
-      height={40}
-      className="rounded-full"
-    />
-    <div className="ml-3">
-      <p className="font-semibold">홍길동 / Hong Gildong</p>
-      <p className="text-xs text-gray-500">핵심역량: 코드 품질에 대한 중시</p>
-    </div>
-  </div>
-
-  <Image
-    src="/placeholder.svg?height=600&width=600&text=Code+Quality"
-    alt="코드 품질"
-    width={600}
-    height={600}
-    className="w-full h-auto"
-  />
-
-  <div className="p-4">
-    <div className="flex justify-between mb-2">
-      <div className="flex space-x-4">
-        <button onClick={() => handleLike("code")} className="flex items-center">
-          <Heart className={`h-6 w-6 ${likes.code > 105 ? "fill-red-500 text-red-500" : ""}`} />
-        </button>
-        <button className="flex items-center">
-          <MessageCircle className="h-6 w-6" />
-        </button>
-        <button className="flex items-center">
-          <Share2 className="h-6 w-6" />
-        </button>
-      </div>
-      <button className="flex items-center">
-        <Bookmark className="h-6 w-6" />
-      </button>
-    </div>
-
-    <p className="font-semibold mb-1">{likes.code} likes</p>
-
-    <div className="mb-2">
-      <span className="font-semibold">hongGD</span>{" "}
-      <span>
-        처음 <strong className="text-blue-600">자동화</strong> 장비를 접했을 때는 기존 <strong className="text-blue-600">코드</strong> 수정에 두려움이 많았습니다. 컴파일러가 알려주는 수많은 버그와 예상치 못한 사이드 이펙트에 대한 우려로 변화에 보수적이었고, "돌아가기만 하면 된다"는 사고방식을 가지고 있었습니다.
-        하지만 챗봇 <strong className="text-blue-600">개발</strong> 과정에서 SOLID 원칙에 따른 <strong className="text-blue-600">개발</strong> 방법론을 접하게 되면서 <strong className="text-blue-600">코드</strong>의 간결성과 구조화의 중요성을 깨달았습니다. 단순히 작동하는 <strong className="text-blue-600">코드</strong>를 넘어, 유지보수가 용이하고 확장 가능한 <strong className="text-blue-600">코드</strong> 작성의 가치를 인식하게 되었습니다. 이러한 <strong className="text-blue-600">경험</strong>은 제 <strong className="text-blue-600">개발</strong> 철학을 근본적으로 변화시켰으며, 더 나은 <strong className="text-blue-600">코드</strong>를 작성하기 위한 끊임없는 노력으로 이어지고 있습니다.
-      </span>
-    </div>
-
-    <p className="text-gray-500 text-xs">POSTED 1 WEEK AGO</p>
-  </div>
-</div>
-
-{/* AI 기술의 적극적 활용 Post */}
-<div className="bg-white border border-gray-200 rounded-md mb-6">
-  <div className="p-4 flex items-center">
-    <Image
-      src="/placeholder.svg?height=40&width=40&text=Profile"
-      alt="Profile"
-      width={40}
-      height={40}
-      className="rounded-full"
-    />
-    <div className="ml-3">
-      <p className="font-semibold">홍길동 / Hong Gildong</p>
-      <p className="text-xs text-gray-500">핵심역량: AI 기술의 적극적 활용</p>
-    </div>
-  </div>
-
-  <Image
-    src="/placeholder.svg?height=600&width=600&text=AI+Technology+Application"
-    alt="AI 기술 활용"
-    width={600}
-    height={600}
-    className="w-full h-auto"
-  />
-
-  <div className="p-4">
-    <div className="flex justify-between mb-2">
-      <div className="flex space-x-4">
-        <button onClick={() => handleLike("ai")} className="flex items-center">
-          <Heart className={`h-6 w-6 ${likes.ai > 142 ? "fill-red-500 text-red-500" : ""}`} />
-        </button>
-        <button className="flex items-center">
-          <MessageCircle className="h-6 w-6" />
-        </button>
-        <button className="flex items-center">
-          <Share2 className="h-6 w-6" />
-        </button>
-      </div>
-      <button className="flex items-center">
-        <Bookmark className="h-6 w-6" />
-      </button>
-    </div>
-
-    <p className="font-semibold mb-1">{likes.ai} likes</p>
-
-    <div className="mb-2">
-      <span className="font-semibold">hongGD</span>{" "}
-      <span>
-        최근에는 <strong className="text-blue-600">AI</strong> 도구를 적극 활용하면서 생산성 향상을 <strong className="text-blue-600">경험</strong>했습니다. <strong className="text-blue-600">코드</strong> 작성, 디버깅, 문서화 등 다양한 영역에서 <strong className="text-blue-600">AI</strong> 도구를 활용함으로써 오류를 줄이고 <strong className="text-blue-600">개발</strong> 과정을 더욱 즐겁게 만들 수 있었습니다. 특히 DeepSeek Local 버전을 활용한 프로그램의 <strong className="text-blue-600">AI</strong>화에 관심을 갖고 학습하고 있습니다.
-        이러한 <strong className="text-blue-600">경험</strong>을 통해 <strong className="text-blue-600">AI</strong> 기술 관련 뉴스와 동향에 지속적인 관심을 갖게 되었고, <strong className="text-blue-600">로봇 자동화</strong> 분야에 최신 <strong className="text-blue-600">AI</strong> 기술을 어떻게 적용할 수 있을지 항상 고민하게 되었습니다. 저는 이러한 UI/UX와 <strong className="text-blue-600">AI 경험</strong>을 <strong className="text-blue-600">자동화 로봇</strong> 분야에 다시 적용하고 싶은 열망이 있습니다.
-      </span>
-    </div>
-
-    <p className="text-gray-500 text-xs">POSTED 2 DAYS AGO</p>
-  </div>
-</div>
-
+        ))}
       </main>
-      <style jsx>{`
-        .stars-container {
-          z-index: 0;
-        }
-        .star {
-          position: absolute;
-          width: 2px;
-          height: 2px;
-          background: white;
-          border-radius: 50%;
-          animation: fall linear;
-        }
-        @keyframes fall {
-          to {
-            transform: translateY(100vh) rotate(960deg);
-          }
-        }
-      `}</style>
     </div>
-  )
+  );
 }
