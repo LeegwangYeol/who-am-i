@@ -10,6 +10,7 @@ interface ProjectItemProps {
   repoUrl?: string
   detailUrl?: string
   isSpecialProject?: boolean
+  isDarkTheme?: boolean
 }
 
 export default function ProjectItem({
@@ -21,21 +22,22 @@ export default function ProjectItem({
   repoUrl,
   detailUrl,
   isSpecialProject = false,
+  isDarkTheme = false,
 }: ProjectItemProps) {
   return (
-    <div className={`bg-white rounded-lg shadow-md overflow-hidden border-blue-500 border-1 ${isSpecialProject ? 'border-2 border-blue-500' : ''}`}>
+    <div className={`${isDarkTheme ? 'glassmorphism-dark' : 'glassmorphism-light'} rounded-lg shadow-md overflow-hidden ${isSpecialProject ? 'border-2 border-blue-500' : ''}`}>
       {image && (
         <div className="relative h-56">
           <Image src={image} alt={name} fill className="object-cover" />
         </div>
       )}
       <div className="p-6">
-        <h3 className="text-xl font-semibold mb-2">{name}</h3>
-        <p className="text-sm text-gray-600 mb-2">{period}</p>
-        <p className="text-gray-700 mb-4">{description}</p>
+        <h3 className={`text-xl font-semibold mb-2 ${isDarkTheme ? 'text-white' : 'text-black'}`}>{name}</h3>
+        <p className={`text-sm ${isDarkTheme ? 'text-gray-300' : 'text-gray-600'} mb-2`}>{period}</p>
+        <p className={`${isDarkTheme ? 'text-white' : 'text-gray-700'} mb-4 text-balance whitespace-pre-line`}>{description}</p>
         <div className="flex flex-wrap gap-2 mb-4">
           {technologies.map((tech, index) => (
-            <span key={index} className="bg-gray-100 text-gray-800 text-xs px-2 py-1 text-pretty rounded">
+            <span key={index} className={`${isDarkTheme ? 'bg-gray-800 text-gray-200' : 'bg-gray-100 text-gray-800'} text-xs px-2 py-1 text-pretty rounded`}>
               {tech}
             </span>
           ))}

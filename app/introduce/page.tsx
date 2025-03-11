@@ -6,6 +6,7 @@ import { ArrowLeft } from "lucide-react"
 import PostCard from "../components/post-card"
 
 export default function IntroducePage() {
+  const [isDarkTheme, setIsDarkTheme] = useState(true);
   const [likes, setLikes] = useState({
     reason: 124,
     motive: 89,
@@ -16,6 +17,10 @@ export default function IntroducePage() {
     ai: 142
   })
   
+
+  const toggleTheme = () => {
+    setIsDarkTheme(!isDarkTheme);
+  }
 
   const handleLike = (post: keyof typeof likes) => {
     setLikes((prev) => ({
@@ -58,7 +63,7 @@ export default function IntroducePage() {
       postImage: "/placeholder.svg?height=600&width=600&text=Challenge+Spirit",
       postImageAlt: "도전정신",
       likeKey: "reason" as keyof typeof likes,
-      content: "저의 인생에서 가장 중요한 가치 중 하나는 \"세상에 하지 못할 일은 없다\"는 도전정신입니다. 대학 시절, 남들보다 늦게 러시아어에 도전했지만, 결심한 순간부터 끝까지 해내겠다는 다짐으로 유튜브를 활용한 집중적 학습과 러시아 유학 중 현지 학생들과의 언어 교환을 통해 능력을 향상시켜 관련 자격증을 취득했습니다. 또한, 해외에서 엔지니어로 일하고 싶다는 목표로 개발자 교육에 도전하여 약 1년간의 준비 끝에 일본 개발자로서 경험을 쌓았습니다. 이후 로봇 자동화 분야에서 일하며 일본과 중국의 현장을 경험했고, 최근에는 웹 개발과 AI 기술 분야로 영역을 확장하고 있습니다. 💪 🎯 ⚔️",
+      content: "저의 인생에서 가장 중요한 가치 중 하나는 \"세상에 하지 못할 일은 없다\"는 도전정신입니다. 대학 시절, 남들보다 늦게 러시아어에 도전했지만, 결심한 순간부터 끝까지 해내겠다는 다짐으로 유튜브를 활용한 집중적 학습과 러시아 유학 중 현지 학생들과의 언어 교환을 통해 능력을 향상시켜 관련 자격증을 취득했습니다.또한, 해외에서 엔지니어로 일하고 싶다는 목표로 개발자 교육에 도전하여 약 1년간의 준비 끝에 일본 개발자로서 경력을 쌓았습니다. 이후 로봇 자동화 분야에서 일하며 일본과 중국의 현장을 경험했고, 최근에는 웹 개발과 AI 기술 분야로 영역을 확장하고 있습니다. 💪 🎯 ⚔️",
       highlights: ["\"세상에 하지 못할 일은 없다\"", "도전정신", "엔지니어", "개발자", "경험", "로봇 자동화", "개발", "AI"],
       postedTime: "POSTED 2 WEEKS AGO"
     },
@@ -84,7 +89,7 @@ export default function IntroducePage() {
       postImage: "/placeholder.svg?height=600&width=600&text=Overcoming+Weaknesses",
       postImageAlt: "부족을 극복하는 사람",
       likeKey: "motive" as keyof typeof likes,
-      content: "저는 제 자신의 부족함을 인정하고 이를 극복하기 위해 끊임없이 노력하는 사람입니다. 특히 프로그래밍 분야에서는 CS 전공자가 아닌 비전공자로서의 한계를 느꼈지만, 이를 극복하기 위해 기초 알고리즘과 자료구조부터 차근차근 학습하며 실력을 쌓았습니다. 또한 영어 회화에 어려움을 느꼈을 때는 매일 아침 영어 스터디에 참여하고, 외국인 친구들과 적극적으로 교류하며 실력을 향상시켰습니다. 저는 이러한 경험을 통해 부족함은 노력으로 극복할 수 있다는 믿음을 갖게 되었고, 이는 제 인생의 중요한 동기부여가 되었습니다. 앞으로도 저는 제 약점을 숨기지 않고 이를 개선하기 위해 적극적으로 행동하는 사람이 되겠습니다. 🧗🏻 🛠️ 🚀",
+      content: "자동화 장비 개발 경험을 통해 현장의 실질적 니즈를 직접 파악하고 적용하는 과정에서 큰 보람을 느꼈습니다. 일본과 중국의 엔지니어 및 클라이언트와 직접 소통하며 제 언어 능력을 활용할 수 있었고, 지방 및 해외 현장을 방문하는 과정도 즐거웠습니다. 특히 '생산이 원활해졌다', '러가 해결됐다', '이전 장비보다 훨씬 좋다'는 현장의 피드백은 큰 자신감을 심어주었습니다. 그러나 디자인적 측면과 사용자 경험 부분에서 부족함을 느꼈습니다. API 활용과 서버에 대한 이해 부족, C#에서의 제한된 UI 디자인 등 UX와 사용자 니즈 측면에서 개선이 필요함을 인식했습니다. 이를 보완하기 위해 개인적인 학습을 진행하다가 지인의 제안을 통해서 챗봇 개발 웹 스타트업에서 관련 경험을 쌓게 되었습니다. 🧗🏻 🛠️ 🚀",
       highlights: ["부족함", "노력", "극복", "비전공자", "경험", "동기부여"],
       postedTime: "POSTED 1 WEEK AGO"
     },
@@ -97,7 +102,7 @@ export default function IntroducePage() {
       postImage: "/placeholder.svg?height=600&width=600&text=Hardware+Software",
       postImageAlt: "하드웨어와 소프트웨어",
       likeKey: "hardware" as keyof typeof likes,
-      content: "로봇 자동화 엔지니어로서의 경험을 통해 저는 하드웨어와 소프트웨어 양쪽을 모두 이해하는 역량을 갖추게 되었습니다. 로봇 제어 시스템을 설계하고 구현하는 과정에서 센서, 모터, 컨트롤러 등의 하드웨어 지식과 함께 제어 알고리즘, 통신 프로토콜, 사용자 인터페이스 등의 소프트웨어 지식을 동시에 활용했습니다. 이러한 경험은 AI와 로봇 기술이 융합되는 현재 시장에서 큰 강점으로 작용하고 있습니다. 특히 웹 개발 분야에서도 서버 인프라와 네트워크에 대한 이해를 바탕으로 더 효율적인 시스템을 설계할 수 있게 되었습니다. 저는 이러한 융합적 사고를 바탕으로 하드웨어와 소프트웨어의 경계를 넘나들며 혁신적인 솔루션을 제공할 수 있는 개발자로 성장하고 있습니다. 🖥️ 🖨️ ⌨️",
+      content: "코로나라는 특수 상황에서 일본과 중국 현장을 직접 경험하며 인력 부족으로 하드웨어적 수정을 직접 진행했습니다. 장비 셋업 과정에서 작업 패스라인 조정, 다축 움직임에 따른 진동 및 불협화음 측정, 개선 방안 도출 등을 통해 프로그램이 로봇에 미치는 영향을 실제로 경험했습니다.사내 셋업 환경에서의 조명 차이, 장비의 운송시의 렌즈 파손 등 이러한 경험은 코드만으로는 볼 수 없는 하드웨어의 현실 및 로봇 개발자로서의 염두해둬야할 디테일을 파악하게 해주었고, 생산 시퀀스의 효율화(진동 제거) 및 사용자 경험 설계에 적용할 수 있었습니다. 🖥️ 🖨️ ⌨️",
       highlights: ["로봇 자동화", "엔지니어", "하드웨어", "소프트웨어", "경험", "AI", "로봇", "웹 개발", "개발자"],
       postedTime: "POSTED 5 DAYS AGO"
     },
@@ -106,11 +111,11 @@ export default function IntroducePage() {
       profileImage: "/placeholder.svg?height=40&width=40&text=Profile",
       userName: "홍길동 / Hong Gildong",
       category: "핵심역량",
-      categoryValue: "목표 지향적 사고",
+      categoryValue: "코드 품질에 대한 인식 변화",
       postImage: "/placeholder.svg?height=600&width=600&text=Goal+Oriented",
-      postImageAlt: "목표 지향적 사고",
+      postImageAlt: "코드 품질에 대한 인식 변화",
       likeKey: "goal" as keyof typeof likes,
-      content: "저는 명확한 목표를 설정하고 이를 달성하기 위해 체계적으로 계획하고 실행하는 목표 지향적 사고를 가지고 있습니다. 일본에서 개발자로 일하겠다는 목표를 세웠을 때, 저는 먼저 필요한 기술 스택을 분석하고, 학습 계획을 수립한 후, 매일 진행 상황을 체크하며 꾸준히 실행했습니다. 이러한 접근 방식은 프로젝트 관리에서도 큰 강점으로 작용하여, 복잡한 로봇 자동화 프로젝트에서도 명확한 마일스톤을 설정하고 팀원들과 효과적으로 협업하여 성공적으로 프로젝트를 완수할 수 있었습니다. 현재는 AI와 웹 개발 분야에서의 전문성을 높이는 것을 목표로 삼고, 매일 새로운 기술을 학습하고 실제 프로젝트에 적용하며 꾸준히 성장하고 있습니다. 🎯 🏆 ⚙️",
+      content: "처음 자동화 장비를 접했을 때는 기존 코드 수정에 두려움이 많았습니다. 컴파일러가 알려주는 수많은 버그와 예상치 못한 사이드 이펙트에 대한 우려로 변화에 보수적이었고, '돌아가기만 하면 된다'는 사고방식을 가지고 있었습니다.하지만 챗봇 개발 과정에서 SOLID 원칙에 따른 개발 방법론을 접하게 되면서 코드의 간결성과 구조화의 중요성을 깨달았습니다. 단순히 작동하는 코드를 넘어, 유지보수가 용이하고 확장 가능한 코드 작성의 가치를 인식하게 되었습니다. 이러한 경험은 제 개발 철학을 근본적으로 변화시켰으며, 더 나은 코드를 작성하기 위한 끊임없는 노력으로 이어지고 있습니다. 🎯 🏆 ⚙️",
       highlights: ["목표", "계획", "개발자", "로봇 자동화", "프로젝트", "AI", "웹 개발"],
       postedTime: "POSTED 3 DAYS AGO"
     },
@@ -131,9 +136,8 @@ export default function IntroducePage() {
 
 
   return (
-    <div className="min-h-screen bg-gray-50 relative overflow-hidden">
-      {/* 떨어지는 별 배경 효과 */}
-      <div className="stars-container absolute inset-0 z-0">
+    <div className={`min-h-screen ${isDarkTheme ? 'bg-gray-900' : 'bg-gray-200'} relative`}>
+      <div className="stars-container fixed w-screen h-screen">
         {stars.map(star => (
           <div
             key={star.id}
@@ -147,34 +151,47 @@ export default function IntroducePage() {
         ))}
       </div>
       
-      <header className="sticky top-0 z-10 bg-white border-b border-gray-200 px-4 py-3">
-        <div className="max-w-xl mx-auto flex items-center">
-          <Link href="/" className="mr-4">
-            <ArrowLeft className="h-6 w-6" />
+      <header className={`${isDarkTheme ? 'glassmorphism-dark' : 'glassmorphism-light'} shadow`}>
+        <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 flex items-center">
+          <Link href="/" className="flex items-center text-blue-500 hover:text-blue-700 mr-4">
+            <ArrowLeft className="h-5 w-5 mr-1" />
+            <span>Back</span>
           </Link>
-          <h1 className="text-xl font-semibold">나의 가치관과 핵심역량</h1>
+          <h1 className={`text-3xl font-bold ${isDarkTheme ? 'text-gray-200' : 'text-gray-900'}`}>
+            자기소개
+          </h1>
         </div>
       </header>
-
-      <main className="max-w-xl mx-auto py-4 relative z-1">
-        {posts.map(post => (
-          <PostCard
-            key={post.id}
-            profileImage={post.profileImage}
-            userName={post.userName}
-            category={post.category}
-            categoryValue={post.categoryValue}
-            postImage={post.postImage}
-            postImageAlt={post.postImageAlt}
-            likeKey={post.likeKey}
-            content={post.content}
-            highlights={post.highlights}
-            postedTime={post.postedTime}
-            onLike={handleLike}
-            likes={likes}
-          />
-        ))}
+      
+      <main className={`max-w-2xl mx-auto py-6 sm:px-6 lg:px-8 ${isDarkTheme ? 'glassmorphism-dark' : 'glassmorphism-light'}`}>
+        <div className="px-4 py-6 sm:px-0 space-y-6">
+          {posts.map(post => (
+            <PostCard
+              key={post.id}
+              profileImage={post.profileImage}
+              userName={post.userName}
+              category={post.category}
+              categoryValue={post.categoryValue}
+              postImage={post.postImage}
+              postImageAlt={post.postImageAlt}
+              likeKey={post.likeKey}
+              content={post.content}
+              highlights={post.highlights}
+              postedTime={post.postedTime}
+              onLike={handleLike}
+              likes={likes}
+              isDarkTheme={isDarkTheme}
+            />
+          ))}
+        </div>
       </main>
+      
+      <button
+        onClick={toggleTheme}
+        className={`fixed top-8 right-12 z-50 text-4xl rounded-full shadow-lg transition-colors p-2 ${isDarkTheme ? 'glassmorphism-dark' : 'glassmorphism-light'}`}
+      >
+        <i className="fab fa-grav"></i>
+      </button>
     </div>
   );
 }
