@@ -98,26 +98,26 @@ export default function PostCard({
   return (
     <div className={`${isDarkTheme ? 'glassmorphism-dark' : 'glassmorphism-light'} border border-gray-200 rounded-md mb-6`}>
       <div className="p-4 flex items-center">
-        <Image
+        {/* <Image
           src={profileImage}
           alt="Profile"
           width={40}
           height={40}
           className="rounded-full"
-        />
+        /> */}
         <div className="ml-3">
           <p className={`font-semibold ${isDarkTheme ? 'text-white' : 'text-black'}`}>{userName}</p>
           <p className={`text-xs ${isDarkTheme ? 'text-gray-300' : 'text-gray-500'}`}>{category}: {categoryValue}</p>
         </div>
       </div>
 
-      <Image
+      {/* <Image
         src={postImage}
         alt={postImageAlt}
         width={600}
         height={600}
         className="w-full h-auto"
-      />
+      /> */}
 
       <div className="p-4">
         <div className="flex justify-between mb-2">

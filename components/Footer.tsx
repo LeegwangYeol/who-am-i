@@ -32,7 +32,7 @@ export default function Footer({ isDarkTheme }: FooterProps) {
             <div className="flex items-center space-x-2">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
+                className="h-5 w-5 ${isDarkTheme ? 'text-white' : 'text-black'}"
                 viewBox="0 0 20 20"
                 fill={isDarkTheme ? "white" : "black"}
               >
@@ -49,16 +49,16 @@ export default function Footer({ isDarkTheme }: FooterProps) {
         <div className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6">
           <div className={`${isDarkTheme ? 'glassmorphism-dark' : 'glassmorphism-light'} p-4 rounded-lg grid grid-cols-2 md:grid-cols-4 gap-3`}>
             <a href="https://github.com/LeegwangYeol" className={`${isDarkTheme ? 'text-white' : 'text-black'} hover:underline flex items-center`}>
-              <i className="fab fa-github mr-2"></i> GitHub
+              <i className="fab fa-github mr-2 ${isDarkTheme ? 'text-white' : 'text-black'}"></i> GitHub
             </a>
             <a href="https://velog.io/@kelog123" className={`${isDarkTheme ? 'text-white' : 'text-black'} hover:underline flex items-center`}>
-              <i aria-hidden="true" className="fab fa-grav mr-2"></i> Velog
+              <i aria-hidden="true" className="fab fa-grav mr-2 ${isDarkTheme ? 'text-white' : 'text-black'}"></i> Velog
             </a>
             <a href="https://instagram.com" className={`${isDarkTheme ? 'text-white' : 'text-black'} hover:underline flex items-center`}>
-              <i className="fab fa-instagram mr-2"></i> Instagram
+              <i className="fab fa-instagram mr-2 ${isDarkTheme ? 'text-white' : 'text-black'}"></i> Instagram
             </a>
             <a href="https://www.youtube.com/@lolollol2379" className={`${isDarkTheme ? 'text-white' : 'text-black'} hover:underline flex items-center`}>
-              <i className="fab fa-youtube mr-2"></i> YouTube
+              <i className="fab fa-youtube mr-2 ${isDarkTheme ? 'text-white' : 'text-black'}"></i> YouTube
             </a>
           </div>
         </div>

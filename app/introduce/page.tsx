@@ -6,7 +6,7 @@ import { ArrowLeft } from "lucide-react"
 import PostCard from "../components/post-card"
 
 export default function IntroducePage() {
-  const [isDarkTheme, setIsDarkTheme] = useState(true);
+  const [isDarkTheme, setIsDarkTheme] = useState(false);
   const [likes, setLikes] = useState({
     reason: 124,
     motive: 89,
@@ -57,7 +57,7 @@ export default function IntroducePage() {
     {
       id: 1,
       profileImage: "/placeholder.svg?height=40&width=40&text=Profile",
-      userName: "홍길동 / Hong Gildong",
+      userName: "이광열 / Lee Gwangyeol",
       category: "가치관",
       categoryValue: "도전정신",
       postImage: "/placeholder.svg?height=600&width=600&text=Challenge+Spirit",
@@ -70,7 +70,7 @@ export default function IntroducePage() {
     {
       id: 2,
       profileImage: "/placeholder.svg?height=40&width=40&text=Profile",
-      userName: "홍길동 / Hong Gildong",
+      userName: "이광열 / Lee Gwangyeol",
       category: "가치관",
       categoryValue: "미래 기술에 대한 확신",
       postImage: "/placeholder.svg?height=600&width=600&text=Future+Technology",
@@ -83,7 +83,7 @@ export default function IntroducePage() {
     {
       id: 3,
       profileImage: "/placeholder.svg?height=40&width=40&text=Profile",
-      userName: "홍길동 / Hong Gildong",
+      userName: "이광열 / Lee Gwangyeol",
       category: "핵심역량",
       categoryValue: "부족을 극복하는 사람",
       postImage: "/placeholder.svg?height=600&width=600&text=Overcoming+Weaknesses",
@@ -96,7 +96,7 @@ export default function IntroducePage() {
     {
       id: 4,
       profileImage: "/placeholder.svg?height=40&width=40&text=Profile",
-      userName: "홍길동 / Hong Gildong",
+      userName: "이광열 / Lee GwangYeol",
       category: "핵심역량",
       categoryValue: "하드웨어와 소프트웨어 이해",
       postImage: "/placeholder.svg?height=600&width=600&text=Hardware+Software",
@@ -109,7 +109,7 @@ export default function IntroducePage() {
     {
       id: 5,
       profileImage: "/placeholder.svg?height=40&width=40&text=Profile",
-      userName: "홍길동 / Hong Gildong",
+      userName: "이광열 / Lee Gwangyeol",
       category: "핵심역량",
       categoryValue: "코드 품질에 대한 인식 변화",
       postImage: "/placeholder.svg?height=600&width=600&text=Goal+Oriented",
@@ -122,7 +122,7 @@ export default function IntroducePage() {
     {
       id: 6,
       profileImage: "/placeholder.svg?height=40&width=40&text=Profile",
-      userName: "홍길동 / Hong Gildong",
+      userName: "이광열 / Lee Gwangyeol",
       category: "핵심역량",
       categoryValue: "꿈을 현실로 만드는 능력",
       postImage: "/placeholder.svg?height=600&width=600&text=Dreams+To+Reality",
@@ -154,11 +154,11 @@ export default function IntroducePage() {
       <header className={`${isDarkTheme ? 'glassmorphism-dark' : 'glassmorphism-light'} shadow`}>
         <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 flex items-center">
           <Link href="/" className="flex items-center text-blue-500 hover:text-blue-700 mr-4">
-            <ArrowLeft className="h-5 w-5 mr-1" />
+            <ArrowLeft className={`h-5 w-5 mr-1 ${isDarkTheme ? 'text-gray-200' : 'text-gray-900'}`} />
             <span>Back</span>
           </Link>
           <h1 className={`text-3xl font-bold ${isDarkTheme ? 'text-gray-200' : 'text-gray-900'}`}>
-            자기소개
+            이광열의 자기소개
           </h1>
         </div>
       </header>
@@ -188,9 +188,9 @@ export default function IntroducePage() {
       
       <button
         onClick={toggleTheme}
-        className={`fixed top-8 right-12 z-50 text-4xl rounded-full shadow-lg transition-colors p-2 ${isDarkTheme ? 'glassmorphism-dark' : 'glassmorphism-light'}`}
+        className={`fixed top-8 right-12 z-50 text-4xl rounded-full shadow-lg text-white transition-colors p-2  ${isDarkTheme ? 'glassmorphism-dark' : 'glassmorphism-light'}`}
       >
-        <i className="fab fa-grav"></i>
+        <i className={`fab fa-grav ${isDarkTheme ? 'text-gray-200' : 'text-gray-900'}`}></i>
       </button>
     </div>
   );
