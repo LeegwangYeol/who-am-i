@@ -1,7 +1,7 @@
 "use client"
 
 // import { useState } from "react"
-import Image from "next/image"
+// import Image from "next/image"
 import { Heart, MessageCircle, Bookmark, Share2 } from "lucide-react"
 
 // 강조 텍스트를 처리하는 컴포넌트
@@ -80,12 +80,9 @@ const defaultLikes = {
 };
 
 export default function PostCard({
-  profileImage,
   userName,
   category,
   categoryValue,
-  postImage,
-  postImageAlt,
   likeKey,
   content,
   highlights,
