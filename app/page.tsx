@@ -216,7 +216,7 @@ AI 기술과 로봇 자동화의 융합에 대한 깊은 관심을 가지고 있
           className={`${isDarkTheme ? 'glassmorphism-dark' : 'glassmorphism-light'} ${isDarkTheme ? 'text-white' : 'text-black'} p-2 rounded-full shadow-lg transition-all flex items-center justify-center`}
           aria-label="Go to Introduction"
         >
-          자기소개
+          자기소개 보기
         </a>
       </div>
 
