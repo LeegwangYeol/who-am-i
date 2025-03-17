@@ -6,26 +6,17 @@ import CareerItem from "@/components/CareerItem"
 import EducationItem from "@/components/EducationItem"
 import ProjectItem from "@/components/ProjectItem"
 import Footer from "@/components/Footer"
+import FixedButtons from "@/components/FixedButtons"
 
 export default function ProfilePage() {
   const [isDarkTheme, setIsDarkTheme] = useState(false);
-  const [showScrollTop, setShowScrollTop] = useState(false)
+  const [stars, setStars] = useState<Star[]>([]);
   interface Star {
     id: number;
     left: string;
     animationDuration: string;
     opacity: number;
   }
-  const [stars, setStars] = useState<Star[]>([]);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setShowScrollTop(window.scrollY > 300)
-    }
-
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
 
   useEffect(() => {
     const createStar = () => {
@@ -65,7 +56,7 @@ export default function ProfilePage() {
           />
         ))}
       </div>
-      
+
       <header className={`bg-white ${isDarkTheme ? 'glassmorphism-dark' : 'glassmorphism-light'} shadow`}>
         <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
           <h1 className={`text-3xl font-bold b ${isDarkTheme ? 'text-gray-200' : 'text-gray-900'}`}>
@@ -73,14 +64,14 @@ export default function ProfilePage() {
           </h1>
         </div>
       </header>
-      
+
       <main className="container mx-auto px-4 py-8 relative z-10">
         <div className="max-w-7xl mx-auto">
           <div className="px-4 py-6 sm:px-0">
             <div className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6">
               <div className="flex-shrink-0">
                 <Image
-                  src="/sparring.webp"
+                  src="/my-image.png"
                   alt="Profile Picture"
                   width={300}
                   height={300}
@@ -92,11 +83,11 @@ export default function ProfilePage() {
                 <div className={`${isDarkTheme ? 'glassmorphism-dark' : 'glassmorphism-light'} rounded-lg shadow-md p-6`}>
                   <h2 className={`text-2xl font-semibold mb-4 ${isDarkTheme ? 'text-white' : 'text-black'}`}>Introduction</h2>
                   <p className={`${isDarkTheme ? 'text-white' : 'text-black'} mb-4 text-balance whitespace-break-spaces`}>
-                  💻 프론트엔드 웹 개발자이자 🤖 자동화 로봇 엔지니어로서,
-Next.js와 C#을 활용한 웹 개발 및 공장 자동화 시스템 개발 경험을 보유하고 있습니다.
+                    💻 프론트엔드 웹 개발자이자 🤖 자동화 로봇 엔지니어로서,
+                    Next.js와 C#을 활용한 웹 개발 및 공장 자동화 시스템 개발 경험을 보유하고 있습니다.
 
-AI 기술과 로봇 자동화의 융합에 대한 깊은 관심을 가지고 있으며,
-📚 지속적인 학습과 🚀 도전을 통해 기술 혁신을 추구합니다!
+                    AI 기술과 로봇 자동화의 융합에 대한 깊은 관심을 가지고 있으며,
+                    📚 지속적인 학습과 🚀 도전을 통해 기술 혁신을 추구합니다!
                   </p>
                 </div>
               </div>
@@ -139,8 +130,8 @@ AI 기술과 로봇 자동화의 융합에 대한 깊은 관심을 가지고 있
                 ].map(
                   (tech, index) => (
                     <span key={index} className={`bg-blue-100 ${isDarkTheme ? 'text-gray-400' : 'text-blue-800'} text-sm px-3 py-1 rounded-full`}>
-                        {tech}
-                      </span>
+                      {tech}
+                    </span>
                   ),
                 )}
               </div>
@@ -193,32 +184,7 @@ AI 기술과 로봇 자동화의 융합에 대한 깊은 관심을 가지고 있
 
       <Footer isDarkTheme={isDarkTheme} />
       
-      <div className="fixed bottom-8  right-1/2 z-50 translate-x-1/2 flex space-x-4">
-        {showScrollTop && (
-          <button
-            onClick={scrollToTop}
-            className={`${isDarkTheme ? 'glassmorphism-dark' : 'glassmorphism-light'} ${isDarkTheme ? 'text-white' : 'text-black'} p-2 rounded-full shadow-lg transition-all`}
-            aria-label="Scroll to top"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
-            </svg>
-          </button>
-        )}
-        <a 
-          href="/introduce" 
-          className={`${isDarkTheme ? 'glassmorphism-dark' : 'glassmorphism-light'} ${isDarkTheme ? 'text-white' : 'text-black'} p-2 rounded-full shadow-lg transition-all flex items-center justify-center`}
-          aria-label="Go to Introduction"
-        >
-          자기소개 보기
-        </a>
-      </div>
+      <FixedButtons isDarkTheme={isDarkTheme} scrollToTop={scrollToTop} />
 
       <button
         onClick={toggleTheme}
@@ -226,7 +192,7 @@ AI 기술과 로봇 자동화의 융합에 대한 깊은 관심을 가지고 있
       >
         <i className={`fas fa-moon ${isDarkTheme ? 'text-white' : 'text-black'}`}></i>
       </button>
-      
+
       <style jsx>{`  
         .stars-container {
           z-index: 0;
