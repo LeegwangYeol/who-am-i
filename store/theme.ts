@@ -7,7 +7,7 @@ interface ThemeState {
 
 // 초기 상태 설정
 export const themeStore = proxy<ThemeState>({
-  isDarkTheme: false,
+  isDarkTheme: true,
 });
 
 // 테마 토글 함수
