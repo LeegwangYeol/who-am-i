@@ -1,12 +1,13 @@
 "use client"
 
-// import Link from "next/link"
+import { useThemeStore } from "@/store/theme"
 
 interface FooterProps {
-  isDarkTheme: boolean
 }
 
-export default function Footer({ isDarkTheme }: FooterProps) {
+export default function Footer() {
+  const { isDarkTheme } = useThemeStore();
+
   return (
     <footer className={`w-full flex flex-row justify-center items-center p-6 ${isDarkTheme ? 'bg-gray-900' : 'bg-gray-200'}`}>
       <div className="container mx-auto items-center w-full grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -48,17 +49,17 @@ export default function Footer({ isDarkTheme }: FooterProps) {
         {/* Right Section */}
         <div className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6">
           <div className={`${isDarkTheme ? 'glassmorphism-dark' : 'glassmorphism-light'} p-4 rounded-lg grid grid-cols-2 md:grid-cols-4 gap-3`}>
-            <a href="https://github.com/LeegwangYeol" className={`${isDarkTheme ? 'text-white' : 'text-black'} hover:underline flex items-center`}>
-              <i className="fab fa-github mr-2 ${isDarkTheme ? 'text-white' : 'text-black'}"></i> GitHub
+            <a href="https://github.com/LeegwangYeol" className="hover:underline flex items-center" style={{ color: isDarkTheme ? 'white' : 'black' }}>
+              <i className="fab fa-github mr-2" style={{ color: isDarkTheme ? 'white' : 'black' }}></i> GitHub
             </a>
-            <a href="https://velog.io/@kelog123" className={`${isDarkTheme ? 'text-white' : 'text-black'} hover:underline flex items-center`}>
-              <i aria-hidden="true" className="fab fa-grav mr-2 ${isDarkTheme ? 'text-white' : 'text-black'}"></i> Velog
+            <a href="https://velog.io/@kelog123" className="hover:underline flex items-center" style={{ color: isDarkTheme ? 'white' : 'black' }}>
+              <i aria-hidden="true" className="fab fa-grav mr-2" style={{ color: isDarkTheme ? 'white' : 'black' }}></i> Velog
             </a>
-            <a href="https://instagram.com" className={`${isDarkTheme ? 'text-white' : 'text-black'} hover:underline flex items-center`}>
-              <i className="fab fa-instagram mr-2 ${isDarkTheme ? 'text-white' : 'text-black'}"></i> Instagram
+            <a href="https://instagram.com" className="hover:underline flex items-center" style={{ color: isDarkTheme ? 'white' : 'black' }}>
+              <i className="fab fa-instagram mr-2" style={{ color: isDarkTheme ? 'white' : 'black' }}></i> Instagram
             </a>
-            <a href="https://www.youtube.com/@lolollol2379" className={`${isDarkTheme ? 'text-white' : 'text-black'} hover:underline flex items-center`}>
-              <i className="fab fa-youtube mr-2 ${isDarkTheme ? 'text-white' : 'text-black'}"></i> YouTube
+            <a href="https://www.youtube.com/@lolollol2379" className="hover:underline flex items-center" style={{ color: isDarkTheme ? 'white' : 'black' }}>
+              <i className="fab fa-youtube mr-2" style={{ color: isDarkTheme ? 'white' : 'black' }}></i> YouTube
             </a>
           </div>
         </div>

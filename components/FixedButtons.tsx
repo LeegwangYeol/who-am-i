@@ -1,13 +1,14 @@
 "use client"
 
-import { useEffect, useState } from 'react'
+import { useState, useEffect } from "react"
+import { useThemeStore } from "@/store/theme"
 
 interface FixedButtonsProps {
-  isDarkTheme: boolean;
-  scrollToTop: () => void;
+  scrollToTop: () => void
 }
 
-export default function FixedButtons({ isDarkTheme, scrollToTop }: FixedButtonsProps) {
+export default function FixedButtons({ scrollToTop }: FixedButtonsProps) {
+  const { isDarkTheme } = useThemeStore();
   const [showScrollTop, setShowScrollTop] = useState(false);
 
   useEffect(() => {
@@ -20,7 +21,7 @@ export default function FixedButtons({ isDarkTheme, scrollToTop }: FixedButtonsP
   }, [])
 
   return (
-    <div className="fixed bottom-8 z-50 flex gap-4" 
+    <div className="fixed bottom-20 z-50 flex gap-4" 
     style={{ left: '50%', transform: 'translateX(-50%)' }}>
       {showScrollTop && (
         <button

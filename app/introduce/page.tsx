@@ -4,9 +4,10 @@ import { useState, useEffect } from "react"
 import Link from "next/link"
 import { ArrowLeft } from "lucide-react"
 import PostCard from "../components/post-card"
+import { useThemeStore, toggleTheme } from "@/store/theme"
 
 export default function IntroducePage() {
-  const [isDarkTheme, setIsDarkTheme] = useState(false);
+  const { isDarkTheme } = useThemeStore();
   const [likes, setLikes] = useState({
     reason: 124,
     motive: 89,
@@ -18,8 +19,8 @@ export default function IntroducePage() {
   })
   
 
-  const toggleTheme = () => {
-    setIsDarkTheme(!isDarkTheme);
+  const handleToggleTheme = () => {
+    toggleTheme();
   }
 
   const handleLike = (post: keyof typeof likes) => {
@@ -187,7 +188,7 @@ export default function IntroducePage() {
       </main>
       
       <button
-        onClick={toggleTheme}
+        onClick={handleToggleTheme}
         className={`fixed top-8 right-12 z-50 text-4xl rounded-full shadow-lg text-white transition-colors p-2  ${isDarkTheme ? 'glassmorphism-dark' : 'glassmorphism-light'}`}
       >
         <i className={`fab fa-grav ${isDarkTheme ? 'text-gray-200' : 'text-gray-900'}`}></i>

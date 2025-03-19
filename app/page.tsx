@@ -7,9 +7,11 @@ import EducationItem from "@/components/EducationItem"
 import ProjectItem from "@/components/ProjectItem"
 import Footer from "@/components/Footer"
 import FixedButtons from "@/components/FixedButtons"
+import { useThemeStore, toggleTheme } from "@/store/theme"
+// import MicroWave from "@/components/micro-wave"
 
 export default function ProfilePage() {
-  const [isDarkTheme, setIsDarkTheme] = useState(false);
+  const { isDarkTheme } = useThemeStore();
   const [stars, setStars] = useState<Star[]>([]);
   interface Star {
     id: number;
@@ -33,12 +35,14 @@ export default function ProfilePage() {
     return () => clearInterval(interval);
   }, []);
 
+
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" })
   }
 
-  const toggleTheme = () => {
-    setIsDarkTheme(!isDarkTheme);
+  const handleToggleTheme = () => {
+    toggleTheme();
   }
 
   return (
@@ -62,6 +66,7 @@ export default function ProfilePage() {
           <h1 className={`text-3xl font-bold b ${isDarkTheme ? 'text-gray-200' : 'text-gray-900'}`}>
             광열님의 포트폴리오
           </h1>
+          {/* <MicroWave /> */}
         </div>
       </header>
 
@@ -69,13 +74,13 @@ export default function ProfilePage() {
         <div className="max-w-7xl mx-auto">
           <div className="px-4 py-6 sm:px-0">
             <div className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6">
-              <div className="flex-shrink-0">
+              <div className={`flex-shrink-0 p-3 ${isDarkTheme ? 'glassmorphism-dark' : 'glassmorphism-light'} rounded-3xl`}>
                 <Image
                   src="/my-image.png"
                   alt="Profile Picture"
                   width={300}
                   height={300}
-                  className="rounded-3xl"
+                  className="rounded-2xl"
                   priority={true}
                 />
               </div>
@@ -182,12 +187,12 @@ export default function ProfilePage() {
         </div>
       </main>
 
-      <Footer isDarkTheme={isDarkTheme} />
-
-      <FixedButtons isDarkTheme={isDarkTheme} scrollToTop={scrollToTop} />
+      <Footer />
+      
+      <FixedButtons scrollToTop={scrollToTop} />
 
       <button
-        onClick={toggleTheme}
+        onClick={handleToggleTheme}
         className={`fixed top-8 right-8 z-50 text-4xl rounded-full shadow-lg transition-colors p-2 '}`}
       >
         <i className={`fas fa-moon ${isDarkTheme ? 'text-white' : 'text-black'}`}></i>
