@@ -9,6 +9,7 @@ import Footer from "@/components/Footer"
 import FixedButtons from "@/components/FixedButtons"
 import { useThemeStore, toggleTheme } from "@/store/theme"
 // import MicroWave from "@/components/micro-wave"
+import LeeGwangYeol from "../app/components/name"
 
 export default function ProfilePage() {
   const { isDarkTheme } = useThemeStore();
@@ -62,10 +63,11 @@ export default function ProfilePage() {
       </div>
 
       <header className={`bg-white ${isDarkTheme ? 'glassmorphism-dark' : 'glassmorphism-light'} shadow`}>
-        <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-          <h1 className={`text-3xl font-bold b ${isDarkTheme ? 'text-gray-200' : 'text-gray-900'}`}>
+        <div className="max-w-7xl h-52 mx-auto py-6 px-4 sm:px-6 lg:px-8">
+          {/* <h1 className={`text-3xl font-bold b ${isDarkTheme ? 'text-gray-200' : 'text-gray-900'}`}>
             광열님의 포트폴리오
-          </h1>
+          </h1> */}
+          <LeeGwangYeol/>
           {/* <MicroWave /> */}
         </div>
       </header>
