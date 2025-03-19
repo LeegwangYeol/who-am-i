@@ -2,9 +2,6 @@
 
 import { useThemeStore } from "@/store/theme"
 
-interface FooterProps {
-}
-
 export default function Footer() {
   const { isDarkTheme } = useThemeStore();
 
