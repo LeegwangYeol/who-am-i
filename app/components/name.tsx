@@ -419,7 +419,7 @@ export function LeeGwangYeol() {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed top-0 left-0 w-full h-full"
+      className="w-full h-full relative"
       aria-label="LEE GWANGYEOL: Fullscreen Pong game with pixel text"
     />
   )
