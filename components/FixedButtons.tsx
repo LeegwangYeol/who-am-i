@@ -20,11 +20,13 @@ export default function FixedButtons({ isDarkTheme, scrollToTop }: FixedButtonsP
   }, [])
 
   return (
-    <div className="fixed bottom-8 right-1/2 z-50 translate-x-1/2 flex space-x-4">
+    <div className="fixed bottom-8 z-50 flex gap-4" 
+    style={{ left: '50%', transform: 'translateX(-50%)' }}>
       {showScrollTop && (
         <button
           onClick={scrollToTop}
-          className={`${isDarkTheme ? 'glassmorphism-dark' : 'glassmorphism-light'} ${isDarkTheme ? 'text-white' : 'text-black'} p-2 rounded-full shadow-lg transition-all`}
+          className={`${isDarkTheme ? 'glassmorphism-dark' : 'glassmorphism-light'} p-2 rounded-full shadow-lg transition-all`}
+          style={{ color: isDarkTheme ? 'white' : 'black' }}
           aria-label="Scroll to top"
         >
           <svg
@@ -40,10 +42,11 @@ export default function FixedButtons({ isDarkTheme, scrollToTop }: FixedButtonsP
       )}
       <a
         href="/introduce"
-        className={`${isDarkTheme ? 'glassmorphism-dark' : 'glassmorphism-light'} ${isDarkTheme ? 'text-white' : 'text-black'} p-2 rounded-full shadow-lg transition-all flex items-center justify-center`}
+        className={`${isDarkTheme ? 'glassmorphism-dark' : 'glassmorphism-light'} p-2 rounded-full shadow-lg transition-all flex items-center justify-center`}
+        style={{ color: isDarkTheme ? 'white' : 'black' }}
         aria-label="Go to Introduction"
       >
-        자기소개 보기
+        자기소개 보러가기
       </a>
     </div>
   )

@@ -60,7 +60,7 @@ export default function ProfilePage() {
       <header className={`bg-white ${isDarkTheme ? 'glassmorphism-dark' : 'glassmorphism-light'} shadow`}>
         <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
           <h1 className={`text-3xl font-bold b ${isDarkTheme ? 'text-gray-200' : 'text-gray-900'}`}>
-            이광열의 포트폴리오
+            광열님의 포트폴리오
           </h1>
         </div>
       </header>
@@ -129,7 +129,7 @@ export default function ProfilePage() {
                   "Jira", "LLM", "openAI API", "Anthropic API"
                 ].map(
                   (tech, index) => (
-                    <span key={index} className={`bg-blue-100 ${isDarkTheme ? 'text-gray-400' : 'text-blue-800'} text-sm px-3 py-1 rounded-full`}>
+                    <span key={index} className={`bg-blue-100 ${isDarkTheme ? 'text-gray-800' : 'text-pink-600'} text-sm px-3 py-1 rounded-full`}>
                       {tech}
                     </span>
                   ),
@@ -183,7 +183,7 @@ export default function ProfilePage() {
       </main>
 
       <Footer isDarkTheme={isDarkTheme} />
-      
+
       <FixedButtons isDarkTheme={isDarkTheme} scrollToTop={scrollToTop} />
 
       <button
