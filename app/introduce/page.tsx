@@ -5,6 +5,7 @@ import Link from "next/link"
 import { ArrowLeft } from "lucide-react"
 import PostCard from "../components/post-card"
 import { useThemeStore, toggleTheme } from "@/store/theme"
+import LeeGwangYeol from "../../app/components/name"
 
 export default function IntroducePage() {
   const { isDarkTheme } = useThemeStore();
@@ -153,18 +154,15 @@ export default function IntroducePage() {
       </div>
       
       <header className={`${isDarkTheme ? 'glassmorphism-dark' : 'glassmorphism-light'} shadow`}>
-        <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 flex items-center">
-          <Link href="/" className="flex items-center text-blue-500 hover:text-blue-700 mr-4">
-            <ArrowLeft className={`h-5 w-5 mr-1 ${isDarkTheme ? 'text-gray-200' : 'text-gray-900'}`} />
-            <span>Back</span>
-          </Link>
-          <h1 className={`text-3xl font-bold ${isDarkTheme ? 'text-gray-200' : 'text-gray-900'}`}>
+          {/* <h1 className={`text-3xl font-bold ${isDarkTheme ? 'text-gray-200' : 'text-gray-900'}`}>
             이광열의 자기소개
-          </h1>
-        </div>
+          </h1> */}
+          <div className="max-w-7xl h-52 mx-auto py-6 px-4 sm:px-6 lg:px-8">
+            <LeeGwangYeol/>
+          </div>
       </header>
       
-      <main className={`max-w-2xl mx-auto py-6 sm:px-6 lg:px-8 ${isDarkTheme ? 'glassmorphism-dark' : 'glassmorphism-light'}`}>
+      <main className={`max-w-2xl mt-8 mx-auto py-6 sm:px-6 lg:px-8 ${isDarkTheme ? 'glassmorphism-dark' : 'glassmorphism-light'}`}>
         <div className="px-4 py-6 sm:px-0 space-y-6">
           {posts.map(post => (
             <PostCard

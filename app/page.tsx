@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+// import { useState, useEffect } from "react"
 import Image from "next/image"
 import CareerItem from "@/components/CareerItem"
 import EducationItem from "@/components/EducationItem"
@@ -13,34 +13,6 @@ import LeeGwangYeol from "../app/components/name"
 
 export default function ProfilePage() {
   const { isDarkTheme } = useThemeStore();
-  const [stars, setStars] = useState<Star[]>([]);
-  interface Star {
-    id: number;
-    left: string;
-    animationDuration: string;
-    opacity: number;
-  }
-  const MAX_STARS = 30;
-
-  useEffect(() => {
-    const createStar = () => {
-      const newStar: Star = {
-        id: Math.random(),
-        left: `${Math.random() * 100}%`,
-        animationDuration: `${Math.random() * 3 + 2}s`,
-        opacity: Math.random(),
-      };
-      setStars(prevStars => {
-        const newStars = [...prevStars, newStar];
-        return newStars.slice(-MAX_STARS); // 최대 개수 유지
-      });
-    };
-
-    const interval = setInterval(createStar, 300);
-    return () => clearInterval(interval);
-  }, []);
-
-
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" })
@@ -52,20 +24,6 @@ export default function ProfilePage() {
 
   return (
     <div className={`min-h-screen ${isDarkTheme ? 'bg-gray-900' : 'bg-gray-200'} relative`}>
-      <div className="stars-container fixed w-screen h-screen">
-        {stars.map(star => (
-          <div
-            key={star.id}
-            className="star"
-            style={{
-              left: star.left,
-              animationDuration: star.animationDuration,
-              opacity: star.opacity,
-            }}
-          />
-        ))}
-      </div>
-
       <header className={`bg-white ${isDarkTheme ? 'glassmorphism-dark' : 'glassmorphism-light'} shadow`}>
         <div className="max-w-7xl h-52 mx-auto py-6 px-4 sm:px-6 lg:px-8">
           <LeeGwangYeol/>
@@ -128,16 +86,47 @@ export default function ProfilePage() {
             </section>
 
             <section className={`mt-12 ${isDarkTheme ? 'glassmorphism-dark' : 'glassmorphism-light'} rounded-lg shadow-md p-6`}>
-              <h2 className={`text-2xl font-semibold mb-4 ${isDarkTheme ? 'text-gray-200' : 'text-white'}`}>Technology Stack</h2>
+              <h2 className={`text-2xl p-2 font-semibold mb-4 ${isDarkTheme ? 'text-gray-200' : 'text-white'}`}>Technology Stack</h2>
               <div className="flex flex-wrap gap-2 ">
                 {[
-                  ".NET", "C#", "Oracle", "Node.js", "TypeScript", "Next.js", "Supabase", "React",
-                  "Sass", "PostgreSQL", "JavaScript", "HTML5", "CSS3", "MySQL", "Tailwind", "GitHub",
-                  "Jira", "LLM", "openAI API", "Anthropic API"
+                  { name: ".NET", isMain: true },
+                  { name: "C#", isMain: true },
+                  { name: "Oracle", isMain: false },
+                  { name: "Node.js", isMain: false },
+                  { name: "TypeScript", isMain: true },
+                  { name: "Next.js", isMain: true },
+                  { name: "Supabase", isMain: false },
+                  { name: "React", isMain: true },
+                  { name: "Sass", isMain: false },
+                  { name: "PostgreSQL", isMain: false },
+                  { name: "JavaScript", isMain: true },
+                  { name: "HTML5", isMain: false },
+                  { name: "CSS3", isMain: false },
+                  { name: "MySQL", isMain: false },
+                  { name: "Tailwind", isMain: true },
+                  { name: "GitHub", isMain: false },
+                  { name: "Jira", isMain: false },
+                  { name: "LLM", isMain: false },
+                  { name: "openAI API", isMain: false },
+                  { name: "Anthropic API", isMain: false }
                 ].map(
                   (tech, index) => (
-                    <span key={index} className={`bg-blue-100 ${isDarkTheme ? 'text-gray-800' : 'text-pink-600'} text-sm px-3 py-1 rounded-full`}>
-                      {tech}
+                    <span 
+                      key={index} 
+                      className={`
+                        ${tech.isMain 
+                          ? isDarkTheme 
+                            ? 'bg-blue-600 text-white font-bold' 
+                            : 'bg-blue-500 text-white font-bold' 
+                          : isDarkTheme 
+                            ? 'bg-blue-100 text-gray-800' 
+                            : 'bg-blue-100 text-pink-600'
+                        } 
+                        text-sm px-3 py-1 rounded-full transition-all duration-300
+                        ${tech.isMain ? 'scale-105 shadow-md' : ''}
+                      `}
+                    >
+                      {tech.name}
                     </span>
                   ),
                 )}
@@ -199,32 +188,6 @@ export default function ProfilePage() {
       >
         <i className={`fas fa-moon ${isDarkTheme ? 'text-white' : 'text-black'}`}></i>
       </button>
-
-      <style jsx>{`  
-        .stars-container {
-          z-index: 0;
-        }
-        
-        .star {
-          position: absolute;
-          width: 3px;
-          height: 3px;
-          background-color: ${isDarkTheme ? 'white' : 'green'};
-          border-radius: 50%;
-          animation-name: fall;
-          animation-timing-function: linear;
-          animation-iteration-count: infinite;
-        }
-        
-        @keyframes fall {
-          0% {
-            transform: translateY(-100vh);
-          }
-          100% {
-            transform: translateY(100vh);
-          }
-        }
-      `}</style>
     </div>
   )
 }

@@ -43,7 +43,7 @@ export default function Footer() {
         </div>
 
         {/* Right Section */}
-        <div className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6">
+        <div className=" z-[2] flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6">
           <div className={`${isDarkTheme ? 'glassmorphism-dark' : 'glassmorphism-light'} p-4 rounded-lg grid grid-cols-2 md:grid-cols-4 gap-3`}>
             <a href="https://github.com/LeegwangYeol" className="hover:underline flex items-center" style={{ color: isDarkTheme ? 'white' : 'black' }}>
               <i className="fab fa-github mr-2" style={{ color: isDarkTheme ? 'white' : 'black' }}></i> GitHub

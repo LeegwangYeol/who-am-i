@@ -4,6 +4,7 @@ import "./globals.css";
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import Script from "next/script";
 import ThemeProvider from "@/components/theme-provider";
+import FallingStars from "@/components/falling-stars";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -44,6 +45,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <ThemeProvider>
+          <FallingStars />
           {children}
         </ThemeProvider>
       </body>
