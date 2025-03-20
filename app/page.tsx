@@ -20,6 +20,7 @@ export default function ProfilePage() {
     animationDuration: string;
     opacity: number;
   }
+  const MAX_STARS = 30;
 
   useEffect(() => {
     const createStar = () => {
@@ -29,7 +30,10 @@ export default function ProfilePage() {
         animationDuration: `${Math.random() * 3 + 2}s`,
         opacity: Math.random(),
       };
-      setStars(prevStars => [...prevStars, newStar]);
+      setStars(prevStars => {
+        const newStars = [...prevStars, newStar];
+        return newStars.slice(-MAX_STARS); // 최대 개수 유지
+      });
     };
 
     const interval = setInterval(createStar, 300);
@@ -64,11 +68,7 @@ export default function ProfilePage() {
 
       <header className={`bg-white ${isDarkTheme ? 'glassmorphism-dark' : 'glassmorphism-light'} shadow`}>
         <div className="max-w-7xl h-52 mx-auto py-6 px-4 sm:px-6 lg:px-8">
-          {/* <h1 className={`text-3xl font-bold b ${isDarkTheme ? 'text-gray-200' : 'text-gray-900'}`}>
-            광열님의 포트폴리오
-          </h1> */}
           <LeeGwangYeol/>
-          {/* <MicroWave /> */}
         </div>
       </header>
 
