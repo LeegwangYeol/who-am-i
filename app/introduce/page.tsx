@@ -1,8 +1,6 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import Link from "next/link"
-import { ArrowLeft } from "lucide-react"
 import PostCard from "../components/post-card"
 import { useThemeStore, toggleTheme } from "@/store/theme"
 import LeeGwangYeol from "../../app/components/name"
