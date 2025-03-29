@@ -21,7 +21,7 @@ export default function FixedButtons({ scrollToTop }: FixedButtonsProps) {
   }, [])
 
   return (
-    <div className="fixed bottom-20 z-50 flex gap-4" 
+    <div className="fixed sm:bottom-20 bottom-7 z-50 flex gap-4" 
     style={{ left: '50%', transform: 'translateX(-50%)' }}>
       {showScrollTop && (
         <button
