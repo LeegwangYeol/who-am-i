@@ -43,7 +43,7 @@ export default function AnalogMeter() {
         <Button
           variant="outline"
           size="icon"
-          className="rounded-full shadow-md hover:shadow-lg transition-all"
+          className={`rounded-full ${theme === "dark" ? 'glassmorphism-dark' : 'glassmorphism-light'}`}
           onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
           aria-label="Toggle theme"
         >
@@ -55,7 +55,7 @@ export default function AnalogMeter() {
         {/* Main content area with meter and indicators */}
         <div className="flex flex-col md:flex-row gap-6">
           {/* Main Meter */}
-          <Card className="flex-1">
+          <Card className={`flex-1 ${theme === "dark" ? 'glassmorphism-dark' : 'glassmorphism-light'} hover:${theme === "dark" ? 'glassmorphism-dark:hover' : 'glassmorphism-light:hover'}`}>
             <CardHeader>
               <CardTitle>Main Meter</CardTitle>
               <CardDescription>Current system performance</CardDescription>
@@ -161,7 +161,7 @@ export default function AnalogMeter() {
           </Card>
 
           {/* Analog Indicators */}
-          <Card className="md:w-80">
+          <Card className={`md:w-80 ${theme === "dark" ? 'glassmorphism-dark' : 'glassmorphism-light'} hover:${theme === "dark" ? 'glassmorphism-dark:hover' : 'glassmorphism-light:hover'}`}>
             <CardHeader>
               <CardTitle>Analog Indicators</CardTitle>
               <CardDescription>Supporting metrics</CardDescription>
@@ -318,7 +318,7 @@ export default function AnalogMeter() {
         </div>
 
         {/* Detailed Metrics */}
-        <Card>
+        <Card className={`${theme === "dark" ? 'glassmorphism-dark' : 'glassmorphism-light'} hover:${theme === "dark" ? 'glassmorphism-dark:hover' : 'glassmorphism-light:hover'}`}>
           <CardHeader>
             <CardTitle>Detailed Metrics</CardTitle>
             <CardDescription>Complete system readings</CardDescription>
@@ -426,7 +426,7 @@ export default function AnalogMeter() {
         </Card>
 
         {/* Footer */}
-        <footer className="border-t pt-6">
+        <footer className={`border-t pt-6 ${theme === "dark" ? 'glassmorphism-dark' : 'glassmorphism-light'} hover:${theme === "dark" ? 'glassmorphism-dark:hover' : 'glassmorphism-light:hover'} rounded-lg mt-6`}>
           <div className="max-w-6xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div>

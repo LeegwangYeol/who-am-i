@@ -63,7 +63,7 @@ export default function TradeFlowMap() {
 
     // Create dots for animation
     const createDots = (count: number, fromX: number, fromY: number, toX: number, toY: number, color: string) => {
-      return Array.from({ length: count }, (_, i) => ({
+      return Array.from({ length: count }, () => ({
         progress: Math.random(), // Random starting position
         speed: 0.001 + Math.random() * 0.002, // Random speed
         fromX,
@@ -174,8 +174,19 @@ export default function TradeFlowMap() {
         ctx.fillText(tradeWarChars[i], midX, midY + i * 30)
       }
 
+      // 도트 요소에 대한 인터페이스 정의
+      interface Dot {
+        fromX: number;
+        fromY: number;
+        toX: number;
+        toY: number;
+        progress: number;
+        speed: number;
+        size : number;
+      }
+
       // Draw and update dots
-      const updateAndDrawDots = (dots: any[], color: string) => {
+      const updateAndDrawDots = (dots: Dot[], color: string) => {
         dots.forEach((dot) => {
           // Update position along the curve
           dot.progress += dot.speed
@@ -224,7 +235,7 @@ export default function TradeFlowMap() {
     return () => {
       // Cleanup
     }
-  }, [dimensions])
+  }, [dimensions, koreaCoords.x, koreaCoords.y, usCoords.x, usCoords.y, tradeData.koreaToUS, tradeData.usToKorea, koreaToUSDots, usToKoreaDots])
 
   return (
     <div className="w-full max-w-4xl mx-auto">
