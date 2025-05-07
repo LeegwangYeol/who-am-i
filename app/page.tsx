@@ -62,6 +62,13 @@ export default function ProfilePage() {
             <section className={`mt-12 ${isDarkTheme ? 'glassmorphism-dark' : 'glassmorphism-light'} rounded-lg shadow-md p-6`}>
               <h2 className={`text-2xl ${isDarkTheme ? 'text-gray-200' : 'text-white'} font-semibold mb-4`}>Career</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <CareerItem
+                  company="오픈에스지"
+                  position="소프트웨어팀"
+                  period="2025.04 ~ "
+                  description="웹 및 자동화 통합 개발팀, WPF로 UX, UI 개발"
+                  isDarkTheme={isDarkTheme}
+                />
                 <CareerItem
                   company="피오유엘"
                   position="웹개발 · 연구원"
@@ -157,6 +164,13 @@ export default function ProfilePage() {
             <section className={`mt-12 ${isDarkTheme ? 'glassmorphism-dark' : 'glassmorphism-light'} rounded-lg shadow-md p-6`}>
               <h2 className={`text-2xl font-semibold mb-4 ${isDarkTheme ? 'text-gray-200' : 'text-white'}`}>Projects</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <ProjectItem
+                  name="MLUD 프로젝트"
+                  period="2025.04 ~"
+                  technologies={["LLM", "C#", "HTML", "WPF"]}
+                  description="LLM 도입 기획서 작성 및 API 문서화, 사용자 워크플로우 분석 및 UI/UX 설계 및 프로토타입 개발, 실시간 장비 상태 모니터링 대시보드 작성"
+                  isDarkTheme={isDarkTheme}
+                />
                 <ProjectItem
                   name="라미 프로젝트(llami)"
                   period="2024.06 ~ 2025.03"
@@ -169,16 +183,17 @@ export default function ProfilePage() {
                   name="프레스 핸들러 통합 프로젝트"
                   period="2021.10 ~ 2024.06"
                   technologies={["C#", ".NET", "WinForm", "MSSQL"]}
-                  description="공장 자동화 장비 개발. 멀티쓰레드 기반 축 제어, 안전한 Motion 시퀀스 통일, MES 시스템 적용, 하드웨어 통신 구현."
+                  description="공장 자동화 장비 개발. 멀티쓰레드 기반 축 제어, 안전한 Motion 시퀀스 통신, 타 장비간 하드웨어 통신 구현."
                   isDarkTheme={isDarkTheme}
                 />
+        
               </div>
             </section>
 
           </div>
         </div>
       </main>
-      <AnalogMeter />
+      {/* <AnalogMeter /> */}
 
       <Footer />
       
