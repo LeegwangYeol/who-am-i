@@ -64,7 +64,7 @@ export default function ProfilePage() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <CareerItem
                   company="오픈에스지"
-                  position="소프트웨어팀"
+                  position="소프트 웨어팀"
                   period="2025.04 ~ "
                   description="웹 및 자동화 통합 개발팀, WPF로 UX, UI 개발"
                   isDarkTheme={isDarkTheme}
