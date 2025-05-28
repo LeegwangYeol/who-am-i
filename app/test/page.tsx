@@ -192,14 +192,11 @@ export default function TradeFlowMap() {
           dot.progress += dot.speed
           if (dot.progress > 1) dot.progress = 0
 
-          // Calculate position on the curve
-          const t = dot.progress
-          const controlPointX = (dot.fromX + dot.toX) / 2
-          const controlPointY = Math.min(dot.fromY, dot.toY) - 100 * scaleY
+          
 
-          const x = Math.pow(1 - t, 2) * dot.fromX + 2 * (1 - t) * t * controlPointX + Math.pow(t, 2) * dot.toX
-          const y = Math.pow(1 - t, 2) * dot.fromY + 2 * (1 - t) * t * controlPointY + Math.pow(t, 2) * dot.toY
 
+
+          
           // Draw dot
           ctx.beginPath()
           ctx.arc(x, y, dot.size, 0, Math.PI * 2)

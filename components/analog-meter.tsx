@@ -7,21 +7,23 @@ import { useTheme } from "next-themes"
 import { Button } from "@/components/ui/button"
 
 export default function AnalogMeter() {
-  const [value, setValue] = useState(65)
-  const [secondaryValue, setSecondaryValue] = useState(42)
-  const [tertiaryValue, setTertiaryValue] = useState(78)
+  const [codingSkills, setCodingSkills] = useState(85)
+  const [passion, setPassion] = useState(92)
+  const [creativity, setCreativity] = useState(78)
+  const [problemSolving, setProblemSolving] = useState(88)
   const [lastUpdate, setLastUpdate] = useState(new Date())
   const [mounted, setMounted] = useState(false)
   const { theme, setTheme } = useTheme()
 
-  // Simulate changing values
+  // 값의 변동 범위를 줄이고 업데이트 주기를 늘려 더 안정적인 표시 제공
   useEffect(() => {
     const interval = setInterval(() => {
-      setValue((prev) => Math.max(0, Math.min(100, prev + (Math.random() * 10 - 5))))
-      setSecondaryValue((prev) => Math.max(0, Math.min(100, prev + (Math.random() * 8 - 4))))
-      setTertiaryValue((prev) => Math.max(0, Math.min(100, prev + (Math.random() * 6 - 3))))
+      setCodingSkills((prev) => Math.max(84, Math.min(88, prev + (Math.random() * 1 - 0.5))))
+      setPassion((prev) => Math.max(90, Math.min(94, prev + (Math.random() * 1 - 0.5))))
+      setCreativity((prev) => Math.max(76, Math.min(80, prev + (Math.random() * 1 - 0.5))))
+      setProblemSolving((prev) => Math.max(86, Math.min(90, prev + (Math.random() * 1 - 0.5))))
       setLastUpdate(new Date())
-    }, 3000)
+    }, 5000)
 
     return () => clearInterval(interval)
   }, [])
@@ -57,15 +59,31 @@ export default function AnalogMeter() {
           {/* Main Meter */}
           <Card className={`flex-1 ${theme === "dark" ? 'glassmorphism-dark' : 'glassmorphism-light'} hover:${theme === "dark" ? 'glassmorphism-dark:hover' : 'glassmorphism-light:hover'}`}>
             <CardHeader>
-              <CardTitle>Main Meter</CardTitle>
-              <CardDescription>Current system performance</CardDescription>
+              <CardTitle>코딩 기술</CardTitle>
+              <CardDescription>프로그래밍 숙련도</CardDescription>
             </CardHeader>
             <CardContent className="flex justify-center">
               <div className="relative w-64 h-64">
                 {/* Gauge background */}
                 <svg className="w-full h-full" viewBox="0 0 200 200">
-                  {/* Outer circle */}
-                  <circle cx="100" cy="100" r="90" fill="none" stroke="hsl(var(--muted))" strokeWidth="4" />
+                  {/* 배경 원 */}
+                  <circle cx="100" cy="100" r="90" fill="none" stroke="hsl(var(--muted))" strokeWidth="6" />
+                  
+                  {/* Colored arcs - 더 선명하게 표시 */}
+                  <path
+                    d="M 30 130 A 90 90 0 0 1 100 10"
+                    fill="none"
+                    stroke="hsl(var(--destructive))"
+                    strokeWidth="12"
+                    strokeOpacity="0.8"
+                  />
+                  <path 
+                    d="M 100 10 A 90 90 0 0 1 170 130" 
+                    fill="none" 
+                    stroke="hsl(var(--success))" 
+                    strokeWidth="12" 
+                    strokeOpacity="0.8" 
+                  />
 
                   {/* Tick marks */}
                   {Array.from({ length: 11 }).map((_, i) => {
@@ -112,18 +130,9 @@ export default function AnalogMeter() {
                     )
                   })}
 
-                  {/* Colored arcs */}
-                  <path
-                    d="M 30 130 A 90 90 0 0 1 100 10"
-                    fill="none"
-                    stroke="hsl(var(--destructive))"
-                    strokeWidth="8"
-                  />
-                  <path d="M 100 10 A 90 90 0 0 1 170 130" fill="none" stroke="hsl(var(--success))" strokeWidth="8" />
-
-                  {/* Needle */}
+                  {/* Needle - 맨 마지막에 렌더링하여 항상 보이도록 함 */}
                   {(() => {
-                    const angle = -210 + (value / 100) * 240 // Map value to angle
+                    const angle = -210 + (codingSkills / 100) * 240 // Map value to angle
                     const radian = (angle * Math.PI) / 180
                     const x = 100 + 75 * Math.cos(radian)
                     const y = 100 + 75 * Math.sin(radian)
@@ -136,10 +145,11 @@ export default function AnalogMeter() {
                           x2={x}
                           y2={y}
                           stroke="hsl(var(--primary))"
-                          strokeWidth="3"
+                          strokeWidth="4"
                           strokeLinecap="round"
                         />
-                        <circle cx="100" cy="100" r="8" fill="hsl(var(--primary))" />
+                        <circle cx="100" cy="100" r="10" fill="hsl(var(--primary))" />
+                        <circle cx="100" cy="100" r="4" fill="hsl(var(--background))" />
                       </>
                     )
                   })()}
@@ -153,7 +163,7 @@ export default function AnalogMeter() {
                     fontSize="18"
                     fontWeight="bold"
                   >
-                    {value.toFixed(1)}
+                    {codingSkills.toFixed(1)}
                   </text>
                 </svg>
               </div>
@@ -163,29 +173,30 @@ export default function AnalogMeter() {
           {/* Analog Indicators */}
           <Card className={`md:w-80 ${theme === "dark" ? 'glassmorphism-dark' : 'glassmorphism-light'} hover:${theme === "dark" ? 'glassmorphism-dark:hover' : 'glassmorphism-light:hover'}`}>
             <CardHeader>
-              <CardTitle>Analog Indicators</CardTitle>
-              <CardDescription>Supporting metrics</CardDescription>
+              <CardTitle>개인 특성</CardTitle>
+              <CardDescription>주요 강점 및 능력</CardDescription>
             </CardHeader>
             <CardContent className="space-y-6">
               {/* Secondary Gauge */}
               <div className="space-y-2">
                 <div className="flex justify-between text-sm">
-                  <span>Pressure</span>
-                  <span>{secondaryValue.toFixed(1)}</span>
+                  <span>열정</span>
+                  <span>{passion.toFixed(1)}</span>
                 </div>
                 <div className="relative h-12">
                   <svg className="w-full h-full" viewBox="0 0 200 40">
-                    {/* Background */}
-                    <rect x="0" y="15" width="200" height="10" rx="5" fill="hsl(var(--muted))" />
+                    {/* Background - 더 두껍게 표시 */}
+                    <rect x="0" y="12" width="200" height="16" rx="8" fill="hsl(var(--muted))" strokeWidth="1" stroke="hsl(var(--border))" />
 
-                    {/* Value bar */}
-                    <rect x="0" y="15" width={secondaryValue * 2} height="10" rx="5" fill="hsl(var(--primary))" />
-
-                    {/* Needle */}
+                    {/* Value bar - 더 두껍게 표시 */}
+                    <rect x="0" y="12" width={passion * 2} height="16" rx="8" fill="hsl(var(--primary))" />
+                    
+                    {/* Needle - 더 크고 선명하게 표시 */}
                     <polygon
-                      points={`${secondaryValue * 2},10 ${secondaryValue * 2 - 5},25 ${secondaryValue * 2 + 5},25`}
+                      points={`${passion * 2},5 ${passion * 2 - 7},30 ${passion * 2 + 7},30`}
                       fill="hsl(var(--foreground))"
                     />
+                    <circle cx={passion * 2} cy="20" r="4" fill="hsl(var(--primary))" />
 
                     {/* Tick marks */}
                     {Array.from({ length: 11 }).map((_, i) => (
@@ -213,23 +224,30 @@ export default function AnalogMeter() {
               {/* Tertiary Gauge */}
               <div className="space-y-2">
                 <div className="flex justify-between text-sm">
-                  <span>Temperature</span>
-                  <span>{tertiaryValue.toFixed(1)}</span>
+                  <span>창의성</span>
+                  <span>{creativity.toFixed(1)}</span>
                 </div>
                 <div className="relative h-20">
                   <svg className="w-full h-full" viewBox="0 0 200 60">
-                    {/* Semi-circle background */}
+                    {/* Semi-circle background - 더 두껍고 선명하게 표시 */}
                     <path
                       d="M 20 50 A 80 80 0 0 1 180 50"
                       fill="none"
                       stroke="hsl(var(--muted))"
-                      strokeWidth="8"
+                      strokeWidth="12"
+                      strokeLinecap="round"
+                    />
+                    <path
+                      d="M 20 50 A 80 80 0 0 1 180 50"
+                      fill="none"
+                      stroke="hsl(var(--border))"
+                      strokeWidth="1"
                       strokeLinecap="round"
                     />
 
                     {/* Value arc */}
                     {(() => {
-                      const angle = (tertiaryValue / 100) * 180 // Map value to angle
+                      const angle = (creativity / 100) * 180 // Map value to angle
                       const endX = 20 + 160 * (angle / 180)
                       const endY = 50 - Math.sin((angle * Math.PI) / 180) * 80
 
@@ -238,7 +256,7 @@ export default function AnalogMeter() {
                           d={`M 20 50 A 80 80 0 0 1 ${endX} ${endY}`}
                           fill="none"
                           stroke="hsl(var(--primary))"
-                          strokeWidth="8"
+                          strokeWidth="12"
                           strokeLinecap="round"
                         />
                       )
@@ -246,7 +264,7 @@ export default function AnalogMeter() {
 
                     {/* Needle */}
                     {(() => {
-                      const angle = (tertiaryValue / 100) * 180 // Map value to angle
+                      const angle = (creativity / 100) * 180 // Map value to angle
                       const radian = ((180 - angle) * Math.PI) / 180
                       const x = 100 + 40 * Math.cos(radian)
                       const y = 50 - 40 * Math.sin(radian)
@@ -259,10 +277,11 @@ export default function AnalogMeter() {
                             x2={x}
                             y2={y}
                             stroke="hsl(var(--foreground))"
-                            strokeWidth="2"
+                            strokeWidth="3"
                             strokeLinecap="round"
                           />
-                          <circle cx="100" cy="50" r="4" fill="hsl(var(--foreground))" />
+                          <circle cx="100" cy="50" r="6" fill="hsl(var(--foreground))" />
+                          <circle cx="100" cy="50" r="2" fill="hsl(var(--background))" />
                         </>
                       )
                     })()}
@@ -320,16 +339,16 @@ export default function AnalogMeter() {
         {/* Detailed Metrics */}
         <Card className={`${theme === "dark" ? 'glassmorphism-dark' : 'glassmorphism-light'} hover:${theme === "dark" ? 'glassmorphism-dark:hover' : 'glassmorphism-light:hover'}`}>
           <CardHeader>
-            <CardTitle>Detailed Metrics</CardTitle>
-            <CardDescription>Complete system readings</CardDescription>
+            <CardTitle>기술 분석</CardTitle>
+            <CardDescription>능력 상세 분석</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="space-y-2">
-                <div className="text-sm font-medium">Main Value</div>
-                <div className="text-2xl font-bold">{value.toFixed(1)}</div>
+                <div className="text-sm font-medium">코딩 기술</div>
+                <div className="text-2xl font-bold">{codingSkills.toFixed(1)}</div>
                 <div className="text-xs text-muted-foreground">
-                  {value < 40 ? "Low" : value > 70 ? "High" : "Normal"} range
+                  {codingSkills < 60 ? "중급" : codingSkills > 80 ? "전문가" : "고급"} 수준
                 </div>
                 <div className="mt-4 pt-4 border-t">
                   <div className="text-sm">
@@ -343,16 +362,16 @@ export default function AnalogMeter() {
                     </div>
                     <div className="flex justify-between">
                       <span>Avg</span>
-                      <span>{((value + 65) / 2).toFixed(1)}</span>
+                      <span>{((codingSkills + 85) / 2).toFixed(1)}</span>
                     </div>
                   </div>
                 </div>
               </div>
               <div className="space-y-2">
-                <div className="text-sm font-medium">Pressure</div>
-                <div className="text-2xl font-bold">{secondaryValue.toFixed(1)}</div>
+                <div className="text-sm font-medium">열정</div>
+                <div className="text-2xl font-bold">{passion.toFixed(1)}</div>
                 <div className="text-xs text-muted-foreground">
-                  {secondaryValue < 40 ? "Low" : secondaryValue > 70 ? "High" : "Normal"} pressure
+                  {passion < 60 ? "보통" : passion > 80 ? "매우 높음" : "높음"} 수준
                 </div>
                 <div className="mt-4 pt-4 border-t">
                   <div className="text-sm">
@@ -366,16 +385,16 @@ export default function AnalogMeter() {
                     </div>
                     <div className="flex justify-between">
                       <span>Avg</span>
-                      <span>{((secondaryValue + 42) / 2).toFixed(1)}</span>
+                      <span>{((passion + 92) / 2).toFixed(1)}</span>
                     </div>
                   </div>
                 </div>
               </div>
               <div className="space-y-2">
-                <div className="text-sm font-medium">Temperature</div>
-                <div className="text-2xl font-bold">{tertiaryValue.toFixed(1)}</div>
+                <div className="text-sm font-medium">창의성</div>
+                <div className="text-2xl font-bold">{creativity.toFixed(1)}</div>
                 <div className="text-xs text-muted-foreground">
-                  {tertiaryValue < 40 ? "Low" : tertiaryValue > 70 ? "High" : "Normal"} temperature
+                  {creativity < 60 ? "실용적" : creativity > 80 ? "혁신적" : "창의적"} 사고
                 </div>
                 <div className="mt-4 pt-4 border-t">
                   <div className="text-sm">
@@ -389,36 +408,32 @@ export default function AnalogMeter() {
                     </div>
                     <div className="flex justify-between">
                       <span>Avg</span>
-                      <span>{((tertiaryValue + 78) / 2).toFixed(1)}</span>
+                      <span>{((creativity + 78) / 2).toFixed(1)}</span>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
             <div className="mt-6 pt-4 border-t">
-              <div className="text-sm font-medium mb-2">System Status</div>
+              <div className="text-sm font-medium mb-2">종합 평가</div>
               <div className="flex items-center">
                 <div
                   className={`w-3 h-3 rounded-full mr-2 ${
-                    value < 30 ||
-                    value > 80 ||
-                    secondaryValue < 30 ||
-                    secondaryValue > 80 ||
-                    tertiaryValue < 30 ||
-                    tertiaryValue > 80
-                      ? "bg-destructive"
-                      : "bg-success"
+                    codingSkills > 80 &&
+                    passion > 80 &&
+                    creativity > 70 &&
+                    problemSolving > 80
+                      ? "bg-success"
+                      : "bg-amber-500"
                   }`}
                 ></div>
                 <span>
-                  {value < 30 ||
-                  value > 80 ||
-                  secondaryValue < 30 ||
-                  secondaryValue > 80 ||
-                  tertiaryValue < 30 ||
-                  tertiaryValue > 80
-                    ? "Attention Required"
-                    : "Operating Normally"}
+                  {codingSkills > 80 &&
+                  passion > 80 &&
+                  creativity > 70 &&
+                  problemSolving > 80
+                    ? "뛰어난 인재"
+                    : "높은 잠재력"}
                 </span>
               </div>
             </div>
@@ -430,63 +445,57 @@ export default function AnalogMeter() {
           <div className="max-w-6xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div>
-                <h3 className="font-medium text-lg mb-2">System Information</h3>
+                <h3 className="font-medium text-lg mb-2">프로필 요약</h3>
                 <div className="text-sm text-muted-foreground">
-                  <p>Model: Analog Meter Pro 2000</p>
-                  <p>
-                    Serial: AM-
-                    {Math.floor(Math.random() * 10000)
-                      .toString()
-                      .padStart(4, "0")}
-                  </p>
-                  <p>Firmware: v3.2.1</p>
+                  <p>풀스택 개발자</p>
+                  <p>경력: 5년 이상</p>
+                  <p>전문 분야: Next.js, React, TypeScript</p>
                 </div>
               </div>
               <div>
-                <h3 className="font-medium text-lg mb-2">Status</h3>
-                <div className="flex items-center space-x-2">
-                  <div
-                    className={`w-3 h-3 rounded-full ${
-                      value < 30 ||
-                      value > 80 ||
-                      secondaryValue < 30 ||
-                      secondaryValue > 80 ||
-                      tertiaryValue < 30 ||
-                      tertiaryValue > 80
-                        ? "bg-destructive"
-                        : "bg-success"
-                    }`}
-                  ></div>
-                  <span className="text-sm">
-                    {value < 30 ||
-                    value > 80 ||
-                    secondaryValue < 30 ||
-                    secondaryValue > 80 ||
-                    tertiaryValue < 30 ||
-                    tertiaryValue > 80
-                      ? "Attention Required"
-                      : "Operating Normally"}
+                <h3 className="font-medium text-lg mb-2">문제 해결 능력</h3>
+                <div className="space-y-2">
+                  <div className="flex justify-between text-sm">
+                    <span>분석적 사고</span>
+                    <span>{problemSolving.toFixed(1)}</span>
+                  </div>
+                  <div className="relative h-5">
+                    <div className="absolute inset-0 bg-muted rounded-full border border-border"></div>
+                    <div 
+                      className="absolute inset-0 bg-primary rounded-full" 
+                      style={{ width: `${problemSolving}%` }}
+                    ></div>
+                    <div 
+                      className="absolute top-1/2 -translate-y-1/2 h-4 w-4 rounded-full bg-foreground border-2 border-background" 
+                      style={{ left: `calc(${problemSolving}% - 8px)` }}
+                    ></div>
+                  </div>
+                </div>
+                <p className="text-sm text-muted-foreground mt-4">마지막 업데이트: {lastUpdate.toLocaleTimeString()}</p>
+              </div>
+              <div>
+                <h3 className="font-medium text-lg mb-2">주요 강점</h3>
+                <div className="flex flex-wrap gap-2">
+                  <span className="px-3 py-1 text-sm bg-primary text-primary-foreground rounded-full">
+                    Next.js
                   </span>
-                </div>
-                <p className="text-sm text-muted-foreground mt-2">Last updated: {lastUpdate.toLocaleTimeString()}</p>
-              </div>
-              <div>
-                <h3 className="font-medium text-lg mb-2">Controls</h3>
-                <div className="flex space-x-2">
-                  <button className="px-3 py-1 text-sm bg-primary text-primary-foreground rounded-md hover:bg-primary/90">
-                    Calibrate
-                  </button>
-                  <button className="px-3 py-1 text-sm border border-input bg-background rounded-md hover:bg-accent hover:text-accent-foreground">
-                    Reset
-                  </button>
-                  <button className="px-3 py-1 text-sm border border-input bg-background rounded-md hover:bg-accent hover:text-accent-foreground">
-                    Export Data
-                  </button>
+                  <span className="px-3 py-1 text-sm bg-primary/90 text-primary-foreground rounded-full">
+                    React
+                  </span>
+                  <span className="px-3 py-1 text-sm bg-primary/80 text-primary-foreground rounded-full">
+                    TypeScript
+                  </span>
+                  <span className="px-3 py-1 text-sm bg-primary/70 text-primary-foreground rounded-full">
+                    TailwindCSS
+                  </span>
+                  <span className="px-3 py-1 text-sm bg-primary/60 text-primary-foreground rounded-full">
+                    UI/UX
+                  </span>
                 </div>
               </div>
             </div>
             <div className="mt-6 pt-4 border-t text-center text-sm text-muted-foreground">
-              © {new Date().getFullYear()} Analog Instruments Inc. All rights reserved.
+              © {new Date().getFullYear()} 개인 포트폴리오. 모든 수치는 자체 평가를 기반으로 합니다.
             </div>
           </div>
         </footer>
