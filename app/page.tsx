@@ -186,7 +186,7 @@ export default function ProfilePage() {
                   description="공장 자동화 장비 개발. 멀티쓰레드 기반 축 제어, 안전한 Motion 시퀀스 통신, 타 장비간 하드웨어 통신 구현."
                   isDarkTheme={isDarkTheme}
                 />
-        
+              <AnalogMeter/>
               </div>
             </section>
 
