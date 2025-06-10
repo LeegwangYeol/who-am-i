@@ -67,22 +67,22 @@ export default function AnalogMeter() {
                 {/* Gauge background */}
                 <svg className="w-full h-full" viewBox="0 0 200 200">
                   {/* 배경 원 */}
-                  <circle cx="100" cy="100" r="90" fill="none" stroke="hsl(var(--muted))" strokeWidth="6" />
+                  <circle cx="100" cy="100" r="90" fill="none" stroke="hsl(var(--muted))" strokeWidth="10" />
                   
                   {/* Colored arcs - 더 선명하게 표시 */}
                   <path
                     d="M 30 130 A 90 90 0 0 1 100 10"
                     fill="none"
                     stroke="hsl(var(--destructive))"
-                    strokeWidth="12"
-                    strokeOpacity="0.8"
+                    strokeWidth="18"
+                    strokeOpacity="1"
                   />
                   <path 
                     d="M 100 10 A 90 90 0 0 1 170 130" 
                     fill="none" 
                     stroke="hsl(var(--success))" 
-                    strokeWidth="12" 
-                    strokeOpacity="0.8" 
+                    strokeWidth="18" 
+                    strokeOpacity="1" 
                   />
 
                   {/* Tick marks */}
@@ -102,7 +102,7 @@ export default function AnalogMeter() {
                         x2={x2}
                         y2={y2}
                         stroke="hsl(var(--foreground))"
-                        strokeWidth={i % 5 === 0 ? "3" : "1"}
+                        strokeWidth={i % 5 === 0 ? "3.5" : "1.5"} // 눈금 선 두껍게
                       />
                     )
                   })}
@@ -111,8 +111,8 @@ export default function AnalogMeter() {
                   {[0, 20, 40, 60, 80, 100].map((num, i) => {
                     const angle = -210 + i * 48 // -210 to 30 degrees (240 degree arc)
                     const radian = (angle * Math.PI) / 180
-                    const x = 100 + 60 * Math.cos(radian)
-                    const y = 100 + 60 * Math.sin(radian)
+                    const x = 100 + 55 * Math.cos(radian) // 숫자 위치 약간 안쪽으로
+                    const y = 100 + 55 * Math.sin(radian) // 숫자 위치 약간 안쪽으로
 
                     return (
                       <text
@@ -122,7 +122,7 @@ export default function AnalogMeter() {
                         textAnchor="middle"
                         dominantBaseline="middle"
                         fill="hsl(var(--foreground))"
-                        fontSize="12"
+                        fontSize="14" // 숫자 크기 증가
                         fontWeight="bold"
                       >
                         {num}
@@ -145,11 +145,11 @@ export default function AnalogMeter() {
                           x2={x}
                           y2={y}
                           stroke="hsl(var(--primary))"
-                          strokeWidth="4"
+                          strokeWidth="5" // 바늘 두께 증가
                           strokeLinecap="round"
                         />
-                        <circle cx="100" cy="100" r="10" fill="hsl(var(--primary))" />
-                        <circle cx="100" cy="100" r="4" fill="hsl(var(--background))" />
+                        <circle cx="100" cy="100" r="8" fill="hsl(var(--primary))" /> // 바늘 중심 원 크기 조정
+                        <circle cx="100" cy="100" r="3" fill="hsl(var(--background))" /> // 바늘 중심 작은 원 크기 조정
                       </>
                     )
                   })()}
@@ -157,10 +157,10 @@ export default function AnalogMeter() {
                   {/* Value text */}
                   <text
                     x="100"
-                    y="140"
+                    y="145" // 위치 살짝 아래로
                     textAnchor="middle"
                     fill="hsl(var(--foreground))"
-                    fontSize="18"
+                    fontSize="22" // 값 텍스트 크기 증가
                     fontWeight="bold"
                   >
                     {codingSkills.toFixed(1)}
@@ -186,17 +186,17 @@ export default function AnalogMeter() {
                 <div className="relative h-12">
                   <svg className="w-full h-full" viewBox="0 0 200 40">
                     {/* Background - 더 두껍게 표시 */}
-                    <rect x="0" y="12" width="200" height="16" rx="8" fill="hsl(var(--muted))" strokeWidth="1" stroke="hsl(var(--border))" />
+                    <rect x="0" y="12" width="200" height="16" rx="8" fill="hsl(var(--muted))" strokeWidth="1.5" stroke="hsl(var(--border))" /> {/* 배경 테두리 두께 증가 */}
 
                     {/* Value bar - 더 두껍게 표시 */}
                     <rect x="0" y="12" width={passion * 2} height="16" rx="8" fill="hsl(var(--primary))" />
                     
                     {/* Needle - 더 크고 선명하게 표시 */}
                     <polygon
-                      points={`${passion * 2},5 ${passion * 2 - 7},30 ${passion * 2 + 7},30`}
+                      points={`${passion * 2},4 ${passion * 2 - 6},31 ${passion * 2 + 6},31`} // 바늘 크기 및 위치 조정
                       fill="hsl(var(--foreground))"
                     />
-                    <circle cx={passion * 2} cy="20" r="4" fill="hsl(var(--primary))" />
+                    <circle cx={passion * 2} cy="20" r="5" fill="hsl(var(--primary))" /> {/* 바늘 원 크기 증가 */}
 
                     {/* Tick marks */}
                     {Array.from({ length: 11 }).map((_, i) => (
@@ -205,15 +205,15 @@ export default function AnalogMeter() {
                         x1={i * 20}
                         y1="30"
                         x2={i * 20}
-                        y2={i % 5 === 0 ? "35" : "33"}
+                        y2={i % 5 === 0 ? "36" : "33"} // 눈금 길이 조정
                         stroke="hsl(var(--foreground))"
-                        strokeWidth={i % 5 === 0 ? "2" : "1"}
+                        strokeWidth={i % 5 === 0 ? "2.5" : "1.5"} // 눈금 두께 증가
                       />
                     ))}
 
                     {/* Numbers */}
                     {[0, 50, 100].map((num, i) => (
-                      <text key={i} x={num * 2} y="40" textAnchor="middle" fill="hsl(var(--foreground))" fontSize="10">
+                      <text key={i} x={num * 2} y="42" textAnchor="middle" fill="hsl(var(--foreground))" fontSize="11" fontWeight="medium"> {/* 숫자 크기 및 y위치 조정*/}
                         {num}
                       </text>
                     ))}
