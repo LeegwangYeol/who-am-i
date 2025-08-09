@@ -145,11 +145,11 @@ export default function AnalogMeter() {
                           x2={x}
                           y2={y}
                           stroke="hsl(var(--primary))"
-                          strokeWidth="5" // 바늘 두께 증가
+                          strokeWidth="8" 
                           strokeLinecap="round"
                         />
-                        <circle cx="100" cy="100" r="8" fill="hsl(var(--primary))" /> // 바늘 중심 원 크기 조정
-                        <circle cx="100" cy="100" r="3" fill="hsl(var(--background))" /> // 바늘 중심 작은 원 크기 조정
+                        <circle cx="100" cy="100" r="8" fill="hsl(var(--primary))" /> 
+                        <circle cx="100" cy="100" r="3" fill="hsl(var(--background))" /> 
                       </>
                     )
                   })()}
