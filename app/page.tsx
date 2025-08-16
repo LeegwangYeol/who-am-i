@@ -63,10 +63,10 @@ export default function ProfilePage() {
               <h2 className={`text-2xl ${isDarkTheme ? 'text-gray-200' : 'text-white'} font-semibold mb-4`}>Career</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <CareerItem
-                  company="오픈에스지"
-                  position="소프트 웨어팀"
-                  period="2025.04 ~ "
-                  description="웹 및 자동화 통합 개발팀, WPF로 UX, UI 개발"
+                  company="WintechAutomation"
+                  position="소프트웨어팀"
+                  period="2025.06 ~ "
+                  description="장비 프로그램 WPF으로 마이그레이션 UX, UI 개발, 팀내 콘텍스트 코딩 주도 및 교육 진행"
                   isDarkTheme={isDarkTheme}
                 />
                 <CareerItem
@@ -78,7 +78,7 @@ export default function ProfilePage() {
                 />
                 <CareerItem
                   company="윈텍오토메이션"
-                  position="FA(공장자동화) · 주임"
+                  position="FA(공장자동화) · 전임 연구원"
                   period="2021.10 ~ 2024.06"
                   description="생산 자동화 장비 프로젝트 진행. C# .NET 기반 PC 자동화 장비 개발, 프레스 핸들러 통합 프로젝트 진행, MES 시스템 적용 및 하드웨어 통신 유닛 개발."
                   isDarkTheme={isDarkTheme}
@@ -189,7 +189,11 @@ export default function ProfilePage() {
               </div>
 
             </section>
-            <AnalogMeter/>
+
+            <section className={`mt-12 ${isDarkTheme ? 'glassmorphism-dark' : 'glassmorphism-light'} rounded-lg shadow-md p-6`}>
+              <h2 className={`text-2xl font-semibold mb-4 ${isDarkTheme ? 'text-gray-200' : 'text-white'}`}>Skills</h2>
+              <AnalogMeter isDarkTheme={isDarkTheme} />
+            </section>
 
           </div>
         </div>

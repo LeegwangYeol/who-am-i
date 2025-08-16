@@ -3,17 +3,18 @@
 import { useState, useEffect } from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Moon, Sun } from "lucide-react"
-import { useTheme } from "next-themes"
-import { Button } from "@/components/ui/button"
 
-export default function AnalogMeter() {
+import { Button } from "@/components/ui/button"
+import { cn } from "@/lib/utils"
+
+export default function AnalogMeter({ isDarkTheme }: { isDarkTheme: boolean }) {
   const [codingSkills, setCodingSkills] = useState(85)
   const [passion, setPassion] = useState(92)
   const [creativity, setCreativity] = useState(78)
   const [problemSolving, setProblemSolving] = useState(88)
   const [lastUpdate, setLastUpdate] = useState(new Date())
   const [mounted, setMounted] = useState(false)
-  const { theme, setTheme } = useTheme()
+
 
   // 값의 변동 범위를 줄이고 업데이트 주기를 늘려 더 안정적인 표시 제공
   useEffect(() => {
@@ -40,24 +41,13 @@ export default function AnalogMeter() {
 
   return (
     <div className="w-full max-w-6xl mx-auto p-4 relative">
-      {/* Theme Toggle Button */}
-      <div className="fixed top-4 right-4 z-50">
-        <Button
-          variant="outline"
-          size="icon"
-          className={`rounded-full ${theme === "dark" ? 'glassmorphism-dark' : 'glassmorphism-light'}`}
-          onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-          aria-label="Toggle theme"
-        >
-          {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
-        </Button>
-      </div>
+
 
       <div className="grid gap-6">
         {/* Main content area with meter and indicators */}
         <div className="flex flex-col md:flex-row gap-6">
           {/* Main Meter */}
-          <Card className={`flex-1 ${theme === "dark" ? 'glassmorphism-dark' : 'glassmorphism-light'} hover:${theme === "dark" ? 'glassmorphism-dark:hover' : 'glassmorphism-light:hover'}`}>
+          <Card className={`flex-1 ${isDarkTheme ? 'glassmorphism-dark' : 'glassmorphism-light'}`}>
             <CardHeader>
               <CardTitle>코딩 기술</CardTitle>
               <CardDescription>프로그래밍 숙련도</CardDescription>
@@ -171,7 +161,7 @@ export default function AnalogMeter() {
           </Card>
 
           {/* Analog Indicators */}
-          <Card className={`md:w-80 ${theme === "dark" ? 'glassmorphism-dark' : 'glassmorphism-light'} hover:${theme === "dark" ? 'glassmorphism-dark:hover' : 'glassmorphism-light:hover'}`}>
+          <Card className={`md:w-80 ${isDarkTheme ? 'glassmorphism-dark' : 'glassmorphism-light'}`}>
             <CardHeader>
               <CardTitle>개인 특성</CardTitle>
               <CardDescription>주요 강점 및 능력</CardDescription>
@@ -337,7 +327,7 @@ export default function AnalogMeter() {
         </div>
 
         {/* Detailed Metrics */}
-        <Card className={`${theme === "dark" ? 'glassmorphism-dark' : 'glassmorphism-light'} hover:${theme === "dark" ? 'glassmorphism-dark:hover' : 'glassmorphism-light:hover'}`}>
+        <Card className={`${isDarkTheme ? 'glassmorphism-dark' : 'glassmorphism-light'}`}>
           <CardHeader>
             <CardTitle>기술 분석</CardTitle>
             <CardDescription>능력 상세 분석</CardDescription>
@@ -432,8 +422,8 @@ export default function AnalogMeter() {
                   passion > 80 &&
                   creativity > 70 &&
                   problemSolving > 80
-                    ? "뛰어난 인재"
-                    : "높은 잠재력"}
+                    ? "잠재력 있음!"
+                    : "수준급 잠재력"}
                 </span>
               </div>
             </div>
@@ -441,15 +431,15 @@ export default function AnalogMeter() {
         </Card>
 
         {/* Footer */}
-        <footer className={`border-t pt-6 ${theme === "dark" ? 'glassmorphism-dark' : 'glassmorphism-light'} hover:${theme === "dark" ? 'glassmorphism-dark:hover' : 'glassmorphism-light:hover'} rounded-lg mt-6`}>
+        <footer className={`border-t pt-6 rounded-lg mt-6 ${isDarkTheme ? 'glassmorphism-dark' : 'glassmorphism-light'}`}>
           <div className="max-w-6xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div>
                 <h3 className="font-medium text-lg mb-2">프로필 요약</h3>
                 <div className="text-sm text-muted-foreground">
-                  <p>풀스택 개발자</p>
-                  <p>경력: 5년 이상</p>
-                  <p>전문 분야: Next.js, React, TypeScript</p>
+                  <p>자동화 & 웹 개발자</p>
+                  <p>경력: 6년차</p>
+                  <p>전문 분야: Next.js, React, TypeScript, C# , WPF</p>
                 </div>
               </div>
               <div>
@@ -490,6 +480,12 @@ export default function AnalogMeter() {
                   </span>
                   <span className="px-3 py-1 text-sm bg-primary/60 text-primary-foreground rounded-full">
                     UI/UX
+                  </span>
+                  <span className="px-3 py-1 text-sm bg-primary/60 text-primary-foreground rounded-full">
+                    C#
+                  </span>
+                  <span className="px-3 py-1 text-sm bg-primary/60 text-primary-foreground rounded-full">
+                    WPF
                   </span>
                 </div>
               </div>
