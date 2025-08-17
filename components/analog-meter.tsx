@@ -11,7 +11,6 @@ export default function AnalogMeter({ isDarkTheme }: { isDarkTheme: boolean }) {
   const [lastUpdate, setLastUpdate] = useState(new Date())
   const [mounted, setMounted] = useState(false)
 
-
   // 값의 변동 범위를 줄이고 업데이트 주기를 늘려 더 안정적인 표시 제공
   useEffect(() => {
     const interval = setInterval(() => {
@@ -35,18 +34,18 @@ export default function AnalogMeter({ isDarkTheme }: { isDarkTheme: boolean }) {
     return null
   }
 
+  const textColorStyle = { color: isDarkTheme ? 'white' : 'black' };
+
   return (
     <div className="w-full max-w-6xl mx-auto p-4 relative">
-
-
       <div className="grid gap-6">
         {/* Main content area with meter and indicators */}
         <div className="flex flex-col md:flex-row gap-6">
           {/* Main Meter */}
           <Card className={`flex-1 ${isDarkTheme ? 'glassmorphism-dark' : 'glassmorphism-light'}`}>
             <CardHeader>
-              <CardTitle>코딩 기술</CardTitle>
-              <CardDescription>프로그래밍 숙련도</CardDescription>
+              <CardTitle style={textColorStyle}>코딩 기술</CardTitle>
+              <CardDescription style={{ color: isDarkTheme ? '#a1a1aa' : '#71717a' }}>프로그래밍 숙련도</CardDescription>
             </CardHeader>
             <CardContent className="flex justify-center">
               <div className="relative w-64 h-64">
@@ -87,7 +86,7 @@ export default function AnalogMeter({ isDarkTheme }: { isDarkTheme: boolean }) {
                         y1={y1}
                         x2={x2}
                         y2={y2}
-                        stroke="hsl(var(--foreground))"
+                        stroke={isDarkTheme ? 'white' : 'black'}
                         strokeWidth={i % 5 === 0 ? "3.5" : "1.5"} // 눈금 선 두껍게
                       />
                     )
@@ -107,7 +106,7 @@ export default function AnalogMeter({ isDarkTheme }: { isDarkTheme: boolean }) {
                         y={y}
                         textAnchor="middle"
                         dominantBaseline="middle"
-                        fill="hsl(var(--foreground))"
+                        fill={isDarkTheme ? 'white' : 'black'}
                         fontSize="14" // 숫자 크기 증가
                         fontWeight="bold"
                       >
@@ -145,7 +144,7 @@ export default function AnalogMeter({ isDarkTheme }: { isDarkTheme: boolean }) {
                     x="100"
                     y="145" // 위치 살짝 아래로
                     textAnchor="middle"
-                    fill="hsl(var(--foreground))"
+                    fill={isDarkTheme ? 'white' : 'black'}
                     fontSize="22" // 값 텍스트 크기 증가
                     fontWeight="bold"
                   >
@@ -159,13 +158,13 @@ export default function AnalogMeter({ isDarkTheme }: { isDarkTheme: boolean }) {
           {/* Analog Indicators */}
           <Card className={`md:w-80 ${isDarkTheme ? 'glassmorphism-dark' : 'glassmorphism-light'}`}>
             <CardHeader>
-              <CardTitle>개인 특성</CardTitle>
-              <CardDescription>주요 강점 및 능력</CardDescription>
+              <CardTitle style={textColorStyle}>개인 특성</CardTitle>
+              <CardDescription style={{ color: isDarkTheme ? '#a1a1aa' : '#71717a' }}>주요 강점 및 능력</CardDescription>
             </CardHeader>
             <CardContent className="space-y-6">
               {/* Secondary Gauge */}
               <div className="space-y-2">
-                <div className="flex justify-between text-sm">
+                <div className="flex justify-between text-sm" style={textColorStyle}>
                   <span>열정</span>
                   <span>{passion.toFixed(1)}</span>
                 </div>
@@ -180,7 +179,7 @@ export default function AnalogMeter({ isDarkTheme }: { isDarkTheme: boolean }) {
                     {/* Needle - 더 크고 선명하게 표시 */}
                     <polygon
                       points={`${passion * 2},4 ${passion * 2 - 6},31 ${passion * 2 + 6},31`} // 바늘 크기 및 위치 조정
-                      fill="hsl(var(--foreground))"
+                      fill={isDarkTheme ? 'white' : 'black'}
                     />
                     <circle cx={passion * 2} cy="20" r="5" fill="hsl(var(--primary))" /> {/* 바늘 원 크기 증가 */}
 
@@ -192,14 +191,14 @@ export default function AnalogMeter({ isDarkTheme }: { isDarkTheme: boolean }) {
                         y1="30"
                         x2={i * 20}
                         y2={i % 5 === 0 ? "36" : "33"} // 눈금 길이 조정
-                        stroke="hsl(var(--foreground))"
+                        stroke={isDarkTheme ? 'white' : 'black'}
                         strokeWidth={i % 5 === 0 ? "2.5" : "1.5"} // 눈금 두께 증가
                       />
                     ))}
 
                     {/* Numbers */}
                     {[0, 50, 100].map((num, i) => (
-                      <text key={i} x={num * 2} y="42" textAnchor="middle" fill="hsl(var(--foreground))" fontSize="11" fontWeight="medium"> {/* 숫자 크기 및 y위치 조정*/}
+                      <text key={i} x={num * 2} y="42" textAnchor="middle" fill={isDarkTheme ? 'white' : 'black'} fontSize="11" fontWeight="medium"> {/* 숫자 크기 및 y위치 조정*/}
                         {num}
                       </text>
                     ))}
@@ -209,7 +208,7 @@ export default function AnalogMeter({ isDarkTheme }: { isDarkTheme: boolean }) {
 
               {/* Tertiary Gauge */}
               <div className="space-y-2">
-                <div className="flex justify-between text-sm">
+                <div className="flex justify-between text-sm" style={textColorStyle}>
                   <span>창의성</span>
                   <span>{creativity.toFixed(1)}</span>
                 </div>
@@ -234,9 +233,8 @@ export default function AnalogMeter({ isDarkTheme }: { isDarkTheme: boolean }) {
                     {/* Value arc */}
                     {(() => {
                       const angle = (creativity / 100) * 180 // Map value to angle
-                      const endX = 20 + 160 * (angle / 180)
-                      const endY = 50 - Math.sin((angle * Math.PI) / 180) * 80
-
+                      const endX = 100 - 80 * Math.cos((angle * Math.PI) / 180)
+                      const endY = 50 - 80 * Math.sin((angle * Math.PI) / 180)
                       return (
                         <path
                           d={`M 20 50 A 80 80 0 0 1 ${endX} ${endY}`}
@@ -250,10 +248,10 @@ export default function AnalogMeter({ isDarkTheme }: { isDarkTheme: boolean }) {
 
                     {/* Needle */}
                     {(() => {
-                      const angle = (creativity / 100) * 180 // Map value to angle
-                      const radian = ((180 - angle) * Math.PI) / 180
-                      const x = 100 + 40 * Math.cos(radian)
-                      const y = 50 - 40 * Math.sin(radian)
+                      const angle = 180 - (problemSolving / 100) * 180
+                      const radian = (angle * Math.PI) / 180
+                      const x = 100 + 34 * Math.cos(radian)
+                      const y = 50 - 34 * Math.sin(radian)
 
                       return (
                         <>
@@ -262,11 +260,11 @@ export default function AnalogMeter({ isDarkTheme }: { isDarkTheme: boolean }) {
                             y1="50"
                             x2={x}
                             y2={y}
-                            stroke="hsl(var(--foreground))"
+                            stroke={isDarkTheme ? 'white' : 'black'}
                             strokeWidth="3"
                             strokeLinecap="round"
                           />
-                          <circle cx="100" cy="50" r="6" fill="hsl(var(--foreground))" />
+                          <circle cx="100" cy="50" r="6" fill={isDarkTheme ? 'white' : 'black'} />
                           <circle cx="100" cy="50" r="2" fill="hsl(var(--background))" />
                         </>
                       )
@@ -288,7 +286,7 @@ export default function AnalogMeter({ isDarkTheme }: { isDarkTheme: boolean }) {
                           y1={y1}
                           x2={x2}
                           y2={y2}
-                          stroke="hsl(var(--foreground))"
+                          stroke={isDarkTheme ? 'white' : 'black'}
                           strokeWidth={i % 5 === 0 ? "2" : "1"}
                         />
                       )
@@ -308,7 +306,7 @@ export default function AnalogMeter({ isDarkTheme }: { isDarkTheme: boolean }) {
                           y={y}
                           textAnchor="middle"
                           dominantBaseline="middle"
-                          fill="hsl(var(--foreground))"
+                          fill={isDarkTheme ? 'white' : 'black'}
                           fontSize="10"
                         >
                           {num}
@@ -325,19 +323,19 @@ export default function AnalogMeter({ isDarkTheme }: { isDarkTheme: boolean }) {
         {/* Detailed Metrics */}
         <Card className={`${isDarkTheme ? 'glassmorphism-dark' : 'glassmorphism-light'}`}>
           <CardHeader>
-            <CardTitle>기술 분석</CardTitle>
-            <CardDescription>능력 상세 분석</CardDescription>
+            <CardTitle style={textColorStyle}>기술 분석</CardTitle>
+            <CardDescription style={{ color: isDarkTheme ? '#a1a1aa' : '#71717a' }}>능력 상세 분석</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="space-y-2">
-                <div className="text-sm font-medium">코딩 기술</div>
-                <div className="text-2xl font-bold">{codingSkills.toFixed(1)}</div>
-                <div className="text-xs text-muted-foreground">
+                <div className="text-sm font-medium" style={textColorStyle}>코딩 기술</div>
+                <div className="text-2xl font-bold" style={textColorStyle}>{codingSkills.toFixed(1)}</div>
+                <div className="text-xs" style={{ color: isDarkTheme ? '#a1a1aa' : '#71717a' }}>
                   {codingSkills < 60 ? "중급" : codingSkills > 80 ? "전문가" : "고급"} 수준
                 </div>
                 <div className="mt-4 pt-4 border-t">
-                  <div className="text-sm">
+                  <div className="text-sm" style={textColorStyle}>
                     <div className="flex justify-between">
                       <span>Min</span>
                       <span>0.0</span>
@@ -354,13 +352,13 @@ export default function AnalogMeter({ isDarkTheme }: { isDarkTheme: boolean }) {
                 </div>
               </div>
               <div className="space-y-2">
-                <div className="text-sm font-medium">열정</div>
-                <div className="text-2xl font-bold">{passion.toFixed(1)}</div>
-                <div className="text-xs text-muted-foreground">
+                <div className="text-sm font-medium" style={textColorStyle}>열정</div>
+                <div className="text-2xl font-bold" style={textColorStyle}>{passion.toFixed(1)}</div>
+                <div className="text-xs" style={{ color: isDarkTheme ? '#a1a1aa' : '#71717a' }}>
                   {passion < 60 ? "보통" : passion > 80 ? "매우 높음" : "높음"} 수준
                 </div>
                 <div className="mt-4 pt-4 border-t">
-                  <div className="text-sm">
+                  <div className="text-sm" style={textColorStyle}>
                     <div className="flex justify-between">
                       <span>Min</span>
                       <span>0.0</span>
@@ -377,13 +375,13 @@ export default function AnalogMeter({ isDarkTheme }: { isDarkTheme: boolean }) {
                 </div>
               </div>
               <div className="space-y-2">
-                <div className="text-sm font-medium">창의성</div>
-                <div className="text-2xl font-bold">{creativity.toFixed(1)}</div>
-                <div className="text-xs text-muted-foreground">
+                <div className="text-sm font-medium" style={textColorStyle}>창의성</div>
+                <div className="text-2xl font-bold" style={textColorStyle}>{creativity.toFixed(1)}</div>
+                <div className="text-xs" style={{ color: isDarkTheme ? '#a1a1aa' : '#71717a' }}>
                   {creativity < 60 ? "실용적" : creativity > 80 ? "혁신적" : "창의적"} 사고
                 </div>
                 <div className="mt-4 pt-4 border-t">
-                  <div className="text-sm">
+                  <div className="text-sm" style={textColorStyle}>
                     <div className="flex justify-between">
                       <span>Min</span>
                       <span>0.0</span>
@@ -401,8 +399,8 @@ export default function AnalogMeter({ isDarkTheme }: { isDarkTheme: boolean }) {
               </div>
             </div>
             <div className="mt-6 pt-4 border-t">
-              <div className="text-sm font-medium mb-2">종합 평가</div>
-              <div className="flex items-center">
+              <div className="text-sm font-medium mb-2" style={textColorStyle}>종합 평가</div>
+              <div className="flex items-center" style={textColorStyle}>
                 <div
                   className={`w-3 h-3 rounded-full mr-2 ${
                     codingSkills > 80 &&
@@ -431,17 +429,17 @@ export default function AnalogMeter({ isDarkTheme }: { isDarkTheme: boolean }) {
           <div className="max-w-6xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div>
-                <h3 className="font-medium text-lg mb-2">프로필 요약</h3>
-                <div className="text-sm text-muted-foreground">
+                <h3 className="font-medium text-lg mb-2" style={textColorStyle}>프로필 요약</h3>
+                <div className="text-sm" style={{ color: isDarkTheme ? '#a1a1aa' : '#71717a' }}>
                   <p>자동화 & 웹 개발자</p>
                   <p>경력: 6년차</p>
                   <p>전문 분야: Next.js, React, TypeScript, C# , WPF</p>
                 </div>
               </div>
               <div>
-                <h3 className="font-medium text-lg mb-2">문제 해결 능력</h3>
+                <h3 className="font-medium text-lg mb-2" style={textColorStyle}>문제 해결 능력</h3>
                 <div className="space-y-2">
-                  <div className="flex justify-between text-sm">
+                  <div className="flex justify-between text-sm" style={textColorStyle}>
                     <span>분석적 사고</span>
                     <span>{problemSolving.toFixed(1)}</span>
                   </div>
@@ -457,10 +455,10 @@ export default function AnalogMeter({ isDarkTheme }: { isDarkTheme: boolean }) {
                     ></div>
                   </div>
                 </div>
-                <p className="text-sm text-muted-foreground mt-4">마지막 업데이트: {lastUpdate.toLocaleTimeString()}</p>
+                <p className="text-sm mt-4" style={{ color: isDarkTheme ? '#a1a1aa' : '#71717a' }}>마지막 업데이트: {lastUpdate.toLocaleTimeString()}</p>
               </div>
               <div>
-                <h3 className="font-medium text-lg mb-2">주요 강점</h3>
+                <h3 className="font-medium text-lg mb-2" style={textColorStyle}>주요 강점</h3>
                 <div className="flex flex-wrap gap-2">
                   <span className="px-3 py-1 text-sm bg-primary text-primary-foreground rounded-full">
                     Next.js
@@ -486,7 +484,7 @@ export default function AnalogMeter({ isDarkTheme }: { isDarkTheme: boolean }) {
                 </div>
               </div>
             </div>
-            <div className="mt-6 pt-4 border-t text-center text-sm text-muted-foreground">
+            <div className="mt-6 pt-4 border-t text-center text-sm" style={{ color: isDarkTheme ? '#a1a1aa' : '#71717a' }}>
               © {new Date().getFullYear()} 개인 포트폴리오. 모든 수치는 자체 평가를 기반으로 합니다.
             </div>
           </div>
