@@ -10,7 +10,7 @@ import FixedButtons from "@/components/FixedButtons"
 import { useThemeStore, toggleTheme } from "@/store/theme"
 // import MicroWave from "@/components/micro-wave"
 import LeeGwangYeol from "../app/components/name"
-import AnalogMeter from "@/components/analog-meter"
+// import AnalogMeter from "@/components/analog-meter"
 
 export default function ProfilePage() {
   const { isDarkTheme } = useThemeStore();
