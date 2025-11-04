@@ -36,7 +36,7 @@ export default function Footer() {
                 <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
               </svg>
               <span className={`${isDarkTheme ? 'text-white' : 'text-black'} overflow-hidden whitespace-nowrap hover:overflow-visible hover:whitespace-normal`}>
-                경기 수원시
+                경기 광주시
               </span>
             </div>
           </div>

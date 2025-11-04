@@ -65,7 +65,7 @@ export default function ProfilePage() {
               <CareerItem
                   company="WintechAutomation"
                   position="소프트웨어팀 · 선임 연구원"
-                  period="2025.06 ~ "
+                  period="2025.05 ~ 2025.10"
                   description="WPF 기반 UX, UI 개발, "
                   isDarkTheme={isDarkTheme}
                 />
@@ -165,10 +165,10 @@ export default function ProfilePage() {
               <h2 className={`text-2xl font-semibold mb-4 ${isDarkTheme ? 'text-gray-200' : 'text-white'}`}>Projects</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <ProjectItem
-                  name="PVD 마이그레이션 프로젝트"
+                  name="HAM Series"
                   period="2025.05 ~"
                   technologies={["C#", "HTML", "WPF"]}
-                  description="Winform 기반 UI의 프로그램을 WPF로 마이그레이션 프론트/백 구조화 진행"
+                  description="코드 리펙토링,WindowForm -> WMF (MVVM 패턴화),프론트/백 구조화 진행, 장비 셋업 자동화 개발 도입 "
                   isDarkTheme={isDarkTheme}
                 />
                 <ProjectItem
