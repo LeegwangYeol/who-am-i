@@ -66,7 +66,7 @@ export default function ProfilePage() {
                   company="WintechAutomation"
                   position="소프트웨어팀 · 선임 연구원"
                   period="2025.05 ~ 2025.10"
-                  description="WPF 기반 UX, UI 개발, "
+                  description="장비 UI/UX 개선(리팩토링), 해외용 특수 핸들러 장비 개발"
                   isDarkTheme={isDarkTheme}
                 />
                 <CareerItem
