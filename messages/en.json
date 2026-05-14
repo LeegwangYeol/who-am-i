@@ -1,0 +1,170 @@
+{
+  "site": {
+    "name": "Mr.Lee's Lair",
+    "tagline": "Lee Gwangyeol — Portfolio",
+    "description": "Portfolio of Lee Gwangyeol — frontend web developer and factory automation engineer. Experience in Next.js, TypeScript, React, C#, .NET-based web and industrial automation systems.",
+    "h1": "Lee Gwangyeol — Frontend Web Developer · Automation Robotics Engineer Portfolio"
+  },
+  "nav": {
+    "profile": "Profile",
+    "introduce": "About",
+    "home": "Home",
+    "toggleTheme": "Toggle theme",
+    "language": "Language",
+    "toLight": "Switch to light mode",
+    "toDark": "Switch to dark mode"
+  },
+  "hero": {
+    "eyebrow": "Frontend · Automation Engineer",
+    "name": "Lee Gwangyeol",
+    "nameLatin": "이광열",
+    "role": "Bridging the web and robotic automation",
+    "summary": "💻 A frontend web developer and 🤖 automation robotics engineer.\nI build web products with Next.js and factory-automation systems with C#.\n\nI'm deeply interested in the convergence of AI and robotic automation,\nand pursue technical innovation through 📚 continuous learning and 🚀 bold challenges.",
+    "imageAlt": "Lee Gwangyeol — profile photo"
+  },
+  "section": {
+    "career": "Career",
+    "techStack": "Technology Stack",
+    "education": "Education",
+    "projects": "Projects"
+  },
+  "career": {
+    "wintech2025": {
+      "company": "WintechAutomation",
+      "position": "Software Team · Senior Researcher",
+      "period": "May 2025 ~ Oct 2025",
+      "description": "Improved equipment UI/UX (refactoring), developed special handlers for overseas clients."
+    },
+    "poul": {
+      "company": "POUL Inc.",
+      "position": "Web Development · Researcher",
+      "period": "Jun 2024 ~ Mar 2025",
+      "description": "Frontend development for the llami project. Built a modular Next.js + TypeScript frontend architecture, applied optimistic fetch, managed the Git workflow, and set up a UI component test environment."
+    },
+    "wintech2021": {
+      "company": "Wintech Automation",
+      "position": "Factory Automation · Researcher",
+      "period": "Oct 2021 ~ Jun 2024",
+      "description": "Led production-automation equipment projects. Developed PC-based automation systems on C#/.NET, ran a press-handler integration project, and built MES integrations and hardware communication units."
+    },
+    "enitec": {
+      "company": "Enitec Co., Ltd.",
+      "position": "SI Development · Associate",
+      "period": "Nov 2019 ~ Apr 2021",
+      "description": "Analyzed and tested semiconductor equipment logs, designed embedded systems, and developed WinActor libraries (Excel automation, AI-OCR)."
+    }
+  },
+  "education": {
+    "hufs": {
+      "institution": "Hankuk University of Foreign Studies (Yongin)",
+      "degree": "B.A. in History (Double major in Russian)",
+      "period": "Mar 2012 ~ Feb 2019",
+      "description": "GPA: 3.35 / 4.5"
+    },
+    "kosea": {
+      "institution": "Kosea HRD Institute",
+      "degree": "Web Developer IT Course",
+      "period": "Sep 2018 ~ Mar 2019",
+      "description": "Completed foundational web development training."
+    }
+  },
+  "projects": {
+    "ham": {
+      "name": "HAM Series",
+      "period": "May 2025 ~",
+      "description": "Code refactoring, WinForms → WPF migration (MVVM pattern), front/back structuring, and introduction of equipment setup automation."
+    },
+    "llami": {
+      "name": "llami Project",
+      "period": "Jun 2024 ~ Mar 2025",
+      "description": "Frontend development of an AI chatbot. Built a SOLID-principle-based modular architecture, implemented consultation-request and customer-contact management, and shipped a voice-input UX."
+    },
+    "press": {
+      "name": "Press Handler Integration",
+      "period": "Oct 2021 ~ Jun 2024",
+      "description": "Factory-automation equipment development. Multi-threaded axis control, safe motion-sequence communication, and inter-equipment hardware communication."
+    },
+    "featured": "Featured",
+    "github": "GitHub →",
+    "details": "Learn more →"
+  },
+  "footer": {
+    "contact": "Contact",
+    "social": "Social",
+    "location": "Gwangju, Gyeonggi-do, South Korea",
+    "copyright": "© {year} Lee Gwangyeol. Built with Next.js."
+  },
+  "introduce": {
+    "metaTitle": "About",
+    "metaDescription": "Values and core competencies of Lee Gwangyeol — challenge mindset, conviction in future tech, growth through overcoming gaps, hardware-software understanding, code-quality awareness, and turning dreams into reality.",
+    "h1": "About Lee Gwangyeol — Values and Core Competencies",
+    "eyebrow": "About me",
+    "title": "Values and Core Competencies",
+    "subtitle": "Six short essays on what I think and what I've lived through.",
+    "ogAlt": "About Lee Gwangyeol — Values and Core Competencies",
+    "ogTitleLabel": "About · Lee Gwangyeol",
+    "ogTitle": "Values & Competencies",
+    "ogSubtitle": "Six essays on what I think and what I've lived",
+    "userName": "Lee Gwangyeol",
+    "category": {
+      "values": "Values",
+      "competencies": "Competencies"
+    },
+    "posts": {
+      "challenge": {
+        "categoryValue": "Challenge mindset",
+        "content": "One of the most important values in my life is the belief that \"nothing is impossible.\" In college, I started Russian later than most, but once I committed I followed through — intensive self-study via YouTube, language exchanges with locals while studying in Russia, and ultimately a language certification. Driven by the goal of working abroad as an engineer, I went through roughly a year of developer training and then built a career as a developer in Japan. From there I moved into robotic automation, working on-site in Japan and China, and most recently expanded into web development and AI. 💪 🎯 ⚔️",
+        "postedTime": "POSTED 2 WEEKS AGO"
+      },
+      "future": {
+        "categoryValue": "Conviction in future tech",
+        "content": "In the early 2010s, the consensus was that cryptocurrency was worthless because it had \"no substance\" — a call that aged badly given today's US–China race for crypto dominance. AI's path is similar: rather than being a distant promise, LLM- and RAG-armed systems are already deployed across many domains. The humanoid robots being built by OpenAI and China's Unitree make the trajectory clear — the future will be reorganized around AI-driven robotics. I'm investing in that conviction now: continuously learning and pushing to be ready for the era of commercialized AI robotics. I've been burned before by failing to prepare for futures I already saw coming. I won't repeat it. 🤖 💻 🧑‍💻",
+        "postedTime": "POSTED 10 DAYS AGO"
+      },
+      "overcome": {
+        "categoryValue": "Closing my own gaps",
+        "content": "Through years of automation-equipment work, I found real satisfaction in identifying on-site needs and turning them into working systems. Communicating directly with engineers and clients in Japan and China let me use my language skills, and I enjoyed going on-site domestically and abroad. Feedback like \"production runs smoothly now\" and \"this is much better than the previous machine\" built real confidence. But I also kept hitting my own limits — design sense, UX, API design, server-side understanding, and the UI ceiling of C#-only stacks. To close those gaps I studied on my own, and through a referral joined a chatbot-development web startup to gain hands-on experience. 🧗🏻 🛠️ 🚀",
+        "postedTime": "POSTED 1 WEEK AGO"
+      },
+      "hardware": {
+        "categoryValue": "Hardware × software literacy",
+        "content": "Through pandemic-era trips to sites in Japan and China, I often had to make hardware modifications myself due to staffing shortages. Adjusting path-lines during equipment setup, measuring vibration and resonance from multi-axis motion, and proposing fixes taught me firsthand how software affects physical robots. Differences in lighting between the in-house setup and the customer site, lens damage during shipping, and similar details — none of which are visible from the code alone — gave me an instinct for what to anticipate as a robotics developer, which I now apply to production-sequence efficiency (vibration removal) and UX design. 🖥️ 🖨️ ⌨️",
+        "postedTime": "POSTED 5 DAYS AGO"
+      },
+      "quality": {
+        "categoryValue": "A shift in how I see code quality",
+        "content": "When I first worked on automation equipment, I was afraid to change existing code — the swarm of compiler errors and unpredictable side effects made me conservative, with a \"if it runs, it's fine\" mindset. Exposure to SOLID-driven development during chatbot work changed that. I came to appreciate code clarity and structure, and the value of writing code that is maintainable and extensible — not just code that happens to work. That shift fundamentally changed my engineering philosophy, and continues to drive my pursuit of better code. 🎯 🏆 ⚙️",
+        "postedTime": "POSTED 3 DAYS AGO"
+      },
+      "dream": {
+        "categoryValue": "Turning dreams into reality",
+        "content": "I don't let dreams stay as imagination — I turn them into reality. The college dream of learning Russian became actual study in Russia and a language certification. The dream of working abroad became real careers in Japan and China. Along the way, I learned the importance of breaking a dream into concrete steps and taking action on each one. My current dream is to use AI and robotics to build services that create social value — and I'm steadily preparing by learning relevant tech, joining diverse projects, and building toward an actual product. ✨ 🌛 💫",
+        "postedTime": "POSTED 1 DAY AGO"
+      }
+    },
+    "likes": "{count} likes",
+    "actions": {
+      "like": "Like",
+      "comment": "Comment",
+      "share": "Share",
+      "bookmark": "Save"
+    }
+  },
+  "common": {
+    "scrollToTop": "Scroll to top"
+  },
+  "notFound": {
+    "title": "404",
+    "heading": "Page not found",
+    "description": "The page you're looking for is gone, or the URL might be off.",
+    "home": "Back to home"
+  },
+  "error": {
+    "heading": "Something went wrong",
+    "description": "Please try again in a moment. If the problem keeps happening, I'd love to know.",
+    "retry": "Try again"
+  },
+  "loading": {
+    "label": "Loading"
+  }
+}

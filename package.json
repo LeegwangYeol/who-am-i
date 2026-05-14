@@ -1,20 +1,48 @@
 {
   "name": "who-is",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
+  "description": "Mr.Lee's Lair — 이광열 / Lee Gwangyeol 포트폴리오 (Next.js 15, React 19, next-intl ko/en/ja)",
+  "author": {
+    "name": "Lee Gwangyeol",
+    "email": "bpscokr003@naver.com",
+    "url": "https://github.com/LeegwangYeol"
+  },
+  "keywords": [
+    "portfolio",
+    "nextjs",
+    "react",
+    "typescript",
+    "tailwindcss",
+    "next-intl",
+    "i18n",
+    "lee-gwangyeol"
+  ],
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "eslint --fix"
+    ]
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.7.2",
     "@radix-ui/react-slot": "^1.2.0",
+    "@vercel/analytics": "^2.0.1",
+    "@vercel/speed-insights": "^2.0.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.479.0",
     "next": "15.2.0",
+    "next-intl": "^4.12.0",
     "next-themes": "^0.4.6",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
@@ -24,12 +52,15 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@playwright/test": "^1.60.0",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "15.2.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^17.0.4",
     "tailwindcss": "^4",
     "tailwindcss-animate": "^1.0.7",
     "typescript": "^5"

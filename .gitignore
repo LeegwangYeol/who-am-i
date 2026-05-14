@@ -12,6 +12,12 @@
 
 # testing
 /coverage
+/playwright-report/
+/test-results/
+/playwright/.cache/
+
+# env example은 커밋, 실제 환경값은 무시 (아래 .env* 패턴이 그대로 유효)
+!.env.example
 
 # next.js
 /.next/

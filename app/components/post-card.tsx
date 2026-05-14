@@ -1,7 +1,5 @@
 "use client"
 
-// import { useState } from "react"
-// import Image from "next/image"
 import { Heart, MessageCircle, Bookmark, Share2 } from "lucide-react"
 
 // 강조 텍스트를 처리하는 컴포넌트
@@ -44,22 +42,26 @@ const HighlightedText = ({ text, highlights, isDarkTheme }: { text: string, high
     <>
       {parts.map((part, i) => 
         part.highlight 
-          ? <strong key={i} className={`${isDarkTheme ? 'text-blue-400' : 'text-blue-600'}`}>{part.text}</strong>
+          ? <strong key={i} className={`${isDarkTheme ? 'text-indigo-300' : 'text-indigo-600'}`}>{part.text}</strong>
           : <span key={i}>{part.text}</span>
       )}
     </>
   );
 };
 
-type LikeKeys = "reason" | "motive" | "dream" | "goal" | "hardware" | "code" | "ai";
+type LikeKeys = "reason" | "motive" | "dream" | "goal" | "hardware" | "code";
+
+interface ActionLabels {
+  like: string;
+  comment: string;
+  share: string;
+  bookmark: string;
+}
 
 interface PostCardProps {
-  profileImage: string;
   userName: string;
   category: string;
   categoryValue: string;
-  postImage: string;
-  postImageAlt: string;
   likeKey: LikeKeys;
   content: string;
   highlights: string[];
@@ -67,16 +69,25 @@ interface PostCardProps {
   onLike: (post: LikeKeys) => void;
   likes: Record<string, number>;
   isDarkTheme: boolean;
+  /** "{count} likes" 같은 i18n 라벨 (생략 시 "{count} likes" 표시) */
+  likesLabel?: string;
+  actionLabels?: ActionLabels;
 }
 
-const defaultLikes = {
+const defaultLikes: Record<LikeKeys, number> = {
   reason: 0,
   motive: 0,
   dream: 0,
   goal: 0,
   hardware: 0,
   code: 0,
-  ai: 0
+};
+
+const defaultActionLabels: ActionLabels = {
+  like: "Like",
+  comment: "Comment",
+  share: "Share",
+  bookmark: "Save",
 };
 
 export default function PostCard({
@@ -89,62 +100,65 @@ export default function PostCard({
   postedTime,
   onLike,
   likes,
-  isDarkTheme
+  isDarkTheme,
+  likesLabel,
+  actionLabels = defaultActionLabels,
 }: PostCardProps) {
   
+  const text = isDarkTheme ? "text-white" : "text-gray-900";
+  const textMuted = isDarkTheme ? "text-gray-300" : "text-gray-500";
+  const iconColor = isDarkTheme ? "text-gray-200" : "text-gray-700";
+
   return (
-    <div className={`${isDarkTheme ? 'glassmorphism-dark' : 'glassmorphism-light'} border border-gray-200 rounded-md mb-6`}>
-      <div className="p-4 flex items-center">
-        {/* <Image
-          src={profileImage}
-          alt="Profile"
-          width={40}
-          height={40}
-          className="rounded-full"
-        /> */}
-        <div className="ml-3">
-          <p className={`font-semibold ${isDarkTheme ? 'text-white' : 'text-black'}`}>{userName}</p>
-          <p className={`text-xs ${isDarkTheme ? 'text-gray-300' : 'text-gray-500'}`}>{category}: {categoryValue}</p>
+    <article
+      className={`${
+        isDarkTheme ? "glassmorphism-dark" : "glassmorphism-light"
+      } rounded-2xl mb-6 overflow-hidden`}
+    >
+      <header className="p-4 flex items-center justify-between">
+        <div>
+          <p className={`font-semibold ${text}`}>{userName}</p>
+          <p className={`text-xs ${textMuted} mt-0.5`}>
+            <span className="inline-block px-1.5 py-0.5 rounded bg-indigo-500/15 text-indigo-400 mr-1.5 text-[10px] uppercase tracking-wide">
+              {category}
+            </span>
+            {categoryValue}
+          </p>
         </div>
-      </div>
+      </header>
 
-      {/* <Image
-        src={postImage}
-        alt={postImageAlt}
-        width={600}
-        height={600}
-        className="w-full h-auto"
-      /> */}
-
-      <div className="p-4">
+      <div className="px-4 pb-4">
         <div className="flex justify-between mb-2">
           <div className="flex space-x-4">
-            <button onClick={() => onLike(likeKey)} className="flex items-center">
-              <Heart className={`h-6 w-6 ${likes[likeKey] > defaultLikes[likeKey] ? "fill-red-500 text-red-500" : isDarkTheme ? "text-white" : "text-black"}`} />
+            <button onClick={() => onLike(likeKey)} className="flex items-center" aria-label={actionLabels.like}>
+              <Heart
+                className={`h-6 w-6 transition-colors ${
+                  likes[likeKey] > defaultLikes[likeKey]
+                    ? "fill-red-500 text-red-500"
+                    : iconColor
+                }`}
+              />
             </button>
-            <button className="flex items-center">
-              <MessageCircle className={`h-6 w-6 ${isDarkTheme ? "text-white" : "text-black"}`} />
+            <button className="flex items-center" aria-label={actionLabels.comment}>
+              <MessageCircle className={`h-6 w-6 ${iconColor}`} />
             </button>
-            <button className="flex items-center">
-              <Share2 className={`h-6 w-6 ${isDarkTheme ? "text-white" : "text-black"}`} />
+            <button className="flex items-center" aria-label={actionLabels.share}>
+              <Share2 className={`h-6 w-6 ${iconColor}`} />
             </button>
           </div>
-          <button className="flex items-center">
-            <Bookmark className={`h-6 w-6 ${isDarkTheme ? "text-white" : "text-black"}`} />
+          <button className="flex items-center" aria-label={actionLabels.bookmark}>
+            <Bookmark className={`h-6 w-6 ${iconColor}`} />
           </button>
         </div>
 
-        <p className={`font-semibold mb-1 ${isDarkTheme ? 'text-white' : 'text-black'}`}>{likes[likeKey]} likes</p>
+        <p className={`font-semibold mb-2 ${text}`}>{likesLabel ?? `${likes[likeKey]} likes`}</p>
 
-        <div className="mb-2">
-          <span className={`font-semibold ${isDarkTheme ? 'text-white' : 'text-black'}`}>hongGD</span>{" "}
-          <span className={`${isDarkTheme ? 'text-white' : 'text-black'}`}>
-            <HighlightedText text={content} highlights={highlights} isDarkTheme={isDarkTheme} />
-          </span>
+        <div className={`mb-3 leading-relaxed ${text}`}>
+          <HighlightedText text={content} highlights={highlights} isDarkTheme={isDarkTheme} />
         </div>
 
-        <p className={`${isDarkTheme ? 'text-gray-300' : 'text-gray-500'} text-xs`}>{postedTime}</p>
+        <p className={`${textMuted} text-xs font-mono`}>{postedTime}</p>
       </div>
-    </div>
+    </article>
   );
 }

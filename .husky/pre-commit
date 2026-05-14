@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+
+# Stage된 ts/tsx 파일에 대해서만 lint --fix 실행 (빠름).
+# typecheck는 무거우므로 CI에서만 돈다.
+npx lint-staged
