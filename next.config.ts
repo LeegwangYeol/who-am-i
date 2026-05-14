@@ -3,25 +3,50 @@ import createNextIntlPlugin from "next-intl/plugin"
 
 const withNextIntl = createNextIntlPlugin("./i18n/request.ts")
 
+// Content Security Policy.
+// 외부 리소스:
+// - llami.net: 챗봇 위젯 (CSS + JS)
+// - vercel: Analytics, Speed Insights
+// 'unsafe-inline'은 Next.js의 inline hydration script + FOUC 방지 script + JSON-LD
+// 때문에 불가피. (정석은 nonce이지만 middleware에 propagation 로직이 필요해 trade-off)
+const csp = [
+  "default-src 'self'",
+  "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://static.llami.net https://va.vercel-scripts.com https://*.vercel-insights.com",
+  "style-src 'self' 'unsafe-inline' https://static.llami.net",
+  "img-src 'self' data: blob: https:",
+  "font-src 'self' data:",
+  "connect-src 'self' https://va.vercel-scripts.com https://*.vercel-insights.com https://static.llami.net",
+  "frame-src 'self'",
+  "frame-ancestors 'none'",
+  "base-uri 'self'",
+  "form-action 'self'",
+  "object-src 'none'",
+  "upgrade-insecure-requests",
+].join("; ")
+
 const securityHeaders = [
-  // 클릭재킹 방지
+  // CSP — 콘텐츠 인젝션/클릭재킹/XSS 1차 방어선
+  { key: "Content-Security-Policy", value: csp },
+  // 클릭재킹 방지 (CSP frame-ancestors와 이중 안전망)
   { key: "X-Frame-Options", value: "DENY" },
   // MIME 스니핑 방지
   { key: "X-Content-Type-Options", value: "nosniff" },
-  // Referrer 정책 (origin only)
+  // Referrer 정책
   { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
-  // 권한 정책: 카메라/마이크/지오로케이션 명시적 차단
+  // 권한 정책
   {
     key: "Permissions-Policy",
     value: "camera=(), microphone=(), geolocation=(), interest-cohort=()",
   },
-  // 모든 자원을 HTTPS로
+  // HSTS
   {
     key: "Strict-Transport-Security",
     value: "max-age=63072000; includeSubDomains; preload",
   },
-  // XSS 보호 (현대 브라우저에선 deprecated이지만 안전망)
+  // XSS Protection (deprecated이지만 안전망)
   { key: "X-XSS-Protection", value: "1; mode=block" },
+  // 교차 출처 격리
+  { key: "Cross-Origin-Opener-Policy", value: "same-origin" },
 ]
 
 const nextConfig: NextConfig = {

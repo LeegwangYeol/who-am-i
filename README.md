@@ -100,12 +100,24 @@ npm run test:e2e:ui     # 시각 디버깅 UI
 - OG/icon/apple-icon PNG 응답
 - locale 내부 404 처리
 
-## CI
+## CI / CD
 
-`.github/workflows/ci.yml` — push/PR 시:
+| Workflow | 트리거 | 역할 |
+|---|---|---|
+| `.github/workflows/ci.yml` | push/PR → main | lint · typecheck · build · Playwright e2e |
+| `.github/workflows/deploy.yml` | push → main | Vercel production 배포 + alias 자동 promote |
 
-1. **verify**: lint → typecheck → build → 빌드 artifact 업로드
-2. **e2e**: artifact 다운로드 → Playwright chromium 캐시 → 테스트 실행, 실패 시 리포트 업로드
+### Vercel 자동 배포에 필요한 Secret (한 번만 등록)
+
+GitHub repo **Settings → Secrets and variables → Actions → New repository secret**:
+
+| Name | 값 | 만드는 곳 |
+|---|---|---|
+| `VERCEL_TOKEN` | `xxxxxxxxxxxx` | [vercel.com/account/tokens](https://vercel.com/account/tokens) → Create |
+
+`.vercel/project.json` (이미 커밋됨)에 projectId/orgId가 있어 추가 secret은 필요 없습니다.
+
+등록 이후엔 `git push origin main`만 하면 빌드 → 배포 → 도메인 promote 까지 자동 수행됩니다.
 
 ## 환경 변수
 

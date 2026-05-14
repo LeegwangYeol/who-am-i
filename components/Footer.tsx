@@ -6,8 +6,9 @@ import { useThemeStore } from "@/store/theme"
 const SOCIAL_LINKS = [
   { href: "https://github.com/LeegwangYeol", icon: "fab fa-github", label: "GitHub" },
   { href: "https://velog.io/@kelog123", icon: "fab fa-grav", label: "Velog" },
-  { href: "https://instagram.com", icon: "fab fa-instagram", label: "Instagram" },
   { href: "https://www.youtube.com/@lolollol2379", icon: "fab fa-youtube", label: "YouTube" },
+  // Instagram 등 추가 소셜은 본인 핸들이 정해지면 여기에 추가.
+  // 동일 핸들을 layout.tsx의 JSON-LD `sameAs` 배열에도 함께 등록할 것.
 ]
 
 export default function Footer() {

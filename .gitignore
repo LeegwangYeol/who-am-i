@@ -41,6 +41,8 @@ yarn-error.log*
 
 # vercel
 .vercel
+# project.json은 projectId/orgId만 들고 있어 비밀이 아님 — CD workflow에서 필요
+!.vercel/project.json
 
 # typescript
 *.tsbuildinfo
