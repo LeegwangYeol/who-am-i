@@ -4,7 +4,8 @@ import { useTranslations, useLocale } from "next-intl"
 import { Link, usePathname, useRouter } from "@/i18n/navigation"
 import { routing, type Locale } from "@/i18n/routing"
 import { useThemeStore, toggleTheme } from "@/store/theme"
-import { useState, useRef, useEffect } from "react"
+import { useState, useRef, useEffect, type ComponentType, type SVGProps } from "react"
+import { User, BookOpen, Sun, Moon, ChevronDown } from "lucide-react"
 
 const LANGUAGE_LABEL: Record<Locale, string> = {
   ko: "한국어",
@@ -18,15 +19,17 @@ const LANGUAGE_SHORT: Record<Locale, string> = {
   ja: "JA",
 }
 
+type LucideIcon = ComponentType<SVGProps<SVGSVGElement> & { size?: number | string }>
+
 type NavItem = {
   href: "/" | "/introduce"
   key: "profile" | "introduce"
-  icon: string
+  Icon: LucideIcon
 }
 
 const NAV_ITEMS: NavItem[] = [
-  { href: "/", key: "profile", icon: "fas fa-user" },
-  { href: "/introduce", key: "introduce", icon: "fas fa-book-open" },
+  { href: "/", key: "profile", Icon: User },
+  { href: "/introduce", key: "introduce", Icon: BookOpen },
 ]
 
 export default function NavBar() {
@@ -89,6 +92,7 @@ export default function NavBar() {
       <ul className="flex items-center gap-1">
         {NAV_ITEMS.map(item => {
           const active = pathname === item.href
+          const { Icon } = item
           return (
             <li key={item.href}>
               <Link
@@ -106,7 +110,7 @@ export default function NavBar() {
                       : "text-gray-700 hover:text-gray-900 hover:bg-gray-900/5"
                 }`}
               >
-                <i className={`${item.icon} sm:hidden`} aria-hidden="true"></i>
+                <Icon size={16} className="sm:hidden" aria-hidden="true" />
                 <span className="hidden sm:inline">{t(item.key)}</span>
               </Link>
             </li>
@@ -128,20 +132,11 @@ export default function NavBar() {
             }`}
           >
             <span aria-hidden="true">{LANGUAGE_SHORT[locale]}</span>
-            <svg
-              width="10"
-              height="10"
-              viewBox="0 0 10 10"
+            <ChevronDown
+              size={12}
               aria-hidden="true"
               className={`transition-transform ${langOpen ? "rotate-180" : ""}`}
-            >
-              <path
-                d="M2 4l3 3 3-3"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.5"
-              />
-            </svg>
+            />
           </button>
           {langOpen && (
             <ul
@@ -192,16 +187,17 @@ export default function NavBar() {
             onClick={toggleTheme}
             aria-label={isDarkTheme ? t("toLight") : t("toDark")}
             title={isDarkTheme ? t("toLight") : t("toDark")}
-            className={`${itemBase} ml-1 w-10 text-base ring-1 ${
+            className={`${itemBase} ml-1 w-10 ring-1 ${
               isDarkTheme
                 ? "bg-yellow-300/15 hover:bg-yellow-300/25 text-yellow-300 ring-yellow-300/30 shadow-[0_0_12px_rgba(253,224,71,0.25)]"
                 : "bg-indigo-500/15 hover:bg-indigo-500/25 text-indigo-600 ring-indigo-500/30 shadow-[0_0_12px_rgba(99,102,241,0.25)]"
             }`}
           >
-            <i
-              className={isDarkTheme ? "fas fa-sun" : "fas fa-moon"}
-              aria-hidden="true"
-            ></i>
+            {isDarkTheme ? (
+              <Sun size={18} aria-hidden="true" />
+            ) : (
+              <Moon size={18} aria-hidden="true" />
+            )}
           </button>
         </li>
       </ul>
