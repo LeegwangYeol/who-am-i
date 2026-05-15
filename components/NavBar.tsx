@@ -187,19 +187,22 @@ export default function NavBar() {
             onClick={toggleTheme}
             aria-label={isDarkTheme ? t("toLight") : t("toDark")}
             title={isDarkTheme ? t("toLight") : t("toDark")}
-            // NavBar 자체가 반투명 글래스라 묻히지 않도록 솔리드 그라데이션 + 흰 아이콘.
-            // Tailwind v4 + Turbopack의 dynamic opacity emit 이슈를 피하기 위해 inline style.
-            className={`${itemBase} ml-1.5 w-11 h-10`}
+            // 주의: itemBase의 `transition-colors`는 color transition을 0.15s 동안 거는데,
+            // valtio store 변경으로 inline color가 즉시 바뀌면 transition이 매 re-render마다
+            // 재시작되어 끝까지 가지 못한다 → 아이콘이 흰색에서 멈추는 시인성 결함.
+            // 그래서 토글만 transition-colors를 제외하고 box-shadow에만 부드러운 효과 적용.
+            className="inline-flex items-center justify-center rounded-full ml-1.5 w-11 h-10"
             style={
               isDarkTheme
                 ? {
-                    // 햇님 분위기: 밝은 amber/yellow 솔리드 그라데이션 + 진한 회색 아이콘
+                    // 햇님 분위기: 밝은 amber/orange 솔리드 그라데이션 + 진한 회색 아이콘
                     // contrast: amber-400(L≈0.65) vs gray-900(L≈0.03) ≈ 11:1 (AAA)
                     backgroundImage:
                       "linear-gradient(135deg, #fbbf24 0%, #fb923c 100%)",
                     boxShadow:
                       "0 4px 14px rgba(251, 191, 36, 0.6), 0 0 0 1px rgba(255,255,255,0.35) inset",
                     color: "#1f2937",
+                    transition: "box-shadow 0.2s ease",
                   }
                 : {
                     // 달 분위기: 진한 인디고/퍼플 그라데이션 + 흰 아이콘
@@ -209,6 +212,7 @@ export default function NavBar() {
                     boxShadow:
                       "0 4px 14px rgba(79, 70, 229, 0.55), 0 0 0 1px rgba(255,255,255,0.25) inset",
                     color: "#fff",
+                    transition: "box-shadow 0.2s ease",
                   }
             }
           >
