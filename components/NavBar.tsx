@@ -193,17 +193,21 @@ export default function NavBar() {
             style={
               isDarkTheme
                 ? {
+                    // 햇님 분위기: 밝은 amber/yellow 솔리드 그라데이션 + 진한 회색 아이콘
+                    // contrast: amber-400(L≈0.65) vs gray-900(L≈0.03) ≈ 11:1 (AAA)
                     backgroundImage:
-                      "linear-gradient(135deg, #f59e0b 0%, #fb923c 100%)",
+                      "linear-gradient(135deg, #fbbf24 0%, #fb923c 100%)",
                     boxShadow:
-                      "0 4px 14px rgba(245, 158, 11, 0.55), 0 0 0 1px rgba(255,255,255,0.15) inset",
-                    color: "#fff",
+                      "0 4px 14px rgba(251, 191, 36, 0.6), 0 0 0 1px rgba(255,255,255,0.35) inset",
+                    color: "#1f2937",
                   }
                 : {
+                    // 달 분위기: 진한 인디고/퍼플 그라데이션 + 흰 아이콘
+                    // contrast: indigo-600(L≈0.13) vs white ≈ 5.8:1 (AA)
                     backgroundImage:
-                      "linear-gradient(135deg, #6366f1 0%, #a855f7 100%)",
+                      "linear-gradient(135deg, #4f46e5 0%, #9333ea 100%)",
                     boxShadow:
-                      "0 4px 14px rgba(99, 102, 241, 0.5), 0 0 0 1px rgba(255,255,255,0.2) inset",
+                      "0 4px 14px rgba(79, 70, 229, 0.55), 0 0 0 1px rgba(255,255,255,0.25) inset",
                     color: "#fff",
                   }
             }
