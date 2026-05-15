@@ -187,29 +187,31 @@ export default function NavBar() {
             onClick={toggleTheme}
             aria-label={isDarkTheme ? t("toLight") : t("toDark")}
             title={isDarkTheme ? t("toLight") : t("toDark")}
-            className={`${itemBase} ml-1 w-10`}
-            // Tailwind v4 + Turbopack 환경에서 일부 dynamic opacity modifier가
-            // CSS로 emit되지 않는 이슈가 있어 핵심 시각 요소는 inline style로 고정.
+            // NavBar 자체가 반투명 글래스라 묻히지 않도록 솔리드 그라데이션 + 흰 아이콘.
+            // Tailwind v4 + Turbopack의 dynamic opacity emit 이슈를 피하기 위해 inline style.
+            className={`${itemBase} ml-1.5 w-11 h-10`}
             style={
               isDarkTheme
                 ? {
-                    backgroundColor: "rgba(253, 224, 71, 0.15)",
+                    backgroundImage:
+                      "linear-gradient(135deg, #f59e0b 0%, #fb923c 100%)",
                     boxShadow:
-                      "0 0 0 1px rgba(253, 224, 71, 0.35), 0 0 14px rgba(253, 224, 71, 0.4)",
-                    color: "rgb(253, 224, 71)",
+                      "0 4px 14px rgba(245, 158, 11, 0.55), 0 0 0 1px rgba(255,255,255,0.15) inset",
+                    color: "#fff",
                   }
                 : {
-                    backgroundColor: "rgba(99, 102, 241, 0.15)",
+                    backgroundImage:
+                      "linear-gradient(135deg, #6366f1 0%, #a855f7 100%)",
                     boxShadow:
-                      "0 0 0 1px rgba(99, 102, 241, 0.35), 0 0 14px rgba(99, 102, 241, 0.35)",
-                    color: "rgb(79, 70, 229)",
+                      "0 4px 14px rgba(99, 102, 241, 0.5), 0 0 0 1px rgba(255,255,255,0.2) inset",
+                    color: "#fff",
                   }
             }
           >
             {isDarkTheme ? (
-              <Sun size={18} aria-hidden="true" />
+              <Sun size={18} strokeWidth={2.5} aria-hidden="true" />
             ) : (
-              <Moon size={18} aria-hidden="true" />
+              <Moon size={18} strokeWidth={2.5} aria-hidden="true" />
             )}
           </button>
         </li>
