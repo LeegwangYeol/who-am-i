@@ -23,10 +23,16 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: npm
+          # cache: npm 옵션은 setup-node가 lockfile hash를 보고 캐시 결정.
+          # 의존성 빈번히 변경 중인 시점엔 stale 캐시가 npm ci를 깨뜨릴 수 있어 명시적 캐싱은 생략.
+
+      - name: Show npm/node version
+        run: |
+          node --version
+          npm --version
 
       - name: Install dependencies
-        run: npm ci --ignore-scripts
+        run: npm ci --ignore-scripts --no-audit --no-fund
 
       - name: Lint
         run: npm run lint
@@ -51,10 +57,9 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: npm
 
       - name: Install dependencies
-        run: npm ci --ignore-scripts
+        run: npm ci --ignore-scripts --no-audit --no-fund
 
       - name: Cache Playwright browsers
         uses: actions/cache@v4

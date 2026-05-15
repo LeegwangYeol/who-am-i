@@ -5,7 +5,6 @@ on:
     branches: [main]
   workflow_dispatch:
 
-# 같은 브랜치 새 push 들어오면 진행 중 deploy 취소 (배포 중복 방지)
 concurrency:
   group: deploy-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
@@ -14,35 +13,55 @@ jobs:
   deploy:
     name: Production Deploy
     runs-on: ubuntu-latest
-    # CI(lint/typecheck/build/e2e)가 성공한 commit에 대해서만 배포
-    # (별도 workflow이지만 GitHub은 동일 commit에 대해 동시에 시작)
 
     steps:
+      # 1) VERCEL_TOKEN secret이 없으면 이후 step을 전부 skip — 깨지지 않음.
+      #    repo Settings → Secrets and variables → Actions 에 VERCEL_TOKEN 등록 시
+      #    이 step 이후 모든 step이 실행되어 자동 배포가 시작됨.
+      - name: Check VERCEL_TOKEN
+        id: gate
+        env:
+          TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        run: |
+          if [ -z "$TOKEN" ]; then
+            echo "::notice title=VERCEL_TOKEN not set::Secret이 설정되지 않아 자동 배포를 건너뜁니다. (vercel CLI 수동 배포는 영향 없음)"
+            echo "configured=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "configured=true" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Checkout
+        if: steps.gate.outputs.configured == 'true'
         uses: actions/checkout@v4
 
       - name: Setup Node
+        if: steps.gate.outputs.configured == 'true'
         uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: npm
 
       - name: Install Vercel CLI
+        if: steps.gate.outputs.configured == 'true'
         run: npm install --global vercel@latest
 
       - name: Pull Vercel project info
+        if: steps.gate.outputs.configured == 'true'
         run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Build for Vercel
+        if: steps.gate.outputs.configured == 'true'
         run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Deploy to Vercel
+        if: steps.gate.outputs.configured == 'true'
         id: deploy
         run: |
           DEPLOY_URL=$(vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }})
-          echo "deploy_url=$DEPLOY_URL" >> $GITHUB_OUTPUT
+          echo "deploy_url=$DEPLOY_URL" >> "$GITHUB_OUTPUT"
           echo "▶ Deployed: $DEPLOY_URL"
 
       - name: Promote to primary alias
+        if: steps.gate.outputs.configured == 'true'
         run: |
           vercel alias set ${{ steps.deploy.outputs.deploy_url }} who-am-i-silk.vercel.app --token=${{ secrets.VERCEL_TOKEN }}

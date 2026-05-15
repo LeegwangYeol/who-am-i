@@ -119,6 +119,8 @@ GitHub repo **Settings → Secrets and variables → Actions → New repository 
 
 등록 이후엔 `git push origin main`만 하면 빌드 → 배포 → 도메인 promote 까지 자동 수행됩니다.
 
+**`VERCEL_TOKEN`이 등록되지 않았다면** deploy job은 첫 step에서 `::notice` 만 남기고 깔끔히 종료됩니다. CI가 빨간색으로 보고되지 않으며, 자동 배포 없이 `vercel deploy --prod` 수동 배포만 사용해도 무관합니다.
+
 ## 환경 변수
 
 `.env.example` 참고. 배포 시 다음 변수만 설정하면 됩니다:
