@@ -115,11 +115,11 @@ export default function PostCard({
         isDarkTheme ? "glassmorphism-dark" : "glassmorphism-light"
       } rounded-2xl mb-6 overflow-hidden`}
     >
-      <header className="p-4 flex items-center justify-between">
+      <header className="p-5 flex items-center justify-between">
         <div>
           <p className={`font-semibold ${text}`}>{userName}</p>
-          <p className={`text-xs ${textMuted} mt-0.5`}>
-            <span className="inline-block px-1.5 py-0.5 rounded bg-indigo-500/15 text-indigo-400 mr-1.5 text-[10px] uppercase tracking-wide">
+          <p className={`text-xs ${textMuted} mt-1.5`}>
+            <span className="inline-block px-2 py-0.5 rounded bg-indigo-500/15 text-indigo-400 mr-2 text-[10px] uppercase tracking-wide">
               {category}
             </span>
             {categoryValue}
@@ -127,8 +127,8 @@ export default function PostCard({
         </div>
       </header>
 
-      <div className="px-4 pb-4">
-        <div className="flex justify-between mb-2">
+      <div className="px-5 pb-5">
+        <div className="flex justify-between mb-3">
           <div className="flex space-x-4">
             <button onClick={() => onLike(likeKey)} className="flex items-center" aria-label={actionLabels.like}>
               <Heart
@@ -151,9 +151,9 @@ export default function PostCard({
           </button>
         </div>
 
-        <p className={`font-semibold mb-2 ${text}`}>{likesLabel ?? `${likes[likeKey]} likes`}</p>
+        <p className={`font-semibold mb-3 ${text}`}>{likesLabel ?? `${likes[likeKey]} likes`}</p>
 
-        <div className={`mb-3 leading-relaxed ${text}`}>
+        <div className={`mb-4 leading-loose ${text}`}>
           <HighlightedText text={content} highlights={highlights} isDarkTheme={isDarkTheme} />
         </div>
 

@@ -21,17 +21,17 @@ export default function EducationItem({
     <article
       className={`${
         isDarkTheme ? "glassmorphism-dark" : "glassmorphism-light"
-      } p-5 rounded-xl shadow-md transition-transform hover:-translate-y-0.5`}
+      } p-6 rounded-xl shadow-md transition-transform hover:-translate-y-0.5`}
     >
       <h3
-        className={`text-lg font-semibold ${
+        className={`text-lg font-semibold leading-snug ${
           isDarkTheme ? "text-white" : "text-gray-900"
         }`}
       >
         {institution}
       </h3>
       <p
-        className={`text-sm mt-1 ${
+        className={`text-sm mt-2 leading-relaxed ${
           isDarkTheme ? "text-gray-200" : "text-gray-700"
         }`}
       >
@@ -39,7 +39,7 @@ export default function EducationItem({
       </p>
       {period && (
         <p
-          className={`text-xs font-mono mt-1 ${
+          className={`text-xs font-mono mt-2 ${
             isDarkTheme ? "text-indigo-300" : "text-indigo-600"
           }`}
         >
@@ -48,7 +48,7 @@ export default function EducationItem({
       )}
       {description && (
         <p
-          className={`mt-2 text-sm ${
+          className={`mt-3 text-sm leading-relaxed ${
             isDarkTheme ? "text-gray-300" : "text-gray-600"
           } text-pretty`}
         >

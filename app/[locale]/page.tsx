@@ -94,14 +94,14 @@ export default function ProfilePage() {
                 />
               </div>
               <div className="flex-grow w-full">
-                <div className={`${glass} rounded-2xl shadow-md p-6 md:p-8`}>
+                <div className={`${glass} rounded-2xl shadow-md p-7 md:p-10`}>
                   <p
-                    className={`text-xs uppercase tracking-[0.2em] mb-2 ${textMuted}`}
+                    className={`text-xs uppercase tracking-[0.2em] mb-3 ${textMuted}`}
                   >
                     {t("hero.eyebrow")}
                   </p>
                   <h2
-                    className={`text-3xl md:text-5xl font-bold mb-1 ${textHeading} tracking-tight`}
+                    className={`text-3xl md:text-5xl font-bold mb-2 ${textHeading} tracking-tight`}
                   >
                     <span className="bg-gradient-to-r from-indigo-500 via-fuchsia-500 to-pink-500 bg-clip-text text-transparent">
                       {t("hero.name")}
@@ -111,12 +111,12 @@ export default function ProfilePage() {
                     </span>
                   </h2>
                   <p
-                    className={`text-base md:text-xl ${textBody} mb-4 font-medium`}
+                    className={`text-base md:text-xl ${textBody} mb-6 font-medium`}
                   >
                     {t("hero.role")}
                   </p>
                   <p
-                    className={`${textBody} text-balance whitespace-break-spaces leading-relaxed`}
+                    className={`${textBody} text-balance whitespace-break-spaces leading-loose`}
                   >
                     {t("hero.summary")}
                   </p>
@@ -127,10 +127,10 @@ export default function ProfilePage() {
             {/* Career */}
             <section
               id="career"
-              className={`mt-12 ${glass} rounded-2xl shadow-md p-6 md:p-8 reveal-up reveal-delay-1 scroll-mt-24`}
+              className={`mt-16 ${glass} rounded-2xl shadow-md p-7 md:p-10 reveal-up reveal-delay-1 scroll-mt-24`}
             >
               <h2
-                className={`text-2xl md:text-3xl ${textHeading} font-bold mb-6 heading-accent`}
+                className={`text-2xl md:text-3xl ${textHeading} font-bold mb-8 heading-accent`}
               >
                 {t("section.career")}
               </h2>
@@ -151,10 +151,10 @@ export default function ProfilePage() {
             {/* Technology Stack */}
             <section
               id="stack"
-              className={`mt-12 ${glass} rounded-2xl shadow-md p-6 md:p-8 reveal-up reveal-delay-2 scroll-mt-24`}
+              className={`mt-16 ${glass} rounded-2xl shadow-md p-7 md:p-10 reveal-up reveal-delay-2 scroll-mt-24`}
             >
               <h2
-                className={`text-2xl md:text-3xl ${textHeading} font-bold mb-6 heading-accent`}
+                className={`text-2xl md:text-3xl ${textHeading} font-bold mb-8 heading-accent`}
               >
                 {t("section.techStack")}
               </h2>
@@ -196,10 +196,10 @@ export default function ProfilePage() {
             {/* Education */}
             <section
               id="education"
-              className={`mt-12 ${glass} rounded-2xl shadow-md p-6 md:p-8 reveal-up reveal-delay-3 scroll-mt-24`}
+              className={`mt-16 ${glass} rounded-2xl shadow-md p-7 md:p-10 reveal-up reveal-delay-3 scroll-mt-24`}
             >
               <h2
-                className={`text-2xl md:text-3xl ${textHeading} font-bold mb-6 heading-accent`}
+                className={`text-2xl md:text-3xl ${textHeading} font-bold mb-8 heading-accent`}
               >
                 {t("section.education")}
               </h2>
@@ -220,10 +220,10 @@ export default function ProfilePage() {
             {/* Projects */}
             <section
               id="projects"
-              className={`mt-12 ${glass} rounded-2xl shadow-md p-6 md:p-8 reveal-up reveal-delay-4 scroll-mt-24`}
+              className={`mt-16 ${glass} rounded-2xl shadow-md p-7 md:p-10 reveal-up reveal-delay-4 scroll-mt-24`}
             >
               <h2
-                className={`text-2xl md:text-3xl ${textHeading} font-bold mb-6 heading-accent`}
+                className={`text-2xl md:text-3xl ${textHeading} font-bold mb-8 heading-accent`}
               >
                 {t("section.projects")}
               </h2>

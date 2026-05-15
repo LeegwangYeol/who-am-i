@@ -45,30 +45,30 @@ export default function ProjectItem({
           <Image src={image} alt={name} fill className="object-cover" />
         </div>
       )}
-      <div className="p-5 md:p-6">
-        <div className="flex items-start justify-between gap-2 mb-1">
+      <div className="p-6 md:p-7">
+        <div className="flex items-start justify-between gap-2 mb-2">
           <h3
-            className={`text-lg md:text-xl font-semibold ${
+            className={`text-lg md:text-xl font-semibold leading-snug ${
               isDarkTheme ? "text-white" : "text-gray-900"
             }`}
           >
             {name}
           </h3>
           {isSpecialProject && (
-            <span className="text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-full bg-indigo-500 text-white font-semibold">
+            <span className="text-[10px] uppercase tracking-wider px-2 py-1 rounded-full bg-indigo-500 text-white font-semibold whitespace-nowrap">
               {featuredLabel}
             </span>
           )}
         </div>
         <p
-          className={`text-xs font-mono mb-3 ${
+          className={`text-xs font-mono mb-4 ${
             isDarkTheme ? "text-indigo-300" : "text-indigo-600"
           }`}
         >
           {period}
         </p>
         <p
-          className={`text-sm leading-relaxed mb-4 ${
+          className={`text-sm leading-loose mb-5 ${
             isDarkTheme ? "text-gray-200" : "text-gray-700"
           } text-balance whitespace-pre-line`}
         >

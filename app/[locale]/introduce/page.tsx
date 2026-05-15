@@ -63,8 +63,8 @@ export default function IntroducePage() {
         </div>
       </header>
 
-      <section className="max-w-2xl mx-auto px-4 pt-10 pb-2 reveal-up">
-        <p className={`text-xs uppercase tracking-[0.2em] mb-2 ${textMuted}`}>
+      <section className="max-w-2xl mx-auto px-4 pt-14 pb-4 reveal-up">
+        <p className={`text-xs uppercase tracking-[0.2em] mb-3 ${textMuted}`}>
           {t("eyebrow")}
         </p>
         <h2
@@ -72,13 +72,13 @@ export default function IntroducePage() {
         >
           {t("title")}
         </h2>
-        <p className={`mt-3 ${textMuted}`}>{t("subtitle")}</p>
+        <p className={`mt-4 leading-relaxed ${textMuted}`}>{t("subtitle")}</p>
       </section>
 
       <main
-        className={`max-w-2xl mt-6 mx-auto px-2 sm:px-6 lg:px-8 ${glass} rounded-2xl shadow-md reveal-up reveal-delay-1`}
+        className={`max-w-2xl mt-8 mx-auto px-2 sm:px-6 lg:px-8 ${glass} rounded-2xl shadow-md reveal-up reveal-delay-1`}
       >
-        <div className="px-4 py-6 sm:px-0 space-y-6">
+        <div className="px-4 py-8 sm:px-0 space-y-8">
           {POSTS.map(post => (
             <PostCard
               key={post.id}

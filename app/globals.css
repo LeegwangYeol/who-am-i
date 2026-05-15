@@ -172,6 +172,22 @@
   }
   body {
     @apply bg-background text-foreground;
+    /* 한글 가독성: word-break 명시 + 미세 letter-spacing */
+    word-break: keep-all;
+    letter-spacing: -0.005em;
+  }
+
+  /* 헤딩은 살짝 더 좁게 (영문/픽토그램 강조) */
+  h1,
+  h2,
+  h3,
+  h4 {
+    letter-spacing: -0.02em;
+  }
+
+  /* 본문 단락은 줄간격을 넉넉히 */
+  p {
+    line-height: 1.7;
   }
 
   /* FOUC 방지: html.dark 클래스 기준으로 body 배경을 즉시 적용 */

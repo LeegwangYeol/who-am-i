@@ -192,10 +192,10 @@ export default function NavBar() {
             onClick={toggleTheme}
             aria-label={isDarkTheme ? t("toLight") : t("toDark")}
             title={isDarkTheme ? t("toLight") : t("toDark")}
-            className={`${itemBase} w-9 ${
+            className={`${itemBase} ml-1 w-10 text-base ring-1 ${
               isDarkTheme
-                ? "bg-white/10 hover:bg-white/20 text-yellow-300"
-                : "bg-gray-900/5 hover:bg-gray-900/10 text-indigo-600"
+                ? "bg-yellow-300/15 hover:bg-yellow-300/25 text-yellow-300 ring-yellow-300/30 shadow-[0_0_12px_rgba(253,224,71,0.25)]"
+                : "bg-indigo-500/15 hover:bg-indigo-500/25 text-indigo-600 ring-indigo-500/30 shadow-[0_0_12px_rgba(99,102,241,0.25)]"
             }`}
           >
             <i
