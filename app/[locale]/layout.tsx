@@ -10,6 +10,7 @@ import FallingStars from "@/components/falling-stars"
 import NavBar from "@/components/NavBar"
 import ScrollProgress from "@/components/ScrollProgress"
 import SectionNav from "@/components/SectionNav"
+import SpotlightTracker from "@/components/SpotlightTracker"
 import { Analytics } from "@vercel/analytics/next"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { routing, type Locale } from "@/i18n/routing"
@@ -235,6 +236,7 @@ export default async function LocaleLayout({
             <FallingStars />
             <NavBar />
             <SectionNav />
+            <SpotlightTracker />
             {children}
           </ThemeProvider>
         </NextIntlClientProvider>

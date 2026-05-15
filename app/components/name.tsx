@@ -1,12 +1,26 @@
 "use client"
 
 import { useEffect, useRef } from "react"
+import { useThemeStore } from "@/store/theme"
 
-const COLOR = "#FFFFFF"
-const HIT_COLOR = "#333333"
-const BACKGROUND_COLOR = "#000000"
-const BALL_COLOR = "#FFFFFF"
-const PADDLE_COLOR = "#FFFFFF"
+// 테마별 컬러 팔레트. drawGame이 매 프레임 ref에서 읽어 즉시 반영.
+const PALETTE = {
+  dark: {
+    bg: "#0b0b14",
+    pixel: "#FFFFFF",
+    hit: "#333333",
+    ball: "#FFFFFF",
+    paddle: "#FFFFFF",
+  },
+  light: {
+    bg: "#eef2ff",
+    pixel: "#312e81",       // indigo-900
+    hit: "#c7d2fe",         // indigo-200 (히트된 픽셀은 옅게)
+    ball: "#6366f1",        // indigo-500
+    paddle: "#6366f1",
+  },
+}
+
 const LETTER_SPACING = 1
 const WORD_SPACING = 3
 
@@ -155,6 +169,10 @@ export function LeeGwangYeol() {
   const ballRef = useRef<Ball>({ x: 0, y: 0, dx: 0, dy: 0, radius: 0 })
   const paddlesRef = useRef<Paddle[]>([])
   const scaleRef = useRef(1)
+  // 테마는 ref로 보관 — useEffect 본체가 한 번만 돌면서 매 프레임 이 ref를 읽어 색 결정
+  const { isDarkTheme } = useThemeStore()
+  const themeRef = useRef(isDarkTheme)
+  themeRef.current = isDarkTheme
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -381,21 +399,23 @@ export function LeeGwangYeol() {
 
     const drawGame = () => {
       if (!ctx) return
+      // 매 프레임 themeRef를 읽어 현재 모드의 팔레트 결정
+      const palette = themeRef.current ? PALETTE.dark : PALETTE.light
 
-      ctx.fillStyle = BACKGROUND_COLOR
+      ctx.fillStyle = palette.bg
       ctx.fillRect(0, 0, canvas.width, canvas.height)
 
       pixelsRef.current.forEach((pixel) => {
-        ctx.fillStyle = pixel.hit ? HIT_COLOR : COLOR
+        ctx.fillStyle = pixel.hit ? palette.hit : palette.pixel
         ctx.fillRect(pixel.x, pixel.y, pixel.size, pixel.size)
       })
 
-      ctx.fillStyle = BALL_COLOR
+      ctx.fillStyle = palette.ball
       ctx.beginPath()
       ctx.arc(ballRef.current.x, ballRef.current.y, ballRef.current.radius, 0, Math.PI * 2)
       ctx.fill()
 
-      ctx.fillStyle = PADDLE_COLOR
+      ctx.fillStyle = palette.paddle
       paddlesRef.current.forEach((paddle) => {
         ctx.fillRect(paddle.x, paddle.y, paddle.width, paddle.height)
       })

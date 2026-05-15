@@ -32,7 +32,7 @@ export default function ProjectItem({
 }: ProjectItemProps) {
   return (
     <article
-      className={`${
+      className={`spotlight ${
         isDarkTheme ? "glassmorphism-dark" : "glassmorphism-light"
       } rounded-xl shadow-md overflow-hidden transition-transform hover:-translate-y-0.5 ${
         isSpecialProject

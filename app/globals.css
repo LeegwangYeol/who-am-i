@@ -8,12 +8,13 @@
 }
 
 .glassmorphism-light {
+  position: relative;
   background: rgba(255, 255, 255, 0.72);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
   backdrop-filter: blur(12px) saturate(160%);
   -webkit-backdrop-filter: blur(12px) saturate(160%);
   border: 1px solid rgba(255, 255, 255, 0.5);
-  transition: all 0.3s ease;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
 .glassmorphism-light:hover {
@@ -22,17 +23,56 @@
 }
 
 .glassmorphism-dark {
+  position: relative;
   background: rgba(20, 20, 28, 0.65);
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
   backdrop-filter: blur(12px) saturate(160%);
   -webkit-backdrop-filter: blur(12px) saturate(160%);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  transition: all 0.3s ease;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
 .glassmorphism-dark:hover {
   background: rgba(30, 30, 40, 0.75);
   box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.5);
+}
+
+/* ==================================================================
+ * Mouse spotlight — 카드 위에 마우스 따라가는 빛.
+ * .spotlight 클래스를 부여하면 ::before pseudo가 mouse position에
+ * radial-gradient를 그려 hover 시 빛이 따라옴.
+ * --mx, --my는 클라이언트 JS가 mousemove로 매번 세팅.
+ * 다크: 부드러운 흰색 spotlight / 라이트: 인디고 spotlight.
+ * ================================================================== */
+.spotlight::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  background: radial-gradient(
+    320px circle at var(--mx, 50%) var(--my, 50%),
+    rgba(99, 102, 241, 0.22),
+    transparent 60%
+  );
+  z-index: 0;
+}
+html.dark .spotlight::before {
+  background: radial-gradient(
+    320px circle at var(--mx, 50%) var(--my, 50%),
+    rgba(255, 255, 255, 0.12),
+    transparent 60%
+  );
+}
+.spotlight:hover::before {
+  opacity: 1;
+}
+/* spotlight 적용한 카드의 컨텐츠는 ::before 위에 떠야 클릭 가능 */
+.spotlight > * {
+  position: relative;
+  z-index: 1;
 }
 
 @keyframes sparkle {

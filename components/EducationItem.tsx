@@ -19,7 +19,7 @@ export default function EducationItem({
 }: EducationItemProps) {
   return (
     <article
-      className={`${
+      className={`spotlight overflow-hidden ${
         isDarkTheme ? "glassmorphism-dark" : "glassmorphism-light"
       } p-6 rounded-xl shadow-md transition-transform hover:-translate-y-0.5`}
     >

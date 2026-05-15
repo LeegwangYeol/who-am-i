@@ -15,7 +15,7 @@ export default function CareerItem({
 }: CareerItemProps) {
   return (
     <article
-      className={`relative overflow-hidden ${
+      className={`spotlight relative overflow-hidden ${
         isDarkTheme ? "glassmorphism-dark" : "glassmorphism-light"
       } p-6 pl-7 rounded-xl transition-transform hover:-translate-y-0.5`}
     >

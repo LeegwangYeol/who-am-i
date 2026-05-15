@@ -73,7 +73,7 @@ export default function NavBar() {
       aria-label="Primary"
       className={`fixed top-3 sm:top-4 left-1/2 -translate-x-1/2 z-50 w-[min(96vw,720px)] ${
         isDarkTheme ? "glassmorphism-dark" : "glassmorphism-light"
-      } rounded-full px-2 sm:px-3 py-1.5 sm:py-2 flex items-center justify-between gap-1.5`}
+      } rounded-full pl-2 sm:pl-3 pr-3 sm:pr-4 py-2 flex items-center justify-between gap-1.5`}
     >
       <Link
         href="/"

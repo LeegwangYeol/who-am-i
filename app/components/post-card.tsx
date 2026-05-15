@@ -111,7 +111,7 @@ export default function PostCard({
 
   return (
     <article
-      className={`${
+      className={`spotlight ${
         isDarkTheme ? "glassmorphism-dark" : "glassmorphism-light"
       } rounded-2xl mb-6 overflow-hidden`}
     >
