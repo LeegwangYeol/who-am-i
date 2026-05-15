@@ -187,11 +187,24 @@ export default function NavBar() {
             onClick={toggleTheme}
             aria-label={isDarkTheme ? t("toLight") : t("toDark")}
             title={isDarkTheme ? t("toLight") : t("toDark")}
-            className={`${itemBase} ml-1 w-10 ring-1 ${
+            className={`${itemBase} ml-1 w-10`}
+            // Tailwind v4 + Turbopack 환경에서 일부 dynamic opacity modifier가
+            // CSS로 emit되지 않는 이슈가 있어 핵심 시각 요소는 inline style로 고정.
+            style={
               isDarkTheme
-                ? "bg-yellow-300/15 hover:bg-yellow-300/25 text-yellow-300 ring-yellow-300/30 shadow-[0_0_12px_rgba(253,224,71,0.25)]"
-                : "bg-indigo-500/15 hover:bg-indigo-500/25 text-indigo-600 ring-indigo-500/30 shadow-[0_0_12px_rgba(99,102,241,0.25)]"
-            }`}
+                ? {
+                    backgroundColor: "rgba(253, 224, 71, 0.15)",
+                    boxShadow:
+                      "0 0 0 1px rgba(253, 224, 71, 0.35), 0 0 14px rgba(253, 224, 71, 0.4)",
+                    color: "rgb(253, 224, 71)",
+                  }
+                : {
+                    backgroundColor: "rgba(99, 102, 241, 0.15)",
+                    boxShadow:
+                      "0 0 0 1px rgba(99, 102, 241, 0.35), 0 0 14px rgba(99, 102, 241, 0.35)",
+                    color: "rgb(79, 70, 229)",
+                  }
+            }
           >
             {isDarkTheme ? (
               <Sun size={18} aria-hidden="true" />
