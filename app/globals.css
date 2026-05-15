@@ -177,9 +177,18 @@
   /* FOUC 방지: html.dark 클래스 기준으로 body 배경을 즉시 적용 */
   html {
     background-color: #eef2ff;
+    /* 섹션 내비게이션 클릭 시 부드럽게 이동 */
+    scroll-behavior: smooth;
   }
   html.dark {
     background-color: #0b0b14;
+  }
+
+  /* 사용자가 모션을 줄여달라고 했으면 smooth scroll도 끈다 */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
   }
 }
 

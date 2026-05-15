@@ -28,6 +28,20 @@
     "education": "Education",
     "projects": "Projects"
   },
+  "techCategory": {
+    "frontend": "Frontend",
+    "language": "Languages & Runtime",
+    "database": "Database",
+    "ai": "AI",
+    "tools": "Tools"
+  },
+  "sectionNav": {
+    "hero": "Intro",
+    "career": "Career",
+    "stack": "Stack",
+    "education": "Education",
+    "projects": "Projects"
+  },
   "career": {
     "wintech2025": {
       "company": "WintechAutomation",

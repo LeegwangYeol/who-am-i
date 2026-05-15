@@ -15,10 +15,15 @@ export default function CareerItem({
 }: CareerItemProps) {
   return (
     <article
-      className={`${
+      className={`relative overflow-hidden ${
         isDarkTheme ? "glassmorphism-dark" : "glassmorphism-light"
-      } p-5 rounded-xl transition-transform hover:-translate-y-0.5`}
+      } p-5 pl-6 rounded-xl transition-transform hover:-translate-y-0.5`}
     >
+      {/* 좌측 그라데이션 accent bar */}
+      <span
+        aria-hidden="true"
+        className="absolute left-0 top-3 bottom-3 w-1 rounded-full bg-gradient-to-b from-indigo-500 via-fuchsia-500 to-pink-500"
+      />
       <header className="mb-2">
         <h3
           className={`text-lg font-semibold leading-snug ${

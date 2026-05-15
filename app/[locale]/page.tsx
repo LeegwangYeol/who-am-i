@@ -10,27 +10,46 @@ import FixedButtons from "@/components/FixedButtons"
 import { useThemeStore } from "@/store/theme"
 import LeeGwangYeol from "@/app/components/name"
 
-const TECH_STACK: Array<{ name: string; isMain: boolean }> = [
-  { name: ".NET", isMain: true },
-  { name: "C#", isMain: true },
-  { name: "TypeScript", isMain: true },
-  { name: "Next.js", isMain: true },
-  { name: "React", isMain: true },
-  { name: "JavaScript", isMain: true },
-  { name: "Tailwind", isMain: true },
-  { name: "Node.js", isMain: false },
-  { name: "Supabase", isMain: false },
-  { name: "PostgreSQL", isMain: false },
-  { name: "MySQL", isMain: false },
-  { name: "Oracle", isMain: false },
-  { name: "Sass", isMain: false },
-  { name: "HTML5", isMain: false },
-  { name: "CSS3", isMain: false },
-  { name: "GitHub", isMain: false },
-  { name: "Jira", isMain: false },
-  { name: "LLM", isMain: false },
-  { name: "OpenAI API", isMain: false },
-  { name: "Anthropic API", isMain: false },
+type TechCategory = "frontend" | "language" | "database" | "ai" | "tools"
+
+const TECH_STACK: Array<{ name: string; isMain: boolean; cat: TechCategory }> = [
+  // Frontend
+  { name: "Next.js", isMain: true, cat: "frontend" },
+  { name: "React", isMain: true, cat: "frontend" },
+  { name: "Tailwind", isMain: true, cat: "frontend" },
+  { name: "HTML5", isMain: false, cat: "frontend" },
+  { name: "CSS3", isMain: false, cat: "frontend" },
+  { name: "Sass", isMain: false, cat: "frontend" },
+
+  // Languages & Runtime
+  { name: "TypeScript", isMain: true, cat: "language" },
+  { name: "JavaScript", isMain: true, cat: "language" },
+  { name: "C#", isMain: true, cat: "language" },
+  { name: ".NET", isMain: true, cat: "language" },
+  { name: "Node.js", isMain: false, cat: "language" },
+
+  // Database
+  { name: "Supabase", isMain: false, cat: "database" },
+  { name: "PostgreSQL", isMain: false, cat: "database" },
+  { name: "MySQL", isMain: false, cat: "database" },
+  { name: "Oracle", isMain: false, cat: "database" },
+
+  // AI
+  { name: "LLM", isMain: false, cat: "ai" },
+  { name: "OpenAI API", isMain: false, cat: "ai" },
+  { name: "Anthropic API", isMain: false, cat: "ai" },
+
+  // Tools
+  { name: "GitHub", isMain: false, cat: "tools" },
+  { name: "Jira", isMain: false, cat: "tools" },
+]
+
+const TECH_CATEGORIES: TechCategory[] = [
+  "frontend",
+  "language",
+  "database",
+  "ai",
+  "tools",
 ]
 
 const CAREER_KEYS = ["wintech2025", "poul", "wintech2021", "enitec"] as const
@@ -62,7 +81,7 @@ export default function ProfilePage() {
         <div className="max-w-7xl mx-auto">
           <div className="px-4 py-6 sm:px-0">
             {/* Hero / Introduction */}
-            <div className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6 reveal-up">
+            <div id="hero" className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6 reveal-up scroll-mt-24">
               <div className={`flex-shrink-0 p-3 ${glass} rounded-3xl`}>
                 <Image
                   src="/my-image-600.jpg"
@@ -82,12 +101,18 @@ export default function ProfilePage() {
                     {t("hero.eyebrow")}
                   </p>
                   <h2
-                    className={`text-3xl md:text-4xl font-bold mb-1 ${textHeading}`}
+                    className={`text-3xl md:text-5xl font-bold mb-1 ${textHeading} tracking-tight`}
                   >
-                    {t("hero.name")}{" "}
-                    <span className={textMuted}>· {t("hero.nameLatin")}</span>
+                    <span className="bg-gradient-to-r from-indigo-500 via-fuchsia-500 to-pink-500 bg-clip-text text-transparent">
+                      {t("hero.name")}
+                    </span>{" "}
+                    <span className={`${textMuted} font-medium`}>
+                      · {t("hero.nameLatin")}
+                    </span>
                   </h2>
-                  <p className={`text-base md:text-lg ${textBody} mb-4`}>
+                  <p
+                    className={`text-base md:text-xl ${textBody} mb-4 font-medium`}
+                  >
                     {t("hero.role")}
                   </p>
                   <p
@@ -101,7 +126,8 @@ export default function ProfilePage() {
 
             {/* Career */}
             <section
-              className={`mt-12 ${glass} rounded-2xl shadow-md p-6 md:p-8 reveal-up reveal-delay-1`}
+              id="career"
+              className={`mt-12 ${glass} rounded-2xl shadow-md p-6 md:p-8 reveal-up reveal-delay-1 scroll-mt-24`}
             >
               <h2
                 className={`text-2xl md:text-3xl ${textHeading} font-bold mb-6 heading-accent`}
@@ -124,36 +150,53 @@ export default function ProfilePage() {
 
             {/* Technology Stack */}
             <section
-              className={`mt-12 ${glass} rounded-2xl shadow-md p-6 md:p-8 reveal-up reveal-delay-2`}
+              id="stack"
+              className={`mt-12 ${glass} rounded-2xl shadow-md p-6 md:p-8 reveal-up reveal-delay-2 scroll-mt-24`}
             >
               <h2
                 className={`text-2xl md:text-3xl ${textHeading} font-bold mb-6 heading-accent`}
               >
                 {t("section.techStack")}
               </h2>
-              <div className="flex flex-wrap gap-2">
-                {TECH_STACK.map(tech => (
-                  <span
-                    key={tech.name}
-                    className={`text-sm px-3 py-1 rounded-full transition-all duration-300 ${
-                      tech.isMain
-                        ? isDarkTheme
-                          ? "bg-indigo-500 text-white font-semibold shadow-md shadow-indigo-500/30"
-                          : "bg-indigo-600 text-white font-semibold shadow-md shadow-indigo-600/20"
-                        : isDarkTheme
-                          ? "bg-white/10 text-gray-200 border border-white/10"
-                          : "bg-white/60 text-gray-700 border border-gray-200"
-                    }`}
-                  >
-                    {tech.name}
-                  </span>
-                ))}
+              <div className="space-y-5">
+                {TECH_CATEGORIES.map(cat => {
+                  const items = TECH_STACK.filter(t2 => t2.cat === cat)
+                  if (items.length === 0) return null
+                  return (
+                    <div key={cat}>
+                      <h3
+                        className={`text-xs uppercase tracking-[0.18em] mb-2 ${textMuted}`}
+                      >
+                        {t(`techCategory.${cat}`)}
+                      </h3>
+                      <div className="flex flex-wrap gap-2">
+                        {items.map(tech => (
+                          <span
+                            key={tech.name}
+                            className={`text-sm px-3 py-1 rounded-full transition-all duration-300 ${
+                              tech.isMain
+                                ? isDarkTheme
+                                  ? "bg-gradient-to-br from-indigo-500 to-pink-500 text-white font-semibold shadow-md shadow-indigo-500/30"
+                                  : "bg-gradient-to-br from-indigo-600 to-pink-600 text-white font-semibold shadow-md shadow-indigo-600/20"
+                                : isDarkTheme
+                                  ? "bg-white/10 text-gray-200 border border-white/10"
+                                  : "bg-white/60 text-gray-700 border border-gray-200"
+                            }`}
+                          >
+                            {tech.name}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  )
+                })}
               </div>
             </section>
 
             {/* Education */}
             <section
-              className={`mt-12 ${glass} rounded-2xl shadow-md p-6 md:p-8 reveal-up reveal-delay-3`}
+              id="education"
+              className={`mt-12 ${glass} rounded-2xl shadow-md p-6 md:p-8 reveal-up reveal-delay-3 scroll-mt-24`}
             >
               <h2
                 className={`text-2xl md:text-3xl ${textHeading} font-bold mb-6 heading-accent`}
@@ -176,7 +219,8 @@ export default function ProfilePage() {
 
             {/* Projects */}
             <section
-              className={`mt-12 ${glass} rounded-2xl shadow-md p-6 md:p-8 reveal-up reveal-delay-4`}
+              id="projects"
+              className={`mt-12 ${glass} rounded-2xl shadow-md p-6 md:p-8 reveal-up reveal-delay-4 scroll-mt-24`}
             >
               <h2
                 className={`text-2xl md:text-3xl ${textHeading} font-bold mb-6 heading-accent`}
